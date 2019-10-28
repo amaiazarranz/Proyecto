@@ -17,6 +17,12 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
+/**
+ * Este método sirve para hacer el login con el usuario y contraseña del gmail
+ * @author Alumno Amaia y Olatz
+ *
+ */
+
 public class LoginVisual extends JFrame{
 
     private JTextField textUsuario;
@@ -26,27 +32,17 @@ public class LoginVisual extends JFrame{
     JPanel f;
     ArrayList<Estudiante> diccionarioEstudiantes;
     ArrayList <Trabajador> diccionarioTrabajadores;
-
-	
-    public String getUsuario() {
-        return usuario;
-    }
-
-    public void setUsuario(String usuario) {
-        this.usuario = usuario;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
     
     Persona estu = new Estudiante();
 	Persona secre = new Secretario();
 	Persona profe= new Profesor();
+	
+	/**
+	 * Aquí se realiza el login
+	 * @param diccionarioEstudiantes la lista de los estudiantes
+	 * @param diccionarioTrabajadores la lista de los trabajadores
+	 * @param principio la ventana principio
+	 */
 	
 
     public LoginVisual(ArrayList <Estudiante> diccionarioEstudiantes, ArrayList <Trabajador> diccionarioTrabajadores, Principio principio) {
@@ -157,6 +153,15 @@ public class LoginVisual extends JFrame{
         setVisible(true);
     }
     
+    /**
+     * Sirve para comprobar que el usuario no existe o que la contraseña introducida es incorrecta
+     * @param usuario el usuario 
+     * @param password la contraseña
+     * @param diccionarioEstudiante la lista de todos los estudiantes
+     * @param diccionarioTrabajadores la lista de todos los trabajadores
+     * @return devuelve si existe o no la persona que hace el login
+     * @throws UsuariosNoExiste salta la excepción UsuarioNoExiste en el caso de que no exista o la contraseña sea incorrecta
+     */
     
     private boolean comprobarPersona(String usuario, String password, ArrayList<Estudiante> diccionarioEstudiante, ArrayList<Trabajador> diccionarioTrabajadores)
 			throws UsuariosNoExiste {

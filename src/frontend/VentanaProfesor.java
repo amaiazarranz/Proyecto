@@ -18,9 +18,22 @@ import javax.swing.JLabel;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 
+/**
+ * Esta es la ventana que se les muestra a los profesores
+ * @author Alumno Amaia y Olatz
+ *
+ */
+
 public class VentanaProfesor extends JFrame {
 
 	private JPanel contentPane;
+	
+	/**
+	 * Aquí se muestra la ventana visual de los profesores
+	 * @param diccionarioTrabajador la lista de los trabajadores
+	 * @param estu la persona que accede
+	 * @param atras la ventana LoginVisual
+	 */
 
 	public VentanaProfesor(ArrayList <Trabajador> diccionarioTrabajador, ArrayList <Estudiante> diccionarioEstudiante, Persona profe, LoginVisual atras) {
 		
@@ -40,6 +53,19 @@ public class VentanaProfesor extends JFrame {
 		contentPane.add(lblquDeseaRealizar);
 		
 		JButton btnCalificarEstudiantes = new JButton("Calificar estudiantes");
+		btnCalificarEstudiantes.addActionListener(new ActionListener() {
+			
+			/**
+			 * Sirve para entrar en la ventana de calificación de estudiantes
+			 */
+			
+			public void actionPerformed(ActionEvent arg0) {
+				
+				Calificar ventana= new Calificar (diccionarioEstudiante, profe, VentanaProfesor.this);
+				ventana.setVisible(true);
+				VentanaProfesor.this.setVisible(false);
+			}
+		});
 		btnCalificarEstudiantes.setBounds(107, 73, 202, 29);
 		contentPane.add(btnCalificarEstudiantes);
 		
@@ -50,6 +76,10 @@ public class VentanaProfesor extends JFrame {
 		comboBox.addItem("2.Poner falta grave");
 		
 		comboBox.addActionListener(new ActionListener() {
+			
+			/**
+			 * Sirve para poner posteriormente faltas leves o graves
+			 */
 			public void actionPerformed(ActionEvent arg0) {
 				
 				String seleccionar = (String) comboBox.getSelectedItem();
@@ -79,6 +109,11 @@ public class VentanaProfesor extends JFrame {
 		
 		JButton btnCancel = new JButton("Cerrar sesión");
 		btnCancel.addActionListener(new ActionListener() {
+			
+			/**
+			 * Sirve para volver atrás
+			 */
+			
 			public void actionPerformed(ActionEvent e) {
 				
 				VentanaProfesor.this.setVisible(false);

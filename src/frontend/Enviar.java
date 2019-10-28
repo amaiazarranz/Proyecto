@@ -18,6 +18,12 @@ import javax.mail.internet.MimeBodyPart;
 import javax.mail.internet.MimeMessage;
 import javax.mail.internet.MimeMultipart;
 
+/**
+ * En esta clase se comprueba que en envío por gmail se ha realizado correctamente
+ * @author Alumno
+ *
+ */
+
 public class Enviar 
 {
 	static boolean enviarConGmail(String user, String contrasena, String destinatario, String asunto, String cuerpo) {

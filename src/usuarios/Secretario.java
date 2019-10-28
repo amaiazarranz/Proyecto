@@ -4,6 +4,11 @@ import utilidades.LecturaEscrituraFichero;
 import utilidades.Utilidades;
 import java.util.ArrayList;
 
+/**
+ * En esta clase se desarrollan los atributos de los secretarios
+ * @author Alumno Amaia y Olatz
+ *
+ */
 public final class Secretario extends Trabajador
 {
     ArrayList<String> diccionarioSecretarios= new ArrayList <String>();

@@ -7,15 +7,17 @@ import java.sql.*;
 import java.util.ArrayList;
 
 /**
+ * En esta clase se realizan diversas operaciones con nuestra base de datos
+ * @author Alumno
  *
- * @author sqlitetutorial.net
  */
 public class SelectData
 {
     /**
-     * Connect to the test.db database
-     * @return the Connection object
+     * Conectar a la base de datos
+     * @return el objeto conection
      */
+	
     private static Connection connect()
     {
         // SQLite connection string
@@ -36,8 +38,11 @@ public class SelectData
 
 
     /**
-     * select all rows in the warehouses table
+     * seleccionar todos los trabajadores
+     * @return todos los trabajadores
      */
+    
+    
     public static ArrayList<Trabajador> selectAllTrabajadores()
     {
 
@@ -80,6 +85,11 @@ public class SelectData
         return diccionarioTrabajadores;
 
     }
+    
+    /**
+     * Seleccionar todos los estudiantes
+     * @return la lista de todos los estudiantes
+     */
 
     public static ArrayList<Estudiante> selectAllEstudiantes()
     {
@@ -127,6 +137,13 @@ public class SelectData
 
     }
     
+    /**
+     * Actualiza el valor de las faltas leves
+     * @param user el usuario
+     * @param faltaleve el número de faltas leves
+     * @throws SQLException si no se puede realizar salta la excepción sqlexception
+     */
+    
     public static void actualizarFaltaLeve(String user, int faltaleve) throws SQLException{
 
     	String sql = "UPDATE estudiante SET faltaleve = ? WHERE user = ?";
@@ -152,6 +169,13 @@ public class SelectData
 		}
 	}
     
+    /**
+     * Actualiza el valor de las faltas graves
+     * @param user el usuario
+     * @param faltagrave el número de faltas graves
+     * @throws SQLException si no se puede realizar salta la excepción sqlexception
+     */
+    
     public static void actualizarFaltaGrave(String user, int faltagrave) throws SQLException{
 
     	String sql = "UPDATE estudiante SET faltagrave = ? WHERE user = ?";
@@ -176,6 +200,11 @@ public class SelectData
 		System.out.println(e.getMessage());
 		}
 	}
+    
+    /**
+     * elimina el estudiante
+     * @param user el usuario
+     */
     
     public static void delete(String user)
     {

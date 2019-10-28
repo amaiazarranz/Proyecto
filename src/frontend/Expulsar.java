@@ -21,10 +21,22 @@ import javax.swing.JLabel;
 import javax.swing.JList;
 import javax.swing.JOptionPane;
 
+/**
+ * Esta clase sirve para que los secretarios expulsen a los alumnos por mala conducta
+ * @author Alumno Amaia y Olatz
+ *
+ */
 public class Expulsar extends JFrame {
 
 	private JPanel contentPane;
 	private JList list;
+	
+	/**
+	 * Se procederá a la expulsión
+	 * @param diccionarioEstudiantes la lista de los estudiantes
+	 * @param user la persona
+	 * @param atras la ventana VentanaSecretario
+	 */
 
 	public Expulsar(ArrayList <Estudiante> diccionarioEstudiantes, Persona user, VentanaSecretario atras) {
 		
@@ -93,6 +105,11 @@ public class Expulsar extends JFrame {
 			}
 		});
 	}
+	
+	/**
+	 * Este método sirve para cargar la lista de los alumnas que corren el peligro de ser expulsados
+	 * @param diccionarioEstudiantes la lista de los estudiantes
+	 */
 
 	private void cargarLista(ArrayList<Estudiante> diccionarioEstudiantes) {
 		// TODO Auto-generated method stub

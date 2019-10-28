@@ -2,6 +2,11 @@ package sqlite;
 
 import java.sql.*;
 
+/**
+ * Es el gestor de la base de datos
+ * @author Alumno Amaia y Olatz
+ *
+ */
 
 public class DBManager {
 
@@ -10,12 +15,20 @@ public class DBManager {
     private final String URL = "jdbc:sqlite:";
 
     
-    // Constructor
+    /**
+     * Es el constructor
+     * @param BDname el nombre de la base de datos
+     */
 	    public DBManager(String BDname)
 	    {
 	        this.BDname = this.URL + BDname;
 	
 	    }
+	    
+	    /**
+	     * Lanza el gestor
+	     * @param args args
+	     */
 	    
 	    public static void main (String [] args)
 	    {
@@ -34,9 +47,7 @@ public class DBManager {
 	            myDBManager.createNewTableEstudiante();
 	            myDBManager.createNewTableTrabajador();
 	            
-	            insertEstudiante("72608820M", "Amaia", "Zarranz", "Mendizabal" , "amaiaz" , "amaia" , "amaia@gmail.com", "ET0000000000000000000000", "estudiante" , 9.8, 1, 2);
-	            insertTrabajador("72608821Y", "Olatz", "Gonzalez" , "Santiago" , "olatzg", "olatz" , "olatz@gmail.com", "ES0000000000000000000000", "secretario", 2000.0);
-	            insertTrabajador("72608821T", "Leire", "Gonzalez" , "Santiago" , "leireg", "leire" , "leire@gmail.com", "ES0000000000000000000001", "trabajador", 2000.0);
+	            insertTrabajador("72608821Y", "Olatz", "Gonzalez" , "Santiago" , "program.profesor1", "Profesor1" , "program.profesor1@gmail.com", "ES0000000000000000000000", "profesor", 2000.0);
 	            
 	   
 	            
@@ -54,7 +65,10 @@ public class DBManager {
 	    }
 	    
 
-	
+	/**
+	 * Sirve para crear la conexión con la base de datos
+	 * @throws SQLException si no se puede realizar salta la excepción sqlexception
+	 */
 	
 	    public void createLink() throws SQLException
 	    {
@@ -67,6 +81,11 @@ public class DBManager {
 	            System.out.println("BadAss error creating connection. " + e.getMessage());
 	        }
 	    }
+	    
+	    /**
+	     * Sirve para crear una nueva tabla de estudiante
+	     * @throws SQLException si no se puede realizar salta la excepción sqlexception
+	     */
 	
 	        public void createNewTableEstudiante() throws SQLException
 	    {
@@ -102,6 +121,11 @@ public class DBManager {
 	            System.out.println(sql);
 	        }
 	    }
+	        
+        /**
+         * Sirve para crear una nueva tabla de trabajador
+         * @throws SQLException si no se puede realizar salta la excepción sqlexception
+         */
 	
 	    public void createNewTableTrabajador() throws SQLException
 	    {
@@ -134,7 +158,23 @@ public class DBManager {
 	            System.out.println(sql);
 	        }
 	    }
-	
+	    
+	    /**
+	     * Sirve para insertar un estudiante
+	     * @param dni el dni del estudiante
+	     * @param nombre el nombre del estudiante
+	     * @param apellido1 el primer apellido del estudiante
+	     * @param apellido2 el segundo apellido del estudiante
+	     * @param user el user del estudiante
+	     * @param password el password del estudiante
+	     * @param email el correo del estudiante
+	     * @param iban el iban del estudiante
+	     * @param tipopersona sirve para saber que es un estudiante
+	     * @param notamedia la nota media del estudiante
+	     * @param faltaleve las faltas leves que tiene el estudiante
+	     * @param faltagrave las faltas graves que tiene el estudiante
+	     * @throws SQLException si no se puede realizar salta la excepción sqlexception
+	     */
 	
 	    public static void insertEstudiante(String dni, String nombre, String apellido1, String apellido2,
 	                                 String user, String password, String email, String iban, String tipopersona,
@@ -169,6 +209,21 @@ public class DBManager {
 	            System.out.println(e.getMessage());
 	        }
 	    }
+	    
+	    /**
+	     * Sirve par insertar un trabajador
+	     * @param dni el dni del trabajador
+	     * @param nombre el nombre del trabajador
+	     * @param apellido1 el primer apellido del trabajador
+	     * @param apellido2 el segundo apellido del trabajador
+	     * @param user el user del trabajador
+	     * @param password el password del trabajador
+	     * @param email el correo del trabjador
+	     * @param iban el iban del trabajador
+	     * @param tipopersona demuestra que es un trabajador: un profesor secretari@
+	     * @param salario el salrio del trabajador
+	     * @throws SQLException si no se puede realizar salta la excepción sqlexception
+	     */
 	
 	
 	    public static void insertTrabajador(String dni, String nombre, String apellido1, String apellido2,
@@ -202,7 +257,12 @@ public class DBManager {
 	            System.out.println(e.getMessage());
 	        }
 	    }
-	
+	    
+	    /**
+	     * Sirve para cerrar la conexión
+	     * @throws SQLException si no se puede realizar salta la excepción sqlexception
+	     */
+	    
 	    public void closeLink()throws SQLException{
 	
 	        try{
@@ -220,6 +280,11 @@ public class DBManager {
 	
 	
 	    }
+	    
+	    /**
+	     * Sirve para realizar la conexión
+	     * @return
+	     */
 	
 	
 	

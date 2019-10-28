@@ -3,6 +3,11 @@ package usuarios;
 import javax.swing.*;
 import interfaces.IMensajes;
 
+/**
+ * En esta clase se desarrollan los atributos de las personas
+ * @author Alumno Amaia y Olatz
+ *
+ */
 public abstract class Persona implements IMensajes
 {
     private String nombre;

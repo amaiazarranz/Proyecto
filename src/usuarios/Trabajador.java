@@ -5,6 +5,11 @@ import usuarios.Persona;
 import javax.swing.*;
 import java.util.ArrayList;
 
+/**
+ * En esta clase se desarrollan los atributos de los trabajadores
+ * @author Alumno Amaia y Olatz
+ *
+ */
 public class Trabajador extends Persona
 {
     private double salario;

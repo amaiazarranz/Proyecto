@@ -2,12 +2,15 @@ package frontend;
 
 import java.awt.BorderLayout;
 
+
+
 import java.awt.EventQueue;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.regex.Pattern;
 
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -16,12 +19,19 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 
-import excepciones.NombreUsuarioRepetido;
+import excepciones.Incorrecto;
+import excepciones.UsuarioRepetido;
 import sqlite.DBManager;
 import usuarios.Estudiante;
 import usuarios.Trabajador;
 
 import javax.swing.JButton;
+
+/**
+ * Esta clase sirve para automatricular estudiantes en nuestra plataforma de la universidad
+ * @author Amaia y Olatz
+ *
+ */
 
 public class Automatriculacion extends JFrame {
 
@@ -39,7 +49,10 @@ public class Automatriculacion extends JFrame {
 
 
 	/**
-	 * Create the frame.
+	 * Aquí se realiza la automatriculación
+	 * @param diccionarioEstudiantes lista de todos los estudiantes
+	 * @param diccionarioTrabajadores lista de todos los trabajadores
+	 * @param atras información de la clase principio
 	 */
 	
 	public Automatriculacion(ArrayList <Estudiante> diccionarioEstudiantes, ArrayList <Trabajador> diccionarioTrabajadores, Principio atras) {
@@ -132,6 +145,11 @@ public class Automatriculacion extends JFrame {
 		contentPane.add(btnAtrs);
 		
 		btnAtrs.addActionListener(new ActionListener() {
+			
+			/**
+			 * Este método sirve para volver atrás
+			 */
+			
 			public void actionPerformed(ActionEvent e) {
 
 				atras.setVisible(true);
@@ -141,6 +159,11 @@ public class Automatriculacion extends JFrame {
 		
 		
 		btnOk.addActionListener(new ActionListener() {
+			
+			/**
+			 * Este método sirve para escribir los datos seleccionados y aceptar
+			 */
+			
 			public void actionPerformed(ActionEvent e) {
 
 				String dniUsuario;
@@ -154,18 +177,62 @@ public class Automatriculacion extends JFrame {
 				
 				
 				dniUsuario= dni.getText();
+				
+				dniUsuario = dniUsuario.toUpperCase();
+	            char [] arrayDNI = new char [dniUsuario.length()];
+	            arrayDNI = dniUsuario.toCharArray();
+	            
+	            if (dniUsuario.length() != 9)
+	            {
+	                
+	            	
+	            	JOptionPane.showMessageDialog(Automatriculacion.this, "Introduzca 9 caracteres, 8 numeros al principio "
+	            			+ "y una letra después", "Error" , JOptionPane.ERROR_MESSAGE);
+	            	dniUsuario = dni.getText();
+	                dniUsuario = dniUsuario.toUpperCase();
+	                arrayDNI = new char [dniUsuario.length()];
+	                arrayDNI = dniUsuario.toCharArray();
+
+	            }
+
+	            
 				nombreUsuario = nombre.getText();
 				apellido1Usuario=apellido1.getText();
 				apellido2Usuario=apellido2.getText();
 				userUsuario=user.getText();
 				contrasenaUsuario=pass.getText();
-				emailUsuario=email.getText();
+				emailUsuario=email.getText();        
 				ibanUsuario=iban.getText();
+				
+	            ibanUsuario = ibanUsuario.toUpperCase();
+	            char [] arrayIban = new char [ibanUsuario.length()];
+	            arrayIban = ibanUsuario.toCharArray();
+
+	            if (ibanUsuario.length() != 24)
+	            {
+	                
+	                JOptionPane.showMessageDialog(Automatriculacion.this, "Introduzca 24 caracteres, 2 caracteres al principio "
+	            			+ "y 22 números después", "Error" , JOptionPane.ERROR_MESSAGE);
+	            	dniUsuario = dni.getText();
+	                ibanUsuario = ibanUsuario.toUpperCase();
+	                arrayIban = new char [ibanUsuario.length()];
+	                arrayIban = ibanUsuario.toCharArray();
+
+	            }
+
 				
 				
 				try {
-
+					
+					
+					comprobarcorreo (emailUsuario);
 					comprobarPersonas(userUsuario, diccionarioEstudiantes, diccionarioTrabajadores);
+					comprobarDniRepetido(dniUsuario, diccionarioEstudiantes, diccionarioTrabajadores);
+					comprobardninumeros(arrayDNI);
+					comprobardniletra(arrayDNI);
+					comprobaribanletra(arrayIban);
+					comprobaribannumeros(arrayIban);
+					
 
 
 					Estudiante user = new Estudiante(nombreUsuario, apellido1Usuario, apellido2Usuario, dniUsuario, userUsuario, contrasenaUsuario,
@@ -179,27 +246,201 @@ public class Automatriculacion extends JFrame {
 
 					JOptionPane.showMessageDialog(Automatriculacion.this, "Ya se dado alta al usuario");
 
-				} catch (NombreUsuarioRepetido i) {
+				} catch (UsuarioRepetido i) {
 
 					JOptionPane.showMessageDialog(Automatriculacion.this, i.getMessage());
+				} catch (Incorrecto i) {
+
+					JOptionPane.showMessageDialog(Automatriculacion.this, i.getMessage());
+					
 				} catch (SQLException e1) {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();
 				}
 			}
-
+			
+			/**
+			 * Este método sirve para comprobar que el correo introducido por el usuario acaba en @gmail.com
+			 * @param emailUsuario el email de usuario
+			 * @throws Incorrecto si no introduce el correo con el patrón indicado saltará la excepción Incorrecto
+			 */
 			
 
+			private void comprobarcorreo(String emailUsuario) throws Incorrecto {
+				// TODO Auto-generated method stub
+				
+				String patron1 = ".*@gmail\\.com";
+	            Pattern pat1 = Pattern.compile( patron1 );
+
+	            if (pat1.matcher(emailUsuario).matches())
+	            {
+	                
+	            }
+	            else
+	            {
+	                throw new Incorrecto ("El correo tiene que terminar en @gmail.com");
+	            }
+				
+			}
+			
+			/**
+			 * Este método sirve para comprobar que no haya otro user igual
+			 * @param userUsuario user del usuario
+			 * @param diccionarioEstudiantes la lista de todos los estudiantes
+			 * @param diccionarioTrabajadores la lista de todos los trabajadores
+			 * @throws UsuarioRepetido si se mete un user repetido saltará la excepción UsuarioRepetido
+			 */
+
+
 			private void comprobarPersonas(String userUsuario, ArrayList<Estudiante> diccionarioEstudiantes, ArrayList <Trabajador> diccionarioTrabajadores)
-					throws NombreUsuarioRepetido {
+					throws UsuarioRepetido {
 				
 				for (Estudiante a : diccionarioEstudiantes) {
 					if (a.getUser().equals(userUsuario)) {
-						throw new NombreUsuarioRepetido("No puedes introducir el user de usuario repetido");
+						throw new UsuarioRepetido("No puedes introducir el user de usuario repetido");
 					}
 				}
 
 			}
+			
+			/**
+			 * Este método sirve para comprobar que no hay un dni igual en nuestra universidad
+			 * @param dni dni introducido
+			 * @param diccionarioEstudiantes lista de todos los estudiantes
+			 * @param diccionarioTrabajadores lista de todos los trabajadores
+			 * @throws UsuarioRepetido si se mete un dni repetido saltará la excepción UsuarioRepetido
+			 */
+			
+			private void comprobarDniRepetido (String dni, ArrayList<Estudiante> diccionarioEstudiantes, ArrayList <Trabajador>diccionarioTrabajadores) 
+			throws UsuarioRepetido{
+				
+				for (Estudiante a: diccionarioEstudiantes) {
+					if(a.getDni().equals(dni)) {
+						throw new UsuarioRepetido ("No puedes introducir un dni repetido");
+					}
+				}
+				
+				for (Trabajador a: diccionarioTrabajadores) {
+					if(a.getDni().equals(dni)) {
+						throw new UsuarioRepetido ("No puedes introducir un dni repetido");
+					}
+				}
+			}
+			
+			/**
+			 * Este método sirve para comprobar que un dni está compuesto de 8 números al principio
+			 * @param arrayDNI el array del DNI. En cada posición hay un caracter.
+			 * @throws Incorrecto si no son números los primeros 8 caracteres saltará la excepción Incorrecto
+			 */
+			
+			 private void comprobardninumeros(char[] arrayDNI) throws Incorrecto
+			    {
+			        
+			        char ascii=0;
+
+			        for (byte i=0; i<8; i++)
+			        {
+			            ascii = arrayDNI[i];
+
+			            if (ascii>=48 && ascii<=57)
+			            {
+			                
+			            }
+
+			            else
+			            {
+			                
+			                throw new Incorrecto ("El dni tiene que tener 8 números al principio");
+			            }
+			        }
+
+
+			    }
+			 
+			 /**
+			  * Este método sirve para comprobar que el noveno caracter del dni es una letra
+			  * @param arrayDNI el array del DNI. En cada posición hay un caracter.
+			 * @throws Incorrecto si no son números los primeros 8 caracteres saltará la excepción Incorrecto
+			  */
+
+			    private void comprobardniletra(char[] arrayDNI) throws Incorrecto
+			    {
+
+			      
+			        char ultimaletra = arrayDNI[arrayDNI.length-1];
+
+			        if (ultimaletra>=65 && ultimaletra<=90)
+			        {
+			           
+			        }
+
+			        else
+			        {
+			            
+			            throw new Incorrecto ("El dni tiene que tener una letra al final");
+			        }
+			        
+			       
+
+			    }
+			    
+			    /**
+			     * Este método sirve para comprobar que los últimos 22 son números
+			     * @param arrayIban el array del iban. En cada posición hay un caracter.
+			     * @throws Incorrecto si no es correcto salta la excepción Incorrecto
+			     */
+			    
+			    public void comprobaribannumeros(char[] arrayIban) throws Incorrecto
+			    {
+			        
+			        char ascii=0;
+
+			        for (byte i=2; i<23; i++)
+			        {
+			            ascii = arrayIban[i];
+
+			            if (ascii>=48 && ascii<=57)
+			            {
+			                
+			            }
+
+			            else
+			            {
+			                throw new Incorrecto ("El iban tiene que tener 22 dígitos al final");
+			            }
+			        }
+
+			       
+			    }
+			    
+			    /**
+			     * Sirve para comprobar que al principio del iban hay dos letras
+			     * @param arrayIban el array del iban. En cada posición hay un caracter.
+			     * @throws Incorrecto si no es correcto salta la excepción Incorrecto
+			     */
+
+			    public void comprobaribanletra(char[] arrayIban) throws Incorrecto {
+
+			        char primeraLetra = arrayIban[0];
+			        char segundaLetra=arrayIban [1];
+
+
+			        if ((primeraLetra>=65 && primeraLetra<=90) && (segundaLetra >=65 && segundaLetra<=90))
+			        {
+			           
+			        }
+
+			        else
+			        {
+			            throw new Incorrecto ("El iban tiene que tener dos letras al principio");
+			        }
+
+			       
+			    }
+
+			
+			
+			
 		});
 		
 		

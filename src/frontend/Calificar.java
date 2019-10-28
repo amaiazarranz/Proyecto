@@ -1,6 +1,7 @@
 package frontend;
 
 import java.awt.BorderLayout;
+
 import java.awt.EventQueue;
 import java.util.ArrayList;
 
@@ -17,6 +18,12 @@ import javax.swing.JTextField;
 import javax.swing.DefaultListModel;
 import javax.swing.JButton;
 
+/**
+ * Esta clase sirve para calificar a los alumnos
+ * @author Alumno Amaia y Olatz
+ *
+ */
+
 public class Calificar extends JFrame {
 
 	private JPanel contentPane;
@@ -24,7 +31,10 @@ public class Calificar extends JFrame {
 	private JList list;
 
 	/**
-	 * Create the frame.
+	 * Aquí los profesores califican a los estudiantes
+	 * @param diccionarioEstudiantes la lista de los estudiantes
+	 * @param profe el profesor que califica
+	 * @param atras la ventanaprofesor
 	 */
 	
 	public Calificar(ArrayList <Estudiante> diccionarioEstudiantes, Persona profe, VentanaProfesor atras) {
@@ -68,7 +78,12 @@ public class Calificar extends JFrame {
 		
 		cargarLista(diccionarioEstudiantes);
 	}
-
+	 
+	/**
+	 * Este método sirve para cargar en la Jlist los estudiantes que podemos calificar
+	 * @param diccionarioEstudiantes la lista de los estudiantes
+	 */
+	
 	private void cargarLista(ArrayList<Estudiante> diccionarioEstudiantes) {
 		// TODO Auto-generated method stub
 		

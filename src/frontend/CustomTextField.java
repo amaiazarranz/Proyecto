@@ -1,26 +1,26 @@
 package frontend;
 
 import javax.swing.*;
+
 import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
 import java.awt.*;
 import java.awt.event.FocusEvent;
 import java.awt.event.FocusListener;
+
+/**
+ * Esta clase sirve para crear CustomTextFields
+ * @author Alumno Amaia y Olatz
+ *
+ */
  
 public class CustomTextField extends JTextField {
  
     private Font originalFont;
     private Color originalForeground;
-    /**
-     * Grey by default*
-     */
     private Color placeholderForeground = new Color(160, 160, 160);
     private boolean textWrittenIn;
- 
-    /**
-     * You can insert all constructors.
-     * I inserted only this one.*
-     */
+    
     public CustomTextField(int columns) {
         super(columns);
     }

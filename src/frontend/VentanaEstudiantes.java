@@ -13,11 +13,25 @@ import usuarios.Persona;
 import javax.swing.JLabel;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
+import java.io.IOException;
 import java.awt.event.ActionEvent;
+
+/**
+ * Esta es la ventana que se les muestra a los estudiantes
+ * @author Alumno Amaia y Olatz
+ *
+ */
 
 public class VentanaEstudiantes extends JFrame {
 
 	private JPanel contentPane;
+	
+	/**
+	 * Aquí se muestra la ventana visual de los estudiantes
+	 * @param diccionarioEstudiantes la lista de los estudiantes
+	 * @param estu la persona que accede
+	 * @param atras la ventana LoginVisual
+	 */
 
 	public VentanaEstudiantes(ArrayList <Estudiante> diccionarioEstudiantes, Persona estu, LoginVisual atras ) {
 		
@@ -34,6 +48,11 @@ public class VentanaEstudiantes extends JFrame {
 		
 		JButton btnCerrarSesin = new JButton("Cerrar sesi\u00F3n");
 		btnCerrarSesin.addActionListener(new ActionListener() {
+			
+			/**
+			 * Sirve para cerrar sesión
+			 */
+			
 			public void actionPerformed(ActionEvent e) {
 				
 				VentanaEstudiantes.this.setVisible(false);
@@ -42,6 +61,23 @@ public class VentanaEstudiantes extends JFrame {
 		});
 		btnCerrarSesin.setBounds(277, 199, 136, 29);
 		contentPane.add(btnCerrarSesin);
+		
+		JButton btnEnviarCorreo = new JButton("Enviar Correo");
+		btnEnviarCorreo.addActionListener(new ActionListener() {
+			
+			/**
+			 * Sirve para entrar en la ventana de enviar correo
+			 */
+			
+			public void actionPerformed(ActionEvent arg0) {
+				
+					EnviarCorreo ventana = new EnviarCorreo (estu);
+					ventana.setVisible(true);
+				
+				VentanaEstudiantes.this.setVisible(false);
+			}
+		});
+		btnEnviarCorreo.setBounds(154, 109, 115, 29);
+		contentPane.add(btnEnviarCorreo);
 	}
-
 }

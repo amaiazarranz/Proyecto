@@ -19,6 +19,11 @@ import javax.swing.border.EmptyBorder;
 
 import usuarios.Persona;
 
+/**
+ * Esta clase sirve para enviar un correo por Gmail
+ * @author Alumno Amaia y Olatz
+ *
+ */
 public class EnviarCorreo extends JFrame {
 
 	private JPanel contentPane;
@@ -30,9 +35,6 @@ public class EnviarCorreo extends JFrame {
 	JLabel imagen;
 	private File outputfile;
 
-	/**
-	 * Create the frame.
-	 */
 	
 	public EnviarCorreo(Persona u) {
 		
@@ -67,6 +69,10 @@ public class EnviarCorreo extends JFrame {
 		
 		boton1.addActionListener (new ActionListener()
 		{
+			/**
+			 * Este método sirve para realizar el envío
+			 */
+			
 			@Override
 			public void actionPerformed(ActionEvent e) 
 			{

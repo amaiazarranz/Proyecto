@@ -23,6 +23,11 @@ import java.awt.event.WindowEvent;
 import java.util.ArrayList;
 import java.awt.event.ActionEvent;
 
+/**
+ * Esta es la ventana introductorio para entrar a nuestra gestón de la universidad de deusto
+ * @author Alumno Olatz y Amaia
+ *
+ */
 public class Principio extends JFrame {
 
 	private JPanel contentPane;
@@ -31,8 +36,9 @@ public class Principio extends JFrame {
     ArrayList <Trabajador> diccionarioTrabajadores;
 
 	/**
-	 * Launch the application.
+	 * Lanza la aplicación.
 	 */
+    
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
@@ -47,7 +53,7 @@ public class Principio extends JFrame {
 	}
 
 	/**
-	 * Create the frame.
+	 * Crea el frame. Esto es el principio
 	 */
 	
 	public Principio() {
@@ -70,6 +76,10 @@ public class Principio extends JFrame {
 
 		JButton btnInicio = new JButton("Iniciar sesión");
 		btnInicio.addActionListener(new ActionListener() {
+			
+			/**
+			 * Aquí se clica para iniciar sesión
+			 */
 			public void actionPerformed(ActionEvent arg0) {
 
 				LoginVisual ventana = new LoginVisual(diccionarioEstudiantes, diccionarioTrabajadores, Principio.this);
@@ -82,6 +92,10 @@ public class Principio extends JFrame {
 
 		JButton btnSalir = new JButton("Automatriculación");
 		btnSalir.addActionListener(new ActionListener() {
+			
+			/**
+			 * Aquí se pincha para poder automatricularse
+			 */
 			public void actionPerformed(ActionEvent e) {
 				
 				Automatriculacion ventana= new Automatriculacion(diccionarioEstudiantes, diccionarioTrabajadores, Principio.this);

@@ -16,9 +16,23 @@ import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
+/**
+ * Esta es la ventana que se les muestra a los secretarios
+ * @author Alumno Amaia y Olatz
+ *
+ */
+
 public class VentanaSecretario extends JFrame {
 
 	private JPanel contentPane;
+	
+	/**
+	 * Aquí se muestra la ventana visual de los secretarios
+	 * @param diccionarioTrabajador la lista de los trabajadores
+	 * @param diccionarioEstudiantes la lista de los estudiantes
+	 * @param estu la persona que accede
+	 * @param atras la ventana LoginVisual
+	 */
 
 	public VentanaSecretario(ArrayList <Trabajador> diccionarioTrabajador, ArrayList <Estudiante> diccionarioEstudiante, Persona secre, LoginVisual atras) {
 		
@@ -35,6 +49,10 @@ public class VentanaSecretario extends JFrame {
 		
 		JButton btnExpulsar = new JButton("Expulsar");
 		btnExpulsar.addActionListener(new ActionListener() {
+			
+			/**
+			 * Sirve para entrar en la ventana de expulsar
+			 */
 			public void actionPerformed(ActionEvent e) {
 				
 				Expulsar ventana= new Expulsar(diccionarioEstudiante, secre, VentanaSecretario.this);
@@ -52,6 +70,10 @@ public class VentanaSecretario extends JFrame {
 		
 		JButton btnCerrarSesin = new JButton("Cerrar sesi\u00F3n");
 		btnCerrarSesin.addActionListener(new ActionListener() {
+			
+			/**
+			 * Sirve para volver a la ventana anterior
+			 */
 			public void actionPerformed(ActionEvent e) {
 				
 				VentanaSecretario.this.setVisible(false);

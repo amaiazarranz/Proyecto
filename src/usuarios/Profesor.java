@@ -3,6 +3,11 @@ package usuarios;
 import javax.swing.*;
 import java.util.ArrayList;
 
+/**
+ * En esta clase se desarrollan los atributos de los profesores
+ * @author Alumno Olatz y Amaia
+ *
+ */
 public final class Profesor extends Trabajador
 {
     ArrayList <String> asignaturas= new ArrayList<String>();

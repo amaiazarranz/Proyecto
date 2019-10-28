@@ -27,6 +27,11 @@ import javax.swing.JButton;
 import javax.swing.JList;
 import javax.swing.JOptionPane;
 
+/**
+ * Esta clase sirve para poner una falta leve a un alumno
+ * @author Alumno Amaia y Olatz
+ *
+ */
 
 public class FaltaLeve extends JFrame {
 
@@ -36,7 +41,10 @@ public class FaltaLeve extends JFrame {
 
 
 	/**
-	 * Create the frame.
+	 * Aquí se procederá a poner una falta leve a un alumno
+	 * @param diccionarioEstudiantes la lista de los estudiantes
+	 * @param profe la persona
+	 * @param atras la ventana VentanaProfesor
 	 */
 	
 	public FaltaLeve(ArrayList <Estudiante> diccionarioEstudiantes, Persona profe, VentanaProfesor atras)
@@ -79,7 +87,7 @@ public class FaltaLeve extends JFrame {
 		scrollPane.setBounds(15, 44, 398, 115);
 		contentPane.add(scrollPane);
 		
-		cargarLista(diccionarioEstudiantes, profe);
+		cargarLista(diccionarioEstudiantes);
 		
 		btnAtrs.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -133,9 +141,14 @@ public class FaltaLeve extends JFrame {
 		});
 
 	}
+	
+	/**
+	 * Este método sirve para cargar la lista de todos los alumnos
+	 * @param diccionarioEstudiantes la lista de los estudiantes
+	 */
 
 
-	private void cargarLista(ArrayList<Estudiante> diccionarioEstudiantes, Persona profe) {
+	private void cargarLista(ArrayList<Estudiante> diccionarioEstudiantes) {
 		// TODO Auto-generated method stub
 		
 		DefaultListModel lista = new DefaultListModel();

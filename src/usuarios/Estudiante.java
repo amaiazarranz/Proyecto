@@ -2,6 +2,11 @@ package usuarios;
 
 import java.util.ArrayList;
 
+/**
+ * En esta clase se desarrollan los atributos de los estudiantes
+ * @author Alumno Amaia y Olatz
+ *
+ */
 
 public class Estudiante extends Persona
 {
@@ -11,6 +16,22 @@ public class Estudiante extends Persona
     private double notamedia;
     private int faltaleve;
     private int faltagrave;
+    
+    /**
+     * Se trata de un constructor con parámetors
+     * @param nombre nombre del estudiante
+     * @param apellido1 primer apellido del estudiante
+     * @param apellido2 segundo apellido del estudiante
+     * @param dni dni del estudiante
+     * @param user usuario del estudiante
+     * @param password contraseña del estudiante
+     * @param email el correo del estudiante
+     * @param iban el iban del estudiante
+     * @param tipopersona estudiane
+     * @param notamedia la nota media del estudiante
+     * @param faltaleve el número de faltas leves
+     * @param faltagrave el número de faltas graves
+     */
 
     public Estudiante(String nombre, String apellido1, String apellido2, String dni, String user, String password, String email, String iban, String tipopersona, double notamedia, int faltaleve, int faltagrave) {
         super(nombre, apellido1, apellido2, dni, user, password, email, iban, tipopersona);
@@ -18,6 +39,10 @@ public class Estudiante extends Persona
         this.faltaleve = faltaleve;
         this.faltagrave = faltagrave;
     }
+    
+    /**
+     * Se trata de un constructor sin parámetros de los estudiantes
+     */
 
     public Estudiante() {
         super();
