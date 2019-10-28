@@ -24,6 +24,7 @@ import javax.swing.JComboBox;
  *
  */
 
+
 public class VentanaProfesor extends JFrame {
 
 	private JPanel contentPane;

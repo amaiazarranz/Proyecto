@@ -24,6 +24,7 @@ import usuarios.Persona;
  * @author Alumno Amaia y Olatz
  *
  */
+
 public class EnviarCorreo extends JFrame {
 
 	private JPanel contentPane;

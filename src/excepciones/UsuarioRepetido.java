@@ -2,6 +2,7 @@ package excepciones;
 
 public class UsuarioRepetido extends Exception {
 	
+	
 	/**
 	 * Esta clase sirve para gestionar la excepción UsuarioRepetido
 	 * @author Alumno Amaia y Olatz

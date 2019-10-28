@@ -22,6 +22,7 @@ import java.awt.event.ActionEvent;
  *
  */
 
+
 public class VentanaSecretario extends JFrame {
 
 	private JPanel contentPane;

@@ -1,5 +1,6 @@
 package excepciones;
 
+
 /**
  * Esta clase sirve para gestionar la excepción incorrecto
  * @author Alumno Amaia y Olatz

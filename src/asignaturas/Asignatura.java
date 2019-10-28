@@ -1,5 +1,6 @@
 package asignaturas;
 
+
 /**
  * En esta clase se desarrollan los atributos de las asignaturas
  * @author Alumno Amaia y Olatz

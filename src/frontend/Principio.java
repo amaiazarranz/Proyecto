@@ -28,6 +28,7 @@ import java.awt.event.ActionEvent;
  * @author Alumno Olatz y Amaia
  *
  */
+
 public class Principio extends JFrame {
 
 	private JPanel contentPane;

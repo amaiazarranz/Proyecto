@@ -24,6 +24,7 @@ import javax.swing.JButton;
  *
  */
 
+
 public class Calificar extends JFrame {
 
 	private JPanel contentPane;

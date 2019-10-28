@@ -8,6 +8,7 @@ import java.util.ArrayList;
  * @author Alumno Olatz y Amaia
  *
  */
+
 public final class Profesor extends Trabajador
 {
     ArrayList <String> asignaturas= new ArrayList<String>();

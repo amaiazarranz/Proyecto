@@ -27,6 +27,7 @@ import javax.swing.JButton;
  * @author Alumno Amaia y Olatz
  *
  */
+
 public class FaltaGrave extends JFrame {
 
 	private JPanel contentPane;

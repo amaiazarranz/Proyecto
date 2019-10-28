@@ -26,6 +26,7 @@ import javax.swing.JOptionPane;
  * @author Alumno Amaia y Olatz
  *
  */
+
 public class Expulsar extends JFrame {
 
 	private JPanel contentPane;

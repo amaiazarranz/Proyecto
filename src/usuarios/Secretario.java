@@ -9,6 +9,7 @@ import java.util.ArrayList;
  * @author Alumno Amaia y Olatz
  *
  */
+
 public final class Secretario extends Trabajador
 {
     ArrayList<String> diccionarioSecretarios= new ArrayList <String>();

@@ -1,5 +1,6 @@
 package excepciones;
 
+
 /**
  * Esta clase sirve para gestionar la excepción UsuarioNoExiste
  * @author Alumno Amaia y Olatz

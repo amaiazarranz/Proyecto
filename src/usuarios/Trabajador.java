@@ -10,6 +10,7 @@ import java.util.ArrayList;
  * @author Alumno Amaia y Olatz
  *
  */
+
 public class Trabajador extends Persona
 {
     private double salario;

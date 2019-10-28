@@ -8,6 +8,7 @@ import java.sql.*;
  *
  */
 
+
 public class DBManager {
 
     private Connection conn;
@@ -19,6 +20,7 @@ public class DBManager {
      * Es el constructor
      * @param BDname el nombre de la base de datos
      */
+    
 	    public DBManager(String BDname)
 	    {
 	        this.BDname = this.URL + BDname;

@@ -23,6 +23,7 @@ import java.util.ArrayList;
  *
  */
 
+
 public class LoginVisual extends JFrame{
 
     private JTextField textUsuario;

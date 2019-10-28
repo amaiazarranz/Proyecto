@@ -33,6 +33,7 @@ import javax.swing.JButton;
  *
  */
 
+
 public class Automatriculacion extends JFrame {
 
 	private JPanel contentPane;

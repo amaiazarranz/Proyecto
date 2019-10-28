@@ -33,6 +33,7 @@ import javax.swing.JOptionPane;
  *
  */
 
+
 public class FaltaLeve extends JFrame {
 
 	private JPanel contentPane;

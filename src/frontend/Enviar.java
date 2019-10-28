@@ -24,6 +24,7 @@ import javax.mail.internet.MimeMultipart;
  *
  */
 
+
 public class Enviar 
 {
 	static boolean enviarConGmail(String user, String contrasena, String destinatario, String asunto, String cuerpo) {

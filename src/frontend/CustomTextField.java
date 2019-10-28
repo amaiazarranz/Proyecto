@@ -14,6 +14,7 @@ import java.awt.event.FocusListener;
  *
  */
  
+
 public class CustomTextField extends JTextField {
  
     private Font originalFont;

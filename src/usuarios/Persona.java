@@ -8,6 +8,7 @@ import interfaces.IMensajes;
  * @author Alumno Amaia y Olatz
  *
  */
+
 public abstract class Persona implements IMensajes
 {
     private String nombre;
