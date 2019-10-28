@@ -73,6 +73,11 @@ public class Expulsar extends JFrame {
 		cargarLista (diccionarioEstudiantes);
 		
 		btnCancel.addActionListener(new ActionListener() {
+			
+			/**
+			 * Acción para volver a la pantalla anterior
+			 */
+			
 			public void actionPerformed(ActionEvent e) {
 
 				atras.setVisible(true);
@@ -82,6 +87,10 @@ public class Expulsar extends JFrame {
 		});
 		
 		btnOk.addActionListener(new ActionListener() {
+			
+			/**
+			 * Acción de expulsar a un estudiante
+			 */
 			public void actionPerformed(ActionEvent e) {
 				
 				String user = (String) list.getSelectedValue();

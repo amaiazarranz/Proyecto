@@ -22,9 +22,18 @@ public class CustomTextField extends JTextField {
     private Color placeholderForeground = new Color(160, 160, 160);
     private boolean textWrittenIn;
     
+    /**
+     * Constructor con parámetros
+     * @param columns columnas
+     */
+    
     public CustomTextField(int columns) {
         super(columns);
     }
+    
+    /**
+     * método para establecer el fuente
+     */
  
     @Override
     public void setFont(Font f) {
@@ -33,6 +42,10 @@ public class CustomTextField extends JTextField {
             originalFont = f;
         }
     }
+    
+    /**
+     * Método para establecer el primer plano
+     */
  
     @Override
     public void setForeground(Color fg) {
@@ -41,6 +54,8 @@ public class CustomTextField extends JTextField {
             originalForeground = fg;
         }
     }
+    
+    
  
     public Color getPlaceholderForeground() {
         return placeholderForeground;

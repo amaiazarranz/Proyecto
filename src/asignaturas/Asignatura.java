@@ -109,7 +109,7 @@ public class Asignatura
     }
     
     /**
-	 * Este método sirve para pasar a string
+	 * Este método sirve para pasar a string el contenido de las asignaturas
 	 */
 
     @Override

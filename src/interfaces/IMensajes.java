@@ -2,7 +2,7 @@ package interfaces;
 
 /**
  * Sirve para poder enviar mensajes
- * @author Alumno
+ * @author Alumno Amaia y Olatz
  *
  */
 

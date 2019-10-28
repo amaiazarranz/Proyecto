@@ -13,16 +13,38 @@ import java.util.ArrayList;
 public final class Secretario extends Trabajador
 {
     ArrayList<String> diccionarioSecretarios= new ArrayList <String>();
+    
+    /**
+     * Constructor con parámetros de secretario
+     * @param nombre nombre del secretario
+     * @param apellido1 primer apellido del secretario
+     * @param apellido2 segundo apellido del secretario
+     * @param dni dni del secretario
+     * @param user user del secretario
+     * @param password pass del secretario
+     * @param email correo del secretario
+     * @param iban iban del secretario
+     * @param tipopersona secretario
+     * @param salario salario del secretario
+     */
 
     public Secretario(String nombre, String apellido1, String apellido2, String dni,
                       String user, String password, String email, String iban, String tipopersona,
                       double salario) {
         super(nombre, apellido1, apellido2, dni,  user, password, email, iban, tipopersona, salario);
     }
-
+    
+    /**
+     * Constructor sin parámetros de secretario
+     */
+    
     public Secretario(){
         super();
     }
+    
+    /**
+     * Pasar a string las características del secretario
+     */
 
     @Override
     public String toString() {

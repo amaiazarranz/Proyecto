@@ -148,7 +148,7 @@ public class Automatriculacion extends JFrame {
 		btnAtrs.addActionListener(new ActionListener() {
 			
 			/**
-			 * Este método sirve para volver atrás
+			 * Acción para volver atrás
 			 */
 			
 			public void actionPerformed(ActionEvent e) {
@@ -162,7 +162,7 @@ public class Automatriculacion extends JFrame {
 		btnOk.addActionListener(new ActionListener() {
 			
 			/**
-			 * Este método sirve para escribir los datos seleccionados y aceptar
+			 * Acción para escribir los datos seleccionados y aceptar
 			 */
 			
 			public void actionPerformed(ActionEvent e) {

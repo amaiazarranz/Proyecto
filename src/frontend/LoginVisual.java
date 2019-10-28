@@ -84,6 +84,10 @@ public class LoginVisual extends JFrame{
         boton1.setBounds(213, 186, 200, 30);
         
         boton1.addActionListener(new ActionListener() {
+        	
+        	/**
+        	 * Acción para entrar con el login en la universidad
+        	 */
 			public void actionPerformed(ActionEvent e) {
 
 				usuario = textUsuario.getText();
@@ -143,6 +147,10 @@ public class LoginVisual extends JFrame{
 		btnCancel.setBounds(15, 187, 183, 29);
 		
 		btnCancel.addActionListener(new ActionListener() {
+			
+			/**
+			 * Acción para volver a la ventana anterior
+			 */
 			public void actionPerformed(ActionEvent e) {
 				
 				principio.setVisible(true);

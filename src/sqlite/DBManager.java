@@ -288,8 +288,6 @@ public class DBManager {
 	     * @return
 	     */
 	
-	
-	
 	    private static Connection connect() //tiene que ser estático
 	    {
 	        // SQLite connection string

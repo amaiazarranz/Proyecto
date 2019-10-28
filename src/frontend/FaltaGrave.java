@@ -84,6 +84,10 @@ public class FaltaGrave extends JFrame {
 		cargarLista(diccionarioEstudiantes);
 		
 		btnAtrs.addActionListener(new ActionListener() {
+			
+			/**
+			 * Acción para volver a la pantalla anterior
+			 */
 			public void actionPerformed(ActionEvent e) {
 
 				atras.setVisible(true);
@@ -92,6 +96,10 @@ public class FaltaGrave extends JFrame {
 		});
 		
 		btnOk.addActionListener(new ActionListener() {
+			
+			/**
+			 * Acción para poner una falta grave
+			 */
 			public void actionPerformed(ActionEvent e) {
 
 				String user = (String) list.getSelectedValue();

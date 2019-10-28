@@ -8,8 +8,19 @@ import usuarios.Trabajador;
 import java.io.*;
 import java.util.ArrayList;
 
+/**
+ * En esta clase haremos las lecturas y escrituras de los ficheros
+ * @author Alumno Amaia y Olatz
+ *
+ */
 
 public class LecturaEscrituraFichero {
+	
+	/**
+	 * En este método se leen los estudiantes
+	 * @param path path del fichero
+	 * @return la lista de los estudiantes
+	 */
 
     public static ArrayList<Estudiante> leerEstudiantes (String path) {
 
@@ -51,6 +62,12 @@ public class LecturaEscrituraFichero {
 
         return listaDevolucion;
     }
+    
+    /**
+     * En este método se almacenan en el fichero los estudiantes
+     * @param todosEstudiantes la lista de los estudiantes
+     * @param path path del fichero
+     */
 
     public static void almacenarEstudiantes(ArrayList<Estudiante> todosEstudiantes, String path) {
 
@@ -78,6 +95,12 @@ public class LecturaEscrituraFichero {
             e.printStackTrace();
         }
     }
+    
+    /**
+	 * En este método se leen los trabajadores
+	 * @param path path del fichero
+	 * @return la lista de los trabajadores
+	 */
 
 
     public static ArrayList<Trabajador> leerTrabajadores (String path) {

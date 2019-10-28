@@ -91,6 +91,10 @@ public class FaltaLeve extends JFrame {
 		cargarLista(diccionarioEstudiantes);
 		
 		btnAtrs.addActionListener(new ActionListener() {
+			
+			/**
+			 * Acción para volver a la ventana anterior
+			 */
 			public void actionPerformed(ActionEvent e) {
 
 				atras.setVisible(true);
@@ -99,6 +103,10 @@ public class FaltaLeve extends JFrame {
 		});
 		
 		btnOk.addActionListener(new ActionListener() {
+			
+			/**
+			 * Acción para poner la falta leve
+			 */
 			public void actionPerformed(ActionEvent e) {
 
 				String user = (String) list.getSelectedValue();

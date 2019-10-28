@@ -48,38 +48,82 @@ public class Estudiante extends Persona
     public Estudiante() {
         super();
     }
+    
+    /**
+     * Este método devuelve el diccionario de estudiantes a otra clase
+     * @return diccionario de estudiantes 
+     */
 
     public ArrayList<String> getDiccionarioEstudiantes() {
         return diccionarioEstudiantes;
     }
+    
+    /**
+     * Este método da valores a los elementos del diccionario de estudiantes
+     * @param diccionarioEstudiantes diccionarioEstudiantes
+     */
 
     public void setDiccionarioEstudiantes(ArrayList<String> diccionarioEstudiantes) {
         this.diccionarioEstudiantes = diccionarioEstudiantes;
     }
-
+    
+    /**
+     * Este método devuelve el atributo nota media a otra clase
+     * @return nota media 
+     */
+    
     public double getNotamedia() {
         return notamedia;
     }
+    
+    /**
+     * Este método da el valor al atributo nota media
+     * @param notamedia notamedia
+     */
 
     public void setNotamedia(double notamedia) {
         this.notamedia = notamedia;
     }
-
+    
+    /**
+     * Este método devuelve el atributo falta leve a otra clase
+     * @return falta leve 
+     */
+    
     public int getFaltaleve() {
         return faltaleve;
     }
-
+    
+    /**
+     * Este método da el valor al atributo faltaleve
+     * @param faltaleve faltaleve
+     */
+    
     public void setFaltaleve(int faltaleve) {
         this.faltaleve = faltaleve;
     }
+    
+    /**
+     * Este método devuelve el atributo falta grave a otra clase
+     * @return nombre 
+     */
 
     public int getFaltagrave() {
         return faltagrave;
     }
+    
+    /**
+     * Este método da el valor al atributo faltagrave
+     * @param faltagrave faltagrave
+     */
 
     public void setFaltagrave(int faltagrave) {
         this.faltagrave = faltagrave;
     }
+    
+    /**
+	 * Este método sirve para pasar a string el contenido de los estudiantes
+	 */
 
     @Override
     public String toString() {

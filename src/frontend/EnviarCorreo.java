@@ -35,6 +35,11 @@ public class EnviarCorreo extends JFrame {
 	JButton boton1;
 	JLabel imagen;
 	private File outputfile;
+	
+	/**
+	 * Aquí se envía un correo
+	 * @param u persona
+	 */
 
 	
 	public EnviarCorreo(Persona u) {
@@ -71,7 +76,7 @@ public class EnviarCorreo extends JFrame {
 		boton1.addActionListener (new ActionListener()
 		{
 			/**
-			 * Este método sirve para realizar el envío
+			 * Acción para realizar el envío
 			 */
 			
 			@Override
