@@ -16,6 +16,7 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 
@@ -42,7 +43,7 @@ public class Automatriculacion extends JFrame {
 	private JTextField apellido1;
 	private JTextField apellido2;
 	private JTextField user;
-	private JTextField pass;
+	private JPasswordField pass;
 	private JTextField email;
 	private JTextField iban;
 	private JButton btnOk;
@@ -73,11 +74,11 @@ public class Automatriculacion extends JFrame {
 		lblNombre.setBounds(3, 71, 81, 20);
 		contentPane.add(lblNombre);
 		
-		JLabel lblApellido = new JLabel("Apellido1:");
-		lblApellido.setBounds(3, 107, 81, 20);
+		JLabel lblApellido = new JLabel("Apellido1");
+		lblApellido.setBounds(3, 129, 81, 20);
 		contentPane.add(lblApellido);
 		
-		JLabel lblApellido_1 = new JLabel("Apellido 2:");
+		JLabel lblApellido_1 = new JLabel("Apellido2");
 		lblApellido_1.setBounds(3, 165, 81, 20);
 		contentPane.add(lblApellido_1);
 		
@@ -98,32 +99,33 @@ public class Automatriculacion extends JFrame {
 		contentPane.add(lblIban);
 		
 		dni = new JTextField();
-		dni.setBounds(58, 32, 146, 26);
+		dni.setBounds(68, 32, 146, 26);
 		contentPane.add(dni);
 		dni.setColumns(10);
 		
 		nombre = new JTextField();
-		nombre.setBounds(68, 71, 146, 26);
+		nombre.setBounds(68, 68, 146, 26);
 		contentPane.add(nombre);
 		nombre.setColumns(10);
 		
 		apellido1 = new JTextField();
-		apellido1.setBounds(78, 107, 146, 26);
+		apellido1.setBounds(68, 126, 146, 26);
 		contentPane.add(apellido1);
 		apellido1.setColumns(10);
 		
 		apellido2 = new JTextField();
-		apellido2.setBounds(70, 162, 146, 26);
+		apellido2.setBounds(68, 162, 146, 26);
 		contentPane.add(apellido2);
 		apellido2.setColumns(10);
 		
 		user = new JTextField();
-		user.setBounds(267, 32, 146, 26);
+		user.setBounds(282, 32, 146, 26);
 		contentPane.add(user);
 		user.setColumns(10);
 		
-		pass = new JTextField();
-		pass.setBounds(267, 68, 146, 26);
+		pass = new JPasswordField();
+		pass.setEchoChar('*');
+		pass.setBounds(282, 68, 146, 26);
 		contentPane.add(pass);
 		pass.setColumns(10);
 		

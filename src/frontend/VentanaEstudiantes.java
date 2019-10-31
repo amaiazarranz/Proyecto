@@ -80,5 +80,17 @@ public class VentanaEstudiantes extends JFrame {
 		});
 		btnEnviarCorreo.setBounds(154, 109, 115, 29);
 		contentPane.add(btnEnviarCorreo);
+		
+		JButton btnVerRanking = new JButton("Ver Ranking");
+		btnVerRanking.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				Ranking ventana = new Ranking (diccionarioEstudiantes, estu, VentanaEstudiantes.this);
+				ventana.setVisible(true);
+				VentanaEstudiantes.this.setVisible(false);
+				
+			}
+		});
+		btnVerRanking.setBounds(154, 154, 115, 29);
+		contentPane.add(btnVerRanking);
 	}
 }

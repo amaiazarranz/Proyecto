@@ -1,7 +1,6 @@
 package usuarios;
 
 import utilidades.LecturaEscrituraFichero;
-import utilidades.Utilidades;
 import java.util.ArrayList;
 
 /**
