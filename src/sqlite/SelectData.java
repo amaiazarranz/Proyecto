@@ -202,6 +202,30 @@ public class SelectData
 		}
 	}
     
+    public static void actualizarNotaMedia(String user, int notamedia) throws SQLException{
+
+    	String sql = "UPDATE estudiante SET notamedia = ? WHERE user = ?";
+		
+		try
+		(
+		   Connection conn = connect();
+		   PreparedStatement pstmt = conn.prepareStatement(sql) 
+		)
+		
+		{
+			pstmt.setInt(1, notamedia);
+            pstmt.setString(2, user);
+
+            pstmt.executeUpdate();
+            
+		
+		}
+		catch (SQLException e)
+		{
+		System.out.println(e.getMessage());
+		}
+	}
+    
     /**
      * elimina el estudiante
      * @param user el usuario
