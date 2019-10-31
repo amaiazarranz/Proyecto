@@ -8,6 +8,7 @@ import java.awt.EventQueue;
 import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.image.BufferedImage;
 import java.io.File;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -22,6 +23,8 @@ import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 import javax.swing.filechooser.FileNameExtensionFilter;
+
+import com.github.sarxos.webcam.Webcam;
 
 import excepciones.Incorrecto;
 import excepciones.UsuarioRepetido;
@@ -59,6 +62,9 @@ public class Automatriculacion extends JFrame {
 	public static String path;
 	private JLabel lblFoto;
 	private Icon icono;
+	private ImageIcon image;
+	private JLabel foto;
+
 
 
 	/**
@@ -151,15 +157,15 @@ public class Automatriculacion extends JFrame {
 		iban.setColumns(10);
 		
 		btnOk = new JButton("OK");
-		btnOk.setBounds(298, 199, 115, 29);
+		btnOk.setBounds(353, 204, 60, 29);
 		contentPane.add(btnOk);
 		
 		btnAtrs = new JButton("Atr\u00E1s");
-		btnAtrs.setBounds(173, 199, 115, 29);
+		btnAtrs.setBounds(267, 204, 71, 29);
 		contentPane.add(btnAtrs);
 		
-		btnAadirFoto = new JButton("A\u00F1adir foto");
-		btnAadirFoto.setBounds(25, 201, 115, 29);
+		btnAadirFoto = new JButton("Subir foto");
+		btnAadirFoto.setBounds(15, 204, 115, 29);
 		contentPane.add(btnAadirFoto);
 		
 		lblFoto = new JLabel("");
@@ -181,6 +187,11 @@ public class Automatriculacion extends JFrame {
 		
 		
 		btnAadirFoto.addActionListener(new ActionListener() {
+			
+			/**
+			 * Acción para añadir foto de tu ordenador personal
+			 */
+			
 			public void actionPerformed(ActionEvent e) {
 				
 				File archivoseleccionado =seleccionarArchivo();
@@ -188,11 +199,10 @@ public class Automatriculacion extends JFrame {
 				
 				try{
 					
-							ImageIcon icon = new ImageIcon(path);
-			               icono = new ImageIcon(icon.getImage().getScaledInstance(lblFoto.getWidth(), lblFoto.getHeight(), Image.SCALE_DEFAULT));
-			               lblFoto.setText(null);
-			               lblFoto.setIcon(icono);
-
+				   ImageIcon icon = new ImageIcon(path);
+	               icono = new ImageIcon(icon.getImage().getScaledInstance(lblFoto.getWidth(), lblFoto.getHeight(), Image.SCALE_DEFAULT));
+	               lblFoto.setText(null);
+	               lblFoto.setIcon(icono);
 
 		        }catch(Exception ex){
 
@@ -252,25 +262,7 @@ public class Automatriculacion extends JFrame {
 				contrasenaUsuario=pass.getText();
 				emailUsuario=email.getText();        
 				ibanUsuario=iban.getText();
-				
-//	            ibanUsuario = ibanUsuario.toUpperCase();
-//	            char [] arrayIban = new char [ibanUsuario.length()];
-//	            arrayIban = ibanUsuario.toCharArray();
-//
-//	            if (ibanUsuario.length() != 24)
-//	            {
-//	                
-//	                JOptionPane.showMessageDialog(Automatriculacion.this, "Introduzca 24 caracteres, 2 caracteres al principio "
-//	            			+ "y 22 números después", "Error" , JOptionPane.ERROR_MESSAGE);
-//	            	dniUsuario = dni.getText();
-//	                ibanUsuario = ibanUsuario.toUpperCase();
-//	                arrayIban = new char [ibanUsuario.length()];
-//	                arrayIban = ibanUsuario.toCharArray();
-//
-//	            }
 
-				
-				
 				try {
 					
 					
@@ -279,8 +271,6 @@ public class Automatriculacion extends JFrame {
 					comprobarDniRepetido(dniUsuario, diccionarioEstudiantes, diccionarioTrabajadores);
 					comprobardninumeros(arrayDNI);
 					comprobardniletra(arrayDNI);
-					//comprobaribanletra(arrayIban);
-					//comprobaribannumeros(arrayIban);
 					
 					if(icono==null) {
 						
@@ -443,67 +433,11 @@ public class Automatriculacion extends JFrame {
 			       
 
 			    }
-			    
-			    /**
-			     * Este método sirve para comprobar que los últimos 22 son números
-			     * @param arrayIban el array del iban. En cada posición hay un caracter.
-			     * @throws Incorrecto si no es correcto salta la excepción Incorrecto
-			     */
-			    
-			    public void comprobaribannumeros(char[] arrayIban) throws Incorrecto
-			    {
-			        
-			        char ascii=0;
-
-			        for (byte i=2; i<23; i++)
-			        {
-			            ascii = arrayIban[i];
-
-			            if (ascii>=48 && ascii<=57)
-			            {
-			                
-			            }
-
-			            else
-			            {
-			                throw new Incorrecto ("El iban tiene que tener 22 dígitos al final");
-			            }
-			        }
-
-			       
-			    }
-			    
-			    /**
-			     * Sirve para comprobar que al principio del iban hay dos letras
-			     * @param arrayIban el array del iban. En cada posición hay un caracter.
-			     * @throws Incorrecto si no es correcto salta la excepción Incorrecto
-			     */
-
-			    public void comprobaribanletra(char[] arrayIban) throws Incorrecto {
-
-			        char primeraLetra = arrayIban[0];
-			        char segundaLetra=arrayIban [1];
-
-
-			        if ((primeraLetra>=65 && primeraLetra<=90) && (segundaLetra >=65 && segundaLetra<=90))
-			        {
-			           
-			        }
-
-			        else
-			        {
-			            throw new Incorrecto ("El iban tiene que tener dos letras al principio");
-			        }
-
-			       
-			    }
 
 			
 		});
 		
-		
-		
-		
+			
 	}
 	
 	/**
@@ -526,4 +460,5 @@ public class Automatriculacion extends JFrame {
 			return null;
 		// TODO Auto-generated method stub
 	}
+	
 }

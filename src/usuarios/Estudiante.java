@@ -44,6 +44,23 @@ public class Estudiante extends Persona
         this.faltagrave = faltagrave;
     }
     
+    /**
+     * Estudiante con todos los parámetros
+     * @param nombre nombre 
+     * @param apellido1 primer apellido
+     * @param apellido2 segundo apellido
+     * @param dni dni
+     * @param user usuario
+     * @param password contraseña
+     * @param email correo
+     * @param iban iban
+     * @param tipopersona estudiante
+     * @param notamedia nota media
+     * @param faltaleve número de faltas leves
+     * @param faltagrave número de faltas graves
+     * @param fotoperfil foto de perfil
+     */
+    
     
     
     public Estudiante(String nombre, String apellido1, String apellido2, String dni, String user, String password,

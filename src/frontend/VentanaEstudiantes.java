@@ -83,6 +83,10 @@ public class VentanaEstudiantes extends JFrame {
 		
 		JButton btnVerRanking = new JButton("Ver Ranking");
 		btnVerRanking.addActionListener(new ActionListener() {
+			
+			/**
+			 * Acción para ver el ranking
+			 */
 			public void actionPerformed(ActionEvent arg0) {
 				Ranking ventana = new Ranking (diccionarioEstudiantes, estu, VentanaEstudiantes.this);
 				ventana.setVisible(true);

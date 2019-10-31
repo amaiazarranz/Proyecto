@@ -75,6 +75,11 @@ public class Ranking extends JFrame {
 		cargarLista(diccionarioEstudiantes);
 		
 	}
+	
+	/**
+	 * Método para cargar la lista
+	 * @param diccionarioEstudiantes la lista de los estudiantes
+	 */
 
 
 	private void cargarLista(ArrayList<Estudiante> diccionarioEstudiantes) {

@@ -20,12 +20,21 @@ import javax.mail.internet.MimeMultipart;
 
 /**
  * En esta clase se comprueba que en envío por gmail se ha realizado correctamente
- * @author Alumno
+ * @author Alumno Amaia y Olatz
  *
  */
 
 public class Enviar 
 {
+	/**
+	 * Método para comprobar si se ha podido enviar por correo o no
+	 * @param user el usuario
+	 * @param contrasena contraseña
+	 * @param destinatario destinatario del correo
+	 * @param asunto asunto del mensaje
+	 * @param cuerpo el mensaje
+	 * @return si se ha podido enviar o no
+	 */
 	static boolean enviarConGmail(String user, String contrasena, String destinatario, String asunto, String cuerpo) {
 	    Properties emailProperties = new Properties();
 	    

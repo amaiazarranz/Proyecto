@@ -95,6 +95,7 @@ public class FaltaLeve extends JFrame {
 			/**
 			 * Acción para volver a la ventana anterior
 			 */
+			
 			public void actionPerformed(ActionEvent e) {
 
 				atras.setVisible(true);

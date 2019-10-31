@@ -32,7 +32,7 @@ public class CustomTextField extends JTextField {
     }
     
     /**
-     * método para establecer el fuente
+     * método para establecer la fuente
      */
  
     @Override
@@ -55,23 +55,46 @@ public class CustomTextField extends JTextField {
         }
     }
     
-    
+    /**
+     * sirve para obtener la localización
+     * @return devuelve la localización
+     */
  
     public Color getPlaceholderForeground() {
         return placeholderForeground;
     }
+    
+    /**
+     * Sirve para establecer la localización 
+     * @param placeholderForeground
+     */
  
     public void setPlaceholderForeground(Color placeholderForeground) {
         this.placeholderForeground = placeholderForeground;
     }
+    
+    /**
+     * Método para saber si está escrito
+     * @return si está escrito o no
+     */
  
     public boolean isTextWrittenIn() {
         return textWrittenIn;
     }
+    
+    /**
+     * Método para establecer si está escrito
+     * @param textWrittenIn texto escrito
+     */
  
     public void setTextWrittenIn(boolean textWrittenIn) {
         this.textWrittenIn = textWrittenIn;
     }
+    
+    /**
+     * Método para establecer el marcador de posición
+     * @param text el texto
+     */
  
     public void setPlaceholder(final String text) {
  
@@ -122,6 +145,11 @@ public class CustomTextField extends JTextField {
         });
  
     }
+    
+    /**
+     * Método del customizeTextField
+     * @param text el texto
+     */
  
     private void customizeText(String text) {
         setText(text);

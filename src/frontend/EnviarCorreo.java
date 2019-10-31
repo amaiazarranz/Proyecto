@@ -112,10 +112,6 @@ public class EnviarCorreo extends JFrame {
 							Principio f = new Principio();
 							EnviarCorreo.this.dispose();
 						}
-						else
-						{
-							System.exit(0);
-						}
 					}
 					else
 					{
