@@ -5,6 +5,7 @@ import java.awt.BorderLayout;
 import java.awt.EventQueue;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.SQLException;
 import java.util.ArrayList;
 
 import javax.swing.JFrame;
@@ -12,6 +13,7 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.border.EmptyBorder;
 
+import sqlite.DBManager;
 import usuarios.Estudiante;
 import usuarios.Persona;
 import javax.swing.JLabel;
@@ -107,6 +109,25 @@ public class Calificar extends JFrame {
 						
 				}
 				a.getNotasmedias().add(nota);
+				
+				int sumnotas=0;
+				int numnotas=a.getNotasmedias().size();
+				
+				
+				for (int i=0; i<a.getNotasmedias().size();i++ ) {
+					sumnotas+=a.getNotasmedias().get(i);
+					
+				}
+				int media=sumnotas/(numnotas+1);
+				a.setNotamedia(media);
+				
+				try {
+					DBManager.insertEstudiante(a.getDni(), a.getNombre(), a.getApellido1(), a.getApellido2(), a.getUser(), a.getPassword(), a.getEmail(), 
+							a.getIban(), a.getTipopersona(), media, a.getFaltaleve(), a.getFaltagrave());
+				} catch (SQLException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
 				
 				JOptionPane.showMessageDialog(Calificar.this, "El alumno ha sido calificado correctamente ");
 				
