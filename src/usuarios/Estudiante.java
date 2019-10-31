@@ -16,7 +16,7 @@ public class Estudiante extends Persona
 {
 
     ArrayList<String> diccionarioEstudiantes= new ArrayList <String>();
-
+    ArrayList<Integer> notasmedias =new ArrayList <>();
     private double notamedia;
     private int faltaleve;
     private int faltagrave;
@@ -73,6 +73,19 @@ public class Estudiante extends Persona
 	}
 
 
+   
+  
+
+	public Estudiante(String nombre, String apellido1, String apellido2, String dni, String user, String password,
+			String email, String iban, String tipopersona, ArrayList<String> diccionarioEstudiantes,
+			ArrayList<Integer> notasmedias, double notamedia, int faltaleve, int faltagrave) {
+		super(nombre, apellido1, apellido2, dni, user, password, email, iban, tipopersona);
+		this.diccionarioEstudiantes = diccionarioEstudiantes;
+		this.notasmedias = notasmedias;
+		this.notamedia = notamedia;
+		this.faltaleve = faltaleve;
+		this.faltagrave = faltagrave;
+	}
 
 	/**
      * Se trata de un constructor sin parámetros de los estudiantes
@@ -153,6 +166,25 @@ public class Estudiante extends Persona
     public void setFaltagrave(int faltagrave) {
         this.faltagrave = faltagrave;
     }
+    
+    /**
+     * Este método devuelve las notas del estudiante
+     * @return nombre 
+     */
+    
+    public ArrayList<Integer> getNotasmedias() {
+		return notasmedias;
+	}
+
+
+	/**
+     * Este método da el todas las calificaciones
+     * @param notasmedias
+     */
+
+    public void setNotasmedias(ArrayList<Integer> notasmedias) {
+		this.notasmedias = notasmedias;
+	}
     
     /**
 	 * Este método sirve para pasar a string el contenido de los estudiantes

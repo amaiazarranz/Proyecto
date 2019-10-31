@@ -3,6 +3,8 @@ package frontend;
 import java.awt.BorderLayout;
 
 import java.awt.EventQueue;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
 import javax.swing.JFrame;
@@ -14,6 +16,7 @@ import usuarios.Estudiante;
 import usuarios.Persona;
 import javax.swing.JLabel;
 import javax.swing.JList;
+import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import javax.swing.DefaultListModel;
 import javax.swing.JButton;
@@ -61,6 +64,13 @@ public class Calificar extends JFrame {
 		textField.setColumns(10);
 		
 		JButton btnAtrs = new JButton("Atr\u00E1s");
+		btnAtrs.addActionListener(new ActionListener() {
+			
+			public void actionPerformed(ActionEvent arg0) {
+			atras.setVisible(true);
+			Calificar.this.setVisible(false);
+			}
+		});
 		btnAtrs.setBounds(180, 211, 115, 29);
 		contentPane.add(btnAtrs);
 		
@@ -78,6 +88,34 @@ public class Calificar extends JFrame {
 		contentPane.add(scrollPane);
 		
 		cargarLista(diccionarioEstudiantes);
+		
+		btnOk.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				int nota;
+				String user;
+				Estudiante a = null;
+				nota=Integer.parseInt(textField.getText());
+				user=(String) list.getSelectedValue(); 
+				                           
+				for (Estudiante b : diccionarioEstudiantes) {
+					
+					if (b.getUser().equals(user)) {
+						a=b;
+						break;
+					}
+						
+				}
+				a.getNotasmedias().add(nota);
+				
+				JOptionPane.showMessageDialog(Calificar.this, "El alumno ha sido calificado correctamente ");
+				
+				atras.setVisible(true);
+				Calificar.this.setVisible(false);
+				
+			
+			}
+		});
 	}
 	 
 	/**

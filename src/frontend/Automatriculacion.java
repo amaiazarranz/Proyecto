@@ -2,8 +2,6 @@ package frontend;
 
 import java.awt.BorderLayout;
 
-
-
 import java.awt.EventQueue;
 import java.awt.Image;
 import java.awt.event.ActionEvent;
@@ -23,8 +21,6 @@ import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 import javax.swing.filechooser.FileNameExtensionFilter;
-
-import com.github.sarxos.webcam.Webcam;
 
 import excepciones.Incorrecto;
 import excepciones.UsuarioRepetido;
