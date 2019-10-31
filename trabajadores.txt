@@ -1,2 +1,0 @@
-olatz;gonzalez;santiago;72608820I;olatzgonzalez;olatzg;olatzgonzalez1@opendeusto.es;e3;secretario;1000
-leire;gonzalez;santiago;72608820K;leiregonzalez;leireg;leiregonzalez1@opendeusto.es;e3;profesor;1000
