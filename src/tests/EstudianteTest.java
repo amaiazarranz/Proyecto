@@ -1,11 +1,18 @@
 package tests;
 
 import static org.junit.Assert.*;
+
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
 import usuarios.Estudiante;
+
+/**
+ * En esta clase se hacen las comprobaciones del Estudiante
+ * @author Alumno Amaia y Olatz
+ *
+ */
 
 public class EstudianteTest {
 
