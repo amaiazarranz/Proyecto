@@ -1,5 +1,0 @@
-amaia;s;s;72608820M;amaiaz;zzzzzzzzzzzzzzz;AMAIA;estudiante;S;0.0;0;0
-joane;s;s;72608820M;joanez;zzzzzzzzzz;a;s;estudiante;0.0;0;0
-amaia;z;a;12345678I;maixam;zzzzzzzzzz;am;estudiante;s;0.0;0;0
-martin;z;v;72608825Y;martinz;zzzzzzzzzzzz;martin@gmail.com;estudiante;ET0000000000000000000000;0.0;0;0
-
