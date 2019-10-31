@@ -20,7 +20,7 @@ public abstract class Persona implements IMensajes
     private String email;
     private String iban;
     private String tipopersona;
-    private ImageIcon fotoperfil;
+    private Icon fotoperfil;
     
     /**
      * Constructor con parámetros
@@ -63,7 +63,7 @@ public abstract class Persona implements IMensajes
      */
 
     public Persona(String nombre, String apellido1, String apellido2, String dni,
-                   String user, String password, String email, String iban, String tipopersona,ImageIcon fotoperfil) {
+                   String user, String password, String email, String iban, String tipopersona,Icon fotoperfil) {
         this.nombre = nombre;
         this.apellido1 = apellido1;
         this.apellido2 = apellido2;
@@ -74,7 +74,7 @@ public abstract class Persona implements IMensajes
         this.iban = iban;
         this.tipopersona=tipopersona;
         this.fotoperfil = fotoperfil;
-    } //no poner imageicon para leer de ficheros
+    } //no poner Icon para leer de ficheros
     
     /**
      * Constructor sin parámetros de la persona
@@ -259,7 +259,7 @@ public abstract class Persona implements IMensajes
      * @return fotoperfil 
      */
 
-    public ImageIcon getFotoperfil() {
+    public Icon getFotoperfil() {
         return fotoperfil;
     }
     
@@ -269,7 +269,7 @@ public abstract class Persona implements IMensajes
      */
 
 
-    public void setFotoperfil(ImageIcon fotoperfil) {
+    public void setFotoperfil(Icon fotoperfil) {
         this.fotoperfil = fotoperfil;
     }
     

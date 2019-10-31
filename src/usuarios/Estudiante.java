@@ -2,6 +2,9 @@ package usuarios;
 
 import java.util.ArrayList;
 
+import javax.swing.Icon;
+import javax.swing.ImageIcon;
+
 /**
  * En esta clase se desarrollan los atributos de los estudiantes
  * @author Alumno Amaia y Olatz
@@ -41,7 +44,20 @@ public class Estudiante extends Persona
         this.faltagrave = faltagrave;
     }
     
-    /**
+    
+    
+    public Estudiante(String nombre, String apellido1, String apellido2, String dni, String user, String password,
+			String email, String iban, String tipopersona, double notamedia, int faltaleve, int faltagrave,
+			Icon fotoperfil) {
+		super(nombre, apellido1, apellido2, dni, user, password, email, iban, tipopersona, fotoperfil);
+		this.notamedia = notamedia;
+        this.faltaleve = faltaleve;
+        this.faltagrave = faltagrave;
+	}
+
+
+
+	/**
      * Se trata de un constructor sin parámetros de los estudiantes
      */
 

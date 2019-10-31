@@ -2,6 +2,8 @@ package sqlite;
 
 import java.sql.*;
 
+import javax.swing.Icon;
+
 /**
  * Es el gestor de la base de datos
  * @author Alumno Amaia y Olatz
@@ -50,8 +52,11 @@ public class DBManager {
 	            myDBManager.createNewTableTrabajador();
 	            
 	            insertTrabajador("72608821Y", "Olatz", "Gonzalez" , "Santiago" , "program.profesor1", "Profesor1" , "program.profesor1@gmail.com", "ES0000000000000000000000", "profesor", 2000.0);
+	            insertTrabajador("72608821R", "Leire", "Gonzalez" , "Santiago" , "program.secretario1", "Secretario1" , "program.secretario1@gmail.com", "ES0000000000000000000003", "secretario", 2000.0);
 	            insertEstudiante("82476952I", "Jon", "Zabaleta", "Peña", "program.estudiante1", "Estudiante1", "program.estudiante1@gmail.com","ES0000000000000000000001", "estudiante", 9.8, 0,0);
 	            insertEstudiante("82476952P", "Aritz", "Eraun", "Peña", "program.estudiante2", "Estudiante2", "program.estudiante2@gmail.com","ES0000000000000000000002", "estudiante", 9.7, 0,0);
+	            insertEstudiante("82476952T", "Ane", "Bollo", "Peña", "program.estudiante3", "Estudiante3", "program.estudiante3@gmail.com","ES0000000000000000000008", "estudiante", 9.6, 0,0);
+	            
 	            // Last step - Close connection
 	            myDBManager.closeLink();
 	        }
@@ -183,11 +188,13 @@ public class DBManager {
 	
 	        String sql = "INSERT INTO estudiante(dni,nombre, apellido1, apellido2, user, password, email," +
 	                "iban, tipopersona, notamedia, faltaleve, faltagrave) VALUES(?,?,?,?,?,?,?,?,?,?,?,?)";
+	    	
 	
 	        try
 	                (
 	                        Connection conn = connect();
-	                        PreparedStatement pstmt = conn.prepareStatement(sql) //
+	                        PreparedStatement pstmt = conn.prepareStatement(sql) 
+	        				
 	                )
 	        {
 	            pstmt.setString(1, dni);
@@ -202,6 +209,8 @@ public class DBManager {
 	            pstmt.setDouble(10, notamedia);
 	            pstmt.setInt(11, faltaleve);
 	            pstmt.setInt(12, faltagrave);
+	            
+	           
 	
 	            pstmt.executeUpdate();
 	        }

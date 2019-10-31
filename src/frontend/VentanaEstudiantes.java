@@ -1,7 +1,4 @@
 package frontend;
-
-import java.awt.BorderLayout;
-import java.awt.EventQueue;
 import java.util.ArrayList;
 
 import javax.swing.JFrame;
@@ -11,9 +8,10 @@ import javax.swing.border.EmptyBorder;
 import usuarios.Estudiante;
 import usuarios.Persona;
 import javax.swing.JLabel;
+import javax.swing.Icon;
 import javax.swing.JButton;
+
 import java.awt.event.ActionListener;
-import java.io.IOException;
 import java.awt.event.ActionEvent;
 
 /**
@@ -26,6 +24,8 @@ import java.awt.event.ActionEvent;
 public class VentanaEstudiantes extends JFrame {
 
 	private JPanel contentPane;
+	public static String path;
+	private Icon icono;
 	
 	/**
 	 * Aquí se muestra la ventana visual de los estudiantes
@@ -34,7 +34,7 @@ public class VentanaEstudiantes extends JFrame {
 	 * @param atras la ventana LoginVisual
 	 */
 
-	public VentanaEstudiantes(ArrayList <Estudiante> diccionarioEstudiantes, Persona estu, LoginVisual atras ) {
+	public VentanaEstudiantes(ArrayList <Estudiante> diccionarioEstudiantes, Persona estu, LoginVisual atras) {
 		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
@@ -44,7 +44,7 @@ public class VentanaEstudiantes extends JFrame {
 		contentPane.setLayout(null);
 		
 		JLabel lblEstudiante = new JLabel("Estudiante: "+estu.getNombre());
-		lblEstudiante.setBounds(31, 31, 238, 20);
+		lblEstudiante.setBounds(36, 16, 238, 20);
 		contentPane.add(lblEstudiante);
 		
 		JButton btnCerrarSesin = new JButton("Cerrar sesi\u00F3n");
@@ -78,7 +78,7 @@ public class VentanaEstudiantes extends JFrame {
 				VentanaEstudiantes.this.setVisible(false);
 			}
 		});
-		btnEnviarCorreo.setBounds(154, 109, 115, 29);
+		btnEnviarCorreo.setBounds(277, 89, 115, 29);
 		contentPane.add(btnEnviarCorreo);
 		
 		JButton btnVerRanking = new JButton("Ver Ranking");
@@ -90,7 +90,12 @@ public class VentanaEstudiantes extends JFrame {
 				
 			}
 		});
-		btnVerRanking.setBounds(154, 154, 115, 29);
+		btnVerRanking.setBounds(277, 134, 115, 29);
 		contentPane.add(btnVerRanking);
+		
+		JLabel lblFoto = new JLabel(estu.getFotoperfil());
+		lblFoto.setBounds(37, 35, 184, 149);
+		contentPane.add(lblFoto);
 	}
+	 
 }

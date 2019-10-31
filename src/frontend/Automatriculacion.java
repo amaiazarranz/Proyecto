@@ -5,8 +5,10 @@ import java.awt.BorderLayout;
 
 
 import java.awt.EventQueue;
+import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.File;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Date;
@@ -19,6 +21,7 @@ import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
+import javax.swing.filechooser.FileNameExtensionFilter;
 
 import excepciones.Incorrecto;
 import excepciones.UsuarioRepetido;
@@ -26,7 +29,10 @@ import sqlite.DBManager;
 import usuarios.Estudiante;
 import usuarios.Trabajador;
 
+import javax.swing.Icon;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
+import javax.swing.JFileChooser;
 
 /**
  * Esta clase sirve para automatricular estudiantes en nuestra plataforma de la universidad
@@ -48,6 +54,11 @@ public class Automatriculacion extends JFrame {
 	private JTextField iban;
 	private JButton btnOk;
 	private JButton btnAtrs;
+	private JButton btnAadirFoto;
+	
+	public static String path;
+	private JLabel lblFoto;
+	private Icon icono;
 
 
 	/**
@@ -87,7 +98,7 @@ public class Automatriculacion extends JFrame {
 		contentPane.add(lblNewLabel);
 		
 		JLabel lblPassword = new JLabel("Pass:");
-		lblPassword.setBounds(219, 74, 81, 20);
+		lblPassword.setBounds(219, 71, 81, 20);
 		contentPane.add(lblPassword);
 		
 		JLabel lblEmail = new JLabel("email:");
@@ -147,6 +158,14 @@ public class Automatriculacion extends JFrame {
 		btnAtrs.setBounds(173, 199, 115, 29);
 		contentPane.add(btnAtrs);
 		
+		btnAadirFoto = new JButton("A\u00F1adir foto");
+		btnAadirFoto.setBounds(25, 201, 115, 29);
+		contentPane.add(btnAadirFoto);
+		
+		lblFoto = new JLabel("");
+		lblFoto.setBounds(37, 35, 184, 149);
+		//contentPane.add(lblFoto);
+		
 		btnAtrs.addActionListener(new ActionListener() {
 			
 			/**
@@ -158,6 +177,33 @@ public class Automatriculacion extends JFrame {
 				atras.setVisible(true);
 				Automatriculacion.this.setVisible(false);
 			}
+		});
+		
+		
+		btnAadirFoto.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				File archivoseleccionado =seleccionarArchivo();
+				path = archivoseleccionado.getAbsolutePath();
+				
+				try{
+					
+							ImageIcon icon = new ImageIcon(path);
+			               icono = new ImageIcon(icon.getImage().getScaledInstance(lblFoto.getWidth(), lblFoto.getHeight(), Image.SCALE_DEFAULT));
+			               lblFoto.setText(null);
+			               lblFoto.setIcon(icono);
+
+
+		        }catch(Exception ex){
+
+		        	JOptionPane.showMessageDialog(null, "Error abriendo la imagen "+ ex);
+		                 
+		        }
+				
+				
+			}
+
+			
 		});
 		
 		
@@ -207,21 +253,21 @@ public class Automatriculacion extends JFrame {
 				emailUsuario=email.getText();        
 				ibanUsuario=iban.getText();
 				
-	            ibanUsuario = ibanUsuario.toUpperCase();
-	            char [] arrayIban = new char [ibanUsuario.length()];
-	            arrayIban = ibanUsuario.toCharArray();
-
-	            if (ibanUsuario.length() != 24)
-	            {
-	                
-	                JOptionPane.showMessageDialog(Automatriculacion.this, "Introduzca 24 caracteres, 2 caracteres al principio "
-	            			+ "y 22 números después", "Error" , JOptionPane.ERROR_MESSAGE);
-	            	dniUsuario = dni.getText();
-	                ibanUsuario = ibanUsuario.toUpperCase();
-	                arrayIban = new char [ibanUsuario.length()];
-	                arrayIban = ibanUsuario.toCharArray();
-
-	            }
+//	            ibanUsuario = ibanUsuario.toUpperCase();
+//	            char [] arrayIban = new char [ibanUsuario.length()];
+//	            arrayIban = ibanUsuario.toCharArray();
+//
+//	            if (ibanUsuario.length() != 24)
+//	            {
+//	                
+//	                JOptionPane.showMessageDialog(Automatriculacion.this, "Introduzca 24 caracteres, 2 caracteres al principio "
+//	            			+ "y 22 números después", "Error" , JOptionPane.ERROR_MESSAGE);
+//	            	dniUsuario = dni.getText();
+//	                ibanUsuario = ibanUsuario.toUpperCase();
+//	                arrayIban = new char [ibanUsuario.length()];
+//	                arrayIban = ibanUsuario.toCharArray();
+//
+//	            }
 
 				
 				
@@ -233,14 +279,24 @@ public class Automatriculacion extends JFrame {
 					comprobarDniRepetido(dniUsuario, diccionarioEstudiantes, diccionarioTrabajadores);
 					comprobardninumeros(arrayDNI);
 					comprobardniletra(arrayDNI);
-					comprobaribanletra(arrayIban);
-					comprobaribannumeros(arrayIban);
+					//comprobaribanletra(arrayIban);
+					//comprobaribannumeros(arrayIban);
 					
+					if(icono==null) {
+						
+						Estudiante user = new Estudiante(nombreUsuario, apellido1Usuario, apellido2Usuario, dniUsuario, userUsuario, contrasenaUsuario,
+								emailUsuario, ibanUsuario, "estudiante", 0.0, 0,0);
+						diccionarioEstudiantes.add(user);
+						
+					}
+					else {
+						
+						Estudiante user= new Estudiante (nombreUsuario, apellido1Usuario, apellido2Usuario, dniUsuario, userUsuario, contrasenaUsuario,
+								emailUsuario, ibanUsuario, "estudiante", 0.0, 0,0, icono);
+								diccionarioEstudiantes.add(user);
+					}
 
-
-					Estudiante user = new Estudiante(nombreUsuario, apellido1Usuario, apellido2Usuario, dniUsuario, userUsuario, contrasenaUsuario,
-							emailUsuario, ibanUsuario, "estudiante", 0.0, 0,0);
-					diccionarioEstudiantes.add(user);
+					
 					
 					DBManager.insertEstudiante(nombreUsuario, apellido1Usuario, apellido2Usuario, dniUsuario, userUsuario, contrasenaUsuario,
 							emailUsuario, ibanUsuario, "estudiante", 0.0, 0,0);
@@ -261,6 +317,7 @@ public class Automatriculacion extends JFrame {
 					e1.printStackTrace();
 				}
 			}
+			
 			
 			/**
 			 * Este método sirve para comprobar que el correo introducido por el usuario acaba en @gmail.com
@@ -442,12 +499,31 @@ public class Automatriculacion extends JFrame {
 			    }
 
 			
-			
-			
 		});
 		
 		
 		
 		
+	}
+	
+	/**
+	 * Sirve para seleccionar el archivo del PC
+	 * @return la imagen deseada
+	 */
+	
+	private File seleccionarArchivo() {
+		
+		JFileChooser chooser = new JFileChooser();
+		chooser.setFileFilter( new FileNameExtensionFilter( 
+				"All images", "jpg", "png" ) );
+		int returnVal = chooser.showOpenDialog(this);
+		
+		if (returnVal == JFileChooser.APPROVE_OPTION)
+		{
+			return chooser.getSelectedFile();
+		}
+		else 
+			return null;
+		// TODO Auto-generated method stub
 	}
 }
