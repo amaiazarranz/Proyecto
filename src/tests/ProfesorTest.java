@@ -24,6 +24,7 @@ public class ProfesorTest {
 	}
 
 	@Test
+	
 	public void test() {
 		
 		Profesor p1 = new Profesor(

@@ -14,6 +14,7 @@ import javax.swing.JScrollPane;
 import javax.swing.border.EmptyBorder;
 
 import sqlite.DBManager;
+import sqlite.SelectData;
 import usuarios.Estudiante;
 import usuarios.Persona;
 import javax.swing.JLabel;
@@ -121,9 +122,14 @@ public class Calificar extends JFrame {
 				int media=sumnotas/(numnotas+1);
 				a.setNotamedia(media);
 				
+				System.out.println(sumnotas);
+				System.out.println(numnotas+1);
+				System.out.println(media);
+				
+				
+				
 				try {
-					DBManager.insertEstudiante(a.getDni(), a.getNombre(), a.getApellido1(), a.getApellido2(), a.getUser(), a.getPassword(), a.getEmail(), 
-							a.getIban(), a.getTipopersona(), media, a.getFaltaleve(), a.getFaltagrave());
+					SelectData.actualizarNotaMedia(a.getUser(), media);
 				} catch (SQLException e1) {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();
