@@ -1,6 +1,9 @@
 package usuarios;
 
 import javax.swing.*;
+
+import interfaces.IMensajes;
+
 import java.util.ArrayList;
 
 /**
@@ -9,7 +12,7 @@ import java.util.ArrayList;
  *
  */
 
-public final class Profesor extends Trabajador
+public final class Profesor extends Trabajador implements IMensajes
 {
     ArrayList <String> asignaturas= new ArrayList<String>();
     
@@ -59,5 +62,15 @@ public final class Profesor extends Trabajador
                 ", tipopersona='" + this.getTipopersona() + '\'' +
                 "salario=" + this.getSalario() +
                 '}';
+    }
+    
+    /**
+     * Este método sirve para enviar mensajes
+     */
+
+    @Override
+    public void enviarMensajes()
+    {
+
     }
 }

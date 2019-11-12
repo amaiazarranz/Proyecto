@@ -3,13 +3,15 @@ package usuarios;
 import utilidades.LecturaEscrituraFichero;
 import java.util.ArrayList;
 
+import interfaces.IMensajes;
+
 /**
  * En esta clase se desarrollan los atributos de los secretarios
  * @author Alumno Amaia y Olatz
  *
  */
 
-public final class Secretario extends Trabajador
+public final class Secretario extends Trabajador implements IMensajes
 {
     ArrayList<String> diccionarioSecretarios= new ArrayList <String>();
     
@@ -59,6 +61,16 @@ public final class Secretario extends Trabajador
                 ", tipopersona='" + this.getTipopersona() + '\'' +
                 "salario=" + this.getSalario() +
                 '}';
+    }
+    
+    /**
+     * Este método sirve para enviar mensajes
+     */
+
+    @Override
+    public void enviarMensajes()
+    {
+
     }
 
 }

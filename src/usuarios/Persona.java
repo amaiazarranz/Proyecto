@@ -9,7 +9,7 @@ import interfaces.IMensajes;
  *
  */
 
-public abstract class Persona implements IMensajes
+public abstract class Persona 
 {
     private String nombre;
     private String apellido1;
@@ -273,14 +273,6 @@ public abstract class Persona implements IMensajes
         this.fotoperfil = fotoperfil;
     }
     
-    /**
-     * Este método sirve para enviar mensajes
-     */
-
-    @Override
-    public void enviarMensajes()
-    {
-
-    }
+ 
 }
 

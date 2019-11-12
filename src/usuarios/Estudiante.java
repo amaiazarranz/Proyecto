@@ -5,6 +5,8 @@ import java.util.ArrayList;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 
+import interfaces.IMensajes;
+
 /**
  * En esta clase se desarrollan los atributos de los estudiantes
  * @author Alumno Amaia y Olatz
@@ -12,7 +14,7 @@ import javax.swing.ImageIcon;
  */
 
 
-public class Estudiante extends Persona
+public class Estudiante extends Persona implements IMensajes
 {
 
     ArrayList<String> diccionarioEstudiantes= new ArrayList <String>();
@@ -186,9 +188,12 @@ public class Estudiante extends Persona
 		this.notasmedias = notasmedias;
 	}
     
+ 
+    
     /**
 	 * Este método sirve para pasar a string el contenido de los estudiantes
 	 */
+    
 
     @Override
     public String toString() {
@@ -202,6 +207,16 @@ public class Estudiante extends Persona
                 ", dni='" + this.getDni() + '\'' +
                 ", email='" + this.getEmail() + '\'' +
                 '}';
+    }
+    
+    /**
+     * Este método sirve para enviar mensajes
+     */
+
+    @Override
+    public void enviarMensajes()
+    {
+
     }
 }
 
