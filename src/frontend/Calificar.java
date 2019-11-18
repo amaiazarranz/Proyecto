@@ -99,6 +99,11 @@ public class Calificar extends JFrame {
 				String user;
 				Estudiante a = null;
 				nota=Integer.parseInt(textField.getText());
+				if (!comprobar(nota))
+				{
+					JOptionPane.showMessageDialog(Calificar.this, "Nota no válida");
+				}else {
+				
 				user=(String) list.getSelectedValue(); 
 				                           
 				for (Estudiante b : diccionarioEstudiantes) {
@@ -140,7 +145,17 @@ public class Calificar extends JFrame {
 				atras.setVisible(true);
 				Calificar.this.setVisible(false);
 				
-			
+				}
+			}
+		
+			public boolean comprobar (int variable) {
+				boolean compr= false;
+				if (variable>=0&& variable<=10)
+				{
+					compr=true;
+				}
+				return compr;
+				
 			}
 		});
 	}
