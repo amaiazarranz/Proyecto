@@ -50,25 +50,17 @@ public class FaltaGrave extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
-		JLabel lblPonerUnaFalta = new JLabel("Poner una falta grave:");
+		JLabel lblPonerUnaFalta = new JLabel("Poner una falta grave a:");
 		lblPonerUnaFalta.setBounds(133, 16, 170, 20);
 		contentPane.add(lblPonerUnaFalta);
 		
-		JLabel lblNmeroDeFaltas = new JLabel("N\u00FAmero de faltas graves:");
-		lblNmeroDeFaltas.setBounds(15, 184, 188, 20);
-		contentPane.add(lblNmeroDeFaltas);
-		
-		textField = new JTextField();
-		textField.setBounds(227, 181, 146, 26);
-		contentPane.add(textField);
-		textField.setColumns(10);
 		
 		JButton btnOk = new JButton("OK");
-		btnOk.setBounds(298, 215, 115, 29);
+		btnOk.setBounds(298, 186, 115, 29);
 		contentPane.add(btnOk);
 		
 		JButton btnAtrs = new JButton("Atr\u00E1s");
-		btnAtrs.setBounds(157, 215, 115, 29);
+		btnAtrs.setBounds(157, 186, 115, 29);
 		contentPane.add(btnAtrs);
 		
 		
@@ -106,8 +98,6 @@ public class FaltaGrave extends JFrame {
 
 				if (user != null) {
 					
-					String numero = textField.getText();
-					int numero1 = Integer.parseInt(numero);
 
 					Estudiante modificar = null;
 
@@ -118,17 +108,17 @@ public class FaltaGrave extends JFrame {
 							break;
 						}
 					}
-
-					modificar.setFaltagrave(numero1);
+				
+					modificar.setFaltagrave(modificar.getFaltagrave()+1);
 					
 					try {
-			            SelectData.actualizarFaltaGrave(user, numero1);
+			            SelectData.actualizarFaltaGrave(user, modificar.getFaltagrave()+1);
 			            
 			        } catch (SQLException e1) {
 			            e1.printStackTrace();
 			        }
 					
-					JOptionPane.showMessageDialog(FaltaGrave.this, "Ya se ha realizado el cambio ");
+					JOptionPane.showMessageDialog(FaltaGrave.this, "Ya se ha registrado la nueva falta ");
 					
 				
 				}
