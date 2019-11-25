@@ -15,6 +15,7 @@ import usuarios.Estudiante;
 import usuarios.Persona;
 import usuarios.Trabajador;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 
@@ -119,11 +120,18 @@ public class VentanaProfesor extends JFrame {
 				
 				VentanaProfesor.this.setVisible(false);
 				atras.setVisible(true);
+				CerrarSesion1();
 				
 			}
 		});
 		btnCancel.setBounds(298, 199, 115, 29);
 		contentPane.add(btnCancel);
+		
+	}
+	
+	public static void CerrarSesion1() {
+		
+		JOptionPane.showMessageDialog(null, "Has cerrado sesión");
 		
 	}
 }
