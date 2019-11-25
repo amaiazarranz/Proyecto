@@ -8,6 +8,7 @@ import javax.swing.border.EmptyBorder;
 import usuarios.Estudiante;
 import usuarios.Persona;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.Icon;
 import javax.swing.JButton;
 
@@ -58,6 +59,7 @@ public class VentanaEstudiantes extends JFrame {
 				
 				VentanaEstudiantes.this.setVisible(false);
 				atras.setVisible(true);
+				CerrarSesion1();
 			}
 		});
 		btnCerrarSesin.setBounds(277, 199, 136, 29);
@@ -100,6 +102,12 @@ public class VentanaEstudiantes extends JFrame {
 		JLabel lblFoto = new JLabel(estu.getFotoperfil());
 		lblFoto.setBounds(37, 35, 184, 149);
 		contentPane.add(lblFoto);
+	}
+	
+	public static void CerrarSesion1() {
+		
+		JOptionPane.showMessageDialog(null, "Has cerrado sesión");
+		
 	}
 	 
 }

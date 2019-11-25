@@ -12,6 +12,7 @@ import usuarios.Estudiante;
 import usuarios.Persona;
 import usuarios.Trabajador;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
@@ -79,11 +80,18 @@ public class VentanaSecretario extends JFrame {
 				
 				VentanaSecretario.this.setVisible(false);
 				atras.setVisible(true);
+				CerrarSesion1();
 			}
 		});
 		btnCerrarSesin.setBounds(246, 199, 155, 29);
 		contentPane.add(btnCerrarSesin);
 		
+		
+	}
+	
+	public static void CerrarSesion1() {
+		
+		JOptionPane.showMessageDialog(null, "Has cerrado sesión");
 		
 	}
 

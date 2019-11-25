@@ -168,18 +168,21 @@ public class Automatriculacion extends JFrame {
 		lblFoto.setBounds(37, 35, 184, 149);
 		//contentPane.add(lblFoto);
 		
-		btnAtrs.addActionListener(new ActionListener() {
-			
-			/**
-			 * Acción para volver atrás
-			 */
-			
-			public void actionPerformed(ActionEvent e) {
-
-				atras.setVisible(true);
-				Automatriculacion.this.setVisible(false);
-			}
-		});
+		CerrarSesionProfe cerrar=new CerrarSesionProfe(Automatriculacion.this, atras);
+		btnAtrs.addActionListener(cerrar);
+		
+//		btnAtrs.addActionListener(new ActionListener() {
+//			
+//			/**
+//			 * Acción para volver atrás
+//			 */
+//			
+//			public void actionPerformed(ActionEvent e) {
+//
+//				atras.setVisible(true);
+//				Automatriculacion.this.setVisible(false);
+//			}
+//		});
 		
 		
 		btnAadirFoto.addActionListener(new ActionListener() {
