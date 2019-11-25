@@ -13,6 +13,7 @@ import javax.swing.border.EmptyBorder;
 import usuarios.Estudiante;
 import usuarios.Persona;
 import utilidades.MergeSort;
+import utilidades.MergeSortGenerico;
 
 import javax.swing.DefaultListModel;
 import javax.swing.JButton;
@@ -72,10 +73,28 @@ public class Ranking extends JFrame {
 		scrollPane.setBounds(15, 44, 398, 115);
 		contentPane.add(scrollPane);
 		
-		cargarLista(diccionarioEstudiantes);
+		//cargarLista(diccionarioEstudiantes);
+		cargarListaMerge(diccionarioEstudiantes);
 		
 	}
 	
+	private void cargarListaMerge(ArrayList<Estudiante> diccionarioEstudiantes) {
+		// TODO Auto-generated method stub
+		DefaultListModel lista = new DefaultListModel();
+		
+		//MergeSort.mergesort(diccionarioEstudiantes, 0, diccionarioEstudiantes.size()-1);
+		MergeSortGenerico.introducir(diccionarioEstudiantes);
+		
+		for (Estudiante a: diccionarioEstudiantes) {
+			
+			lista.addElement(a.getNombre() +" "+ a.getNotamedia());
+			
+		}
+
+		list.setModel(lista);
+		
+	}
+
 	/**
 	 * Método para cargar la lista
 	 * @param diccionarioEstudiantes la lista de los estudiantes
