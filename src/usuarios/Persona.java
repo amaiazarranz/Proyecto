@@ -9,7 +9,7 @@ import interfaces.IMensajes;
  *
  */
 
-public abstract class Persona 
+public abstract class Persona
 {
     private String nombre;
     private String apellido1;
@@ -21,7 +21,7 @@ public abstract class Persona
     private String iban;
     private String tipopersona;
     private Icon fotoperfil;
-    
+
     /**
      * Constructor con parámetros
      * @param nombre nombre de la persona
@@ -47,7 +47,7 @@ public abstract class Persona
         this.iban = iban;
         this.tipopersona=tipopersona;
     }
-    
+
     /**
      * Constructor con parámetros
      * @param nombre nombre de la persona
@@ -75,23 +75,23 @@ public abstract class Persona
         this.tipopersona=tipopersona;
         this.fotoperfil = fotoperfil;
     } //no poner Icon para leer de ficheros
-    
+
     /**
      * Constructor sin parámetros de la persona
      */
 
     public Persona() {
     }
-    
+
     /**
      * Este método devuelve el atributo nombre a otra clase
-     * @return nombre 
+     * @return nombre
      */
 
     public String getNombre() {
         return nombre;
     }
-    
+
     /**
      * Este método da el valor al atributo nombre
      * @param nombre nombre
@@ -101,16 +101,16 @@ public abstract class Persona
     public void setNombre(String nombre) {
         this.nombre = nombre;
     }
-    
+
     /**
      * Este método devuelve el atributo primer apellido a otra clase
-     * @return apellido1 
+     * @return apellido1
      */
 
     public String getApellido1() {
         return apellido1;
     }
-    
+
     /**
      * Este método da el valor al atributo primer apellido
      * @param apellido1 primer apellido
@@ -120,16 +120,16 @@ public abstract class Persona
     public void setApellido1(String apellido1) {
         this.apellido1 = apellido1;
     }
-    
+
     /**
      * Este método devuelve el atributo segundo apellido a otra clase
-     * @return apellido2 
+     * @return apellido2
      */
 
     public String getApellido2() {
         return apellido2;
     }
-    
+
     /**
      * Este método da el valor al atributo segundo apellido
      * @param apellido2 segundo apellido
@@ -139,16 +139,16 @@ public abstract class Persona
     public void setApellido2(String apellido2) {
         this.apellido2 = apellido2;
     }
-    
+
     /**
      * Este método devuelve el atributo dni a otra clase
-     * @return dni 
+     * @return dni
      */
 
     public String getDni() {
         return dni;
     }
-    
+
     /**
      * Este método da el valor al atributo dni
      * @param dni dni
@@ -158,16 +158,16 @@ public abstract class Persona
     public void setDni(String dni) {
         this.dni = dni;
     }
-    
+
     /**
      * Este método devuelve el atributo user a otra clase
-     * @return user 
+     * @return user
      */
 
     public String getUser() {
         return user;
     }
-    
+
     /**
      * Este método da el valor al atributo user
      * @param user usuario
@@ -177,16 +177,16 @@ public abstract class Persona
     public void setUser(String user) {
         this.user = user;
     }
-    
+
     /**
      * Este método devuelve el atributo contraseña a otra clase
-     * @return password 
+     * @return password
      */
 
     public String getPassword() {
         return password;
     }
-    
+
     /**
      * Este método da el valor al atributo contraseña
      * @param password contraseña
@@ -196,16 +196,16 @@ public abstract class Persona
     public void setPassword(String password) {
         this.password = password;
     }
-    
+
     /**
      * Este método devuelve el atributo email a otra clase
-     * @return correo 
+     * @return correo
      */
 
     public String getEmail() {
         return email;
     }
-    
+
     /**
      * Este método da el valor al atributo email
      * @param email email
@@ -215,16 +215,16 @@ public abstract class Persona
     public void setEmail(String email) {
         this.email = email;
     }
-    
+
     /**
      * Este método devuelve el atributo iban a otra clase
-     * @return iban 
+     * @return iban
      */
 
     public String getIban() {
         return iban;
     }
-    
+
     /**
      * Este método da el valor al atributo iban
      * @param iban iban
@@ -234,16 +234,16 @@ public abstract class Persona
     public void setIban(String iban) {
         this.iban = iban;
     }
-    
+
     /**
      * Este método devuelve el atributo tipopersona a otra clase
-     * @return tipopersona 
+     * @return tipopersona
      */
 
     public String getTipopersona() {
         return tipopersona;
     }
-    
+
     /**
      * Este método da el valor al atributo tipopersona
      * @param tipopersona el tipo de persona dentro de la universidad
@@ -253,16 +253,16 @@ public abstract class Persona
     public void setTipopersona(String tipopersona) {
         this.tipopersona = tipopersona;
     }
-    
+
     /**
      * Este método devuelve el atributo foto de perfil a otra clase
-     * @return fotoperfil 
+     * @return fotoperfil
      */
 
     public Icon getFotoperfil() {
         return fotoperfil;
     }
-    
+
     /**
      * Este método da el valor al atributo fotoperfil
      * @param fotoperfil foto de perfil
@@ -272,7 +272,6 @@ public abstract class Persona
     public void setFotoperfil(Icon fotoperfil) {
         this.fotoperfil = fotoperfil;
     }
-    
- 
-}
 
+
+}
