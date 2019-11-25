@@ -51,11 +51,11 @@ public class DBManager {
 	            myDBManager.createNewTableEstudiante();
 	            myDBManager.createNewTableTrabajador();
 	            
-	            insertTrabajador("72608821Y", "Olatz", "Gonzalez" , "Santiago" , "program.profesor1", "Profesor1" , "program.profesor1@gmail.com", "ES0000000000000000000000", "profesor", 2000.0);
-	            insertTrabajador("72608821R", "Leire", "Gonzalez" , "Santiago" , "program.secretario1", "Secretario1" , "program.secretario1@gmail.com", "ES0000000000000000000003", "secretario", 2000.0);
-	            insertEstudiante("82476952I", "Jon", "Zabaleta", "Peña", "program.estudiante1", "Estudiante1", "program.estudiante1@gmail.com","ES0000000000000000000001", "estudiante", 9.8, 0,0);
-	            insertEstudiante("82476952P", "Aritz", "Eraun", "Peña", "program.estudiante2", "Estudiante2", "program.estudiante2@gmail.com","ES0000000000000000000002", "estudiante", 9.7, 0,0);
-	            insertEstudiante("82476952T", "Ane", "Bollo", "Peña", "program.estudiante3", "Estudiante3", "program.estudiante3@gmail.com","ES0000000000000000000008", "estudiante", 9.6, 0,0);
+	            myDBManager.insertTrabajador("72608821Y", "Olatz", "Gonzalez" , "Santiago" , "program.profesor1", "Profesor1" , "program.profesor1@gmail.com", "ES0000000000000000000000", "profesor", 2000.0);
+	            myDBManager.insertTrabajador("72608821R", "Leire", "Gonzalez" , "Santiago" , "program.secretario1", "Secretario1" , "program.secretario1@gmail.com", "ES0000000000000000000003", "secretario", 2000.0);
+	            myDBManager.insertEstudiante("82476952I", "Jon", "Zabaleta", "Peña", "program.estudiante1", "Estudiante1", "program.estudiante1@gmail.com","ES0000000000000000000001", "estudiante", 9.8, 0,0);
+	            myDBManager.insertEstudiante("82476952P", "Aritz", "Eraun", "Peña", "program.estudiante2", "Estudiante2", "program.estudiante2@gmail.com","ES0000000000000000000002", "estudiante", 9.7, 0,0);
+	            myDBManager.insertEstudiante("82476952T", "Ane", "Bollo", "Peña", "program.estudiante3", "Estudiante3", "program.estudiante3@gmail.com","ES0000000000000000000008", "estudiante", 9.6, 0,0);
 	            
 	            // Last step - Close connection
 	            myDBManager.closeLink();
@@ -182,7 +182,7 @@ public class DBManager {
 	     * @throws SQLException si no se puede realizar salta la excepción sqlexception
 	     */
 	
-	    public static void insertEstudiante(String dni, String nombre, String apellido1, String apellido2,
+	    public void insertEstudiante(String dni, String nombre, String apellido1, String apellido2,
 	                                 String user, String password, String email, String iban, String tipopersona,
 	                                 double notamedia, int faltaleve, int faltagrave) throws SQLException{
 	
@@ -192,9 +192,7 @@ public class DBManager {
 	
 	        try
 	                (
-	                        Connection conn = connect();
-	                        PreparedStatement pstmt = conn.prepareStatement(sql) 
-	        				
+	                        PreparedStatement pstmt = conn.prepareStatement(sql) 		
 	                )
 	        {
 	            pstmt.setString(1, dni);
@@ -236,7 +234,7 @@ public class DBManager {
 	     */
 	
 	
-	    public static void insertTrabajador(String dni, String nombre, String apellido1, String apellido2,
+	    public void insertTrabajador(String dni, String nombre, String apellido1, String apellido2,
 	                                        String user, String password, String email, String iban, String tipopersona,
 	                                        double salario) throws SQLException{
 	
@@ -245,7 +243,6 @@ public class DBManager {
 	
 	        try
 	                (
-	                        Connection conn = connect();
 	                        PreparedStatement pstmt = conn.prepareStatement(sql) //
 	                )
 	        {
@@ -289,32 +286,6 @@ public class DBManager {
 	        }
 	
 	
-	    }
-	    
-	    /**
-	     * Sirve para realizar la conexión
-	     * @return
-	     */
-	
-	    private static Connection connect() //tiene que ser estático
-	    {
-	        // SQLite connection string
-	        String name = "UniversidadDeusto4.db";
-	        String url = "jdbc:sqlite:" + name;
-	        Connection conn = null;
-	
-	        try
-	        {
-	            conn = DriverManager.getConnection(url);
-	        }
-	        catch (SQLException e)
-	        {
-	            System.out.println(e.getMessage());
-	        }
-	        return conn;
-	    }
-
-	    
-    
+	    }    
 
 }

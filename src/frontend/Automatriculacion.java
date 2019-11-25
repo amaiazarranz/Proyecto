@@ -60,7 +60,7 @@ public class Automatriculacion extends JFrame {
 	private Icon icono;
 	private ImageIcon image;
 	private JLabel foto;
-
+	private DBManager myDBManager;
 
 
 	/**
@@ -284,7 +284,7 @@ public class Automatriculacion extends JFrame {
 
 					
 					
-					DBManager.insertEstudiante(nombreUsuario, apellido1Usuario, apellido2Usuario, dniUsuario, userUsuario, contrasenaUsuario,
+					myDBManager.insertEstudiante(nombreUsuario, apellido1Usuario, apellido2Usuario, dniUsuario, userUsuario, contrasenaUsuario,
 							emailUsuario, ibanUsuario, "estudiante", 0.0, 0,0);
 
 					
@@ -400,7 +400,6 @@ public class Automatriculacion extends JFrame {
 			            }
 			        }
 
-
 			    }
 			 
 			 /**
@@ -412,7 +411,6 @@ public class Automatriculacion extends JFrame {
 			    private void comprobardniletra(char[] arrayDNI) throws Incorrecto
 			    {
 
-			      
 			        char ultimaletra = arrayDNI[arrayDNI.length-1];
 
 			        if (ultimaletra>=65 && ultimaletra<=90)
@@ -426,10 +424,7 @@ public class Automatriculacion extends JFrame {
 			            throw new Incorrecto ("El dni tiene que tener una letra al final");
 			        }
 			        
-			       
-
 			    }
-
 			
 		});
 		
