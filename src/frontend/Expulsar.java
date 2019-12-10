@@ -14,7 +14,8 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.border.EmptyBorder;
-import sqlite.SelectData;
+
+import sqlite.DBManager;
 import usuarios.Estudiante;
 import usuarios.Persona;
 import javax.swing.JLabel;
@@ -105,7 +106,7 @@ public class Expulsar extends JFrame {
 						}
 					}
 					
-					SelectData.delete(user);
+					DBManager.delete(user);
 					
 					JOptionPane.showMessageDialog(Expulsar.this, "Ya se ha expulsado el alumno");
 				}

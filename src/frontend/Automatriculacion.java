@@ -60,7 +60,6 @@ public class Automatriculacion extends JFrame {
 	private Icon icono;
 	private ImageIcon image;
 	private JLabel foto;
-	private DBManager myDBManager;
 
 
 	/**
@@ -287,7 +286,7 @@ public class Automatriculacion extends JFrame {
 
 					
 					
-					myDBManager.insertEstudiante(nombreUsuario, apellido1Usuario, apellido2Usuario, dniUsuario, userUsuario, contrasenaUsuario,
+					DBManager.insertEstudiante(nombreUsuario, apellido1Usuario, apellido2Usuario, dniUsuario, userUsuario, contrasenaUsuario,
 							emailUsuario, ibanUsuario, "estudiante", 0.0, 0,0);
 
 					

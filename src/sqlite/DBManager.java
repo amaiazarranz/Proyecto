@@ -1,8 +1,12 @@
 package sqlite;
 
 import java.sql.*;
+import java.util.ArrayList;
 
 import javax.swing.Icon;
+
+import usuarios.Estudiante;
+import usuarios.Trabajador;
 
 /**
  * Es el gestor de la base de datos
@@ -13,9 +17,9 @@ import javax.swing.Icon;
 
 public class DBManager {
 
-    private Connection conn;
-    private String BDname;
-    private final String URL = "jdbc:sqlite:";
+    private static Connection conn;
+    private static String BDname;
+    private final static String URL = "jdbc:sqlite:";
 
     
     /**
@@ -25,7 +29,7 @@ public class DBManager {
     
 	    public DBManager(String BDname)
 	    {
-	        this.BDname = this.URL + BDname;
+	        DBManager.BDname = URL + BDname;
 	
 	    }
 	    
@@ -42,23 +46,23 @@ public class DBManager {
 	        try
 	        {
 	            // Step 1 - Instantiate the manager
-	            myDBManager= new DBManager("UniversidadDeusto4.db");
+	            //myDBManager= new DBManager("UniversidadDeusto4.db");
 
 	            // Step 2 - Create database
-	            myDBManager.createLink();
+	            DBManager.createLink();
 
 	            // Step 3 - Create table
-	            myDBManager.createNewTableEstudiante();
-	            myDBManager.createNewTableTrabajador();
+	            DBManager.createNewTableEstudiante();
+	            DBManager.createNewTableTrabajador();
 	            
-	            myDBManager.insertTrabajador("72608821Y", "Olatz", "Gonzalez" , "Santiago" , "program.profesor1", "Profesor1" , "program.profesor1@gmail.com", "ES0000000000000000000000", "profesor", 2000.0);
-	            myDBManager.insertTrabajador("72608821R", "Leire", "Gonzalez" , "Santiago" , "program.secretario1", "Secretario1" , "program.secretario1@gmail.com", "ES0000000000000000000003", "secretario", 2000.0);
-	            myDBManager.insertEstudiante("82476952I", "Jon", "Zabaleta", "Peña", "program.estudiante1", "Estudiante1", "program.estudiante1@gmail.com","ES0000000000000000000001", "estudiante", 9.8, 0,0);
-	            myDBManager.insertEstudiante("82476952P", "Aritz", "Eraun", "Peña", "program.estudiante2", "Estudiante2", "program.estudiante2@gmail.com","ES0000000000000000000002", "estudiante", 9.7, 0,0);
-	            myDBManager.insertEstudiante("82476952T", "Ane", "Bollo", "Peña", "program.estudiante3", "Estudiante3", "program.estudiante3@gmail.com","ES0000000000000000000008", "estudiante", 9.6, 0,0);
+	            DBManager.insertTrabajador("72608821Y", "Olatz", "Gonzalez" , "Santiago" , "program.profesor1", "Profesor1" , "program.profesor1@gmail.com", "ES0000000000000000000000", "profesor", 2000.0);
+	            DBManager.insertTrabajador("72608821R", "Leire", "Gonzalez" , "Santiago" , "program.secretario1", "Secretario1" , "program.secretario1@gmail.com", "ES0000000000000000000003", "secretario", 2000.0);
+	            DBManager.insertEstudiante("82476952I", "Jon", "Zabaleta", "Peña", "program.estudiante1", "Estudiante1", "program.estudiante1@gmail.com","ES0000000000000000000001", "estudiante", 9.8, 0,0);
+	            DBManager.insertEstudiante("82476952P", "Aritz", "Eraun", "Peña", "program.estudiante2", "Estudiante2", "program.estudiante2@gmail.com","ES0000000000000000000002", "estudiante", 9.7, 0,0);
+	            DBManager.insertEstudiante("82476952T", "Ane", "Bollo", "Peña", "program.estudiante3", "Estudiante3", "program.estudiante3@gmail.com","ES0000000000000000000008", "estudiante", 9.6, 0,0);
 	            
 	            // Last step - Close connection
-	            myDBManager.closeLink();
+	            DBManager.closeLink();
 	        }
 	        catch (SQLException e)
 	        {
@@ -76,11 +80,11 @@ public class DBManager {
 	 * @throws SQLException si no se puede realizar salta la excepción sqlexception
 	 */
 	
-	    public void createLink() throws SQLException
+	    public static void createLink() throws SQLException
 	    {
 	        try
 	        {
-	            this.conn = DriverManager.getConnection(this.BDname);
+	            conn = DriverManager.getConnection(BDname);
 	        }
 	        catch (SQLException e)
 	        {
@@ -93,7 +97,7 @@ public class DBManager {
 	     * @throws SQLException si no se puede realizar salta la excepción sqlexception
 	     */
 	
-	        public void createNewTableEstudiante() throws SQLException
+	        public static void createNewTableEstudiante() throws SQLException
 	    {
 	
 	        // SQL statement for creating a new table
@@ -114,7 +118,7 @@ public class DBManager {
 	
 	        try
 	                (
-	                        Statement stmt = this.conn.createStatement()
+	                        Statement stmt = conn.createStatement()
 	                )
 	        {
 	            //create a table
@@ -133,7 +137,7 @@ public class DBManager {
          * @throws SQLException si no se puede realizar salta la excepción sqlexception
          */
 	
-	    public void createNewTableTrabajador() throws SQLException
+	    public static void createNewTableTrabajador() throws SQLException
 	    {
 	
 	        // SQL statement for creating a new table
@@ -152,7 +156,7 @@ public class DBManager {
 	
 	        try
 	                (
-	                        Statement stmt = this.conn.createStatement()
+	                        Statement stmt = conn.createStatement()
 	                )
 	        {
 	
@@ -182,7 +186,7 @@ public class DBManager {
 	     * @throws SQLException si no se puede realizar salta la excepción sqlexception
 	     */
 	
-	    public void insertEstudiante(String dni, String nombre, String apellido1, String apellido2,
+	    public static void insertEstudiante(String dni, String nombre, String apellido1, String apellido2,
 	                                 String user, String password, String email, String iban, String tipopersona,
 	                                 double notamedia, int faltaleve, int faltagrave) throws SQLException{
 	
@@ -192,7 +196,8 @@ public class DBManager {
 	
 	        try
 	                (
-	                        PreparedStatement pstmt = conn.prepareStatement(sql) 		
+	                        Connection conn= connect();
+	                		PreparedStatement pstmt = conn.prepareStatement(sql) 		
 	                )
 	        {
 	            pstmt.setString(1, dni);
@@ -234,7 +239,7 @@ public class DBManager {
 	     */
 	
 	
-	    public void insertTrabajador(String dni, String nombre, String apellido1, String apellido2,
+	    public static void insertTrabajador(String dni, String nombre, String apellido1, String apellido2,
 	                                        String user, String password, String email, String iban, String tipopersona,
 	                                        double salario) throws SQLException{
 	
@@ -243,7 +248,8 @@ public class DBManager {
 	
 	        try
 	                (
-	                        PreparedStatement pstmt = conn.prepareStatement(sql) //
+	                        Connection conn=connect();
+	                		PreparedStatement pstmt = conn.prepareStatement(sql) //
 	                )
 	        {
 	            pstmt.setString(1, dni);
@@ -265,18 +271,254 @@ public class DBManager {
 	        }
 	    }
 	    
+	    public static ArrayList<Trabajador> selectAllTrabajadores()
+	    {
+
+	        ArrayList <Trabajador> diccionarioTrabajadores= new ArrayList <>();
+	        String sql = "SELECT dni, nombre, apellido1, apellido2, user, password, email, iban, tipopersona, salario  FROM trabajador";
+
+	        try
+	                (
+	                        Connection conn = connect();
+	                        Statement stmt  = conn.createStatement();
+	                        ResultSet rs    = stmt.executeQuery(sql) //nueva clase. Es otro set de results. Es como un arraylist
+	                )
+	        {
+
+	            // loop through the result set
+	            while (rs.next()) //mientras tenga más contenido
+	            {
+
+	                String dni = rs.getString("dni");
+	                String nombre = rs.getString("nombre");
+	                String apellido1 = rs.getString("apellido1");
+	                String apellido2 = rs.getString("apellido2");
+	                String user = rs.getString("user");
+	                String password = rs.getString("password");
+	                String email = rs.getString("email");
+	                String iban = rs.getString("iban");
+	                String tipopersona = rs.getString("tipopersona");
+	                double salario = rs.getDouble("salario");
+
+	                Trabajador trabajador = new Trabajador(nombre, apellido1, apellido2, dni, user, password, email, iban, tipopersona, salario);
+	                diccionarioTrabajadores.add(trabajador);
+
+	            }
+	        }
+	        catch (SQLException e)
+	        {
+	            System.out.println(e.getMessage());
+	        }
+
+	        return diccionarioTrabajadores;
+
+	    }
+	    
+	    /**
+	     * Seleccionar todos los estudiantes
+	     * @return la lista de todos los estudiantes
+	     */
+
+	    public static ArrayList<Estudiante> selectAllEstudiantes()
+	    {
+
+	        ArrayList <Estudiante> diccionarioEstudiantes= new ArrayList <>();
+	        String sql = "SELECT dni, nombre, apellido1, apellido2, user, password, email, iban, tipopersona, " +
+	                "notamedia, faltaleve, faltagrave  FROM estudiante";
+
+	        try
+	                (
+	                        Connection conn = connect();
+	                        Statement stmt  = conn.createStatement();
+	                        ResultSet rs    = stmt.executeQuery(sql) //nueva clase. Es otro set de results. Es como un arraylist
+	                )
+	        {
+
+	            // loop through the result set
+	            while (rs.next()) //mientras tenga más contenido
+	            {
+
+	                String dni = rs.getString("dni");
+	                String nombre = rs.getString("nombre");
+	                String apellido1 = rs.getString("apellido1");
+	                String apellido2 = rs.getString("apellido2");
+	                String user = rs.getString("user");
+	                String password = rs.getString("password");
+	                String email = rs.getString("email");
+	                String iban = rs.getString("iban");
+	                String tipopersona = rs.getString("tipopersona");
+	                double notamedia = rs.getDouble("notamedia");
+	                int faltaleve=rs.getInt("faltaleve");
+	                int faltagrave=rs.getInt("faltagrave");
+
+	                Estudiante estudiante = new Estudiante(nombre, apellido1, apellido2, dni, user, password, email, iban, tipopersona, notamedia, faltaleve, faltagrave);
+	                diccionarioEstudiantes.add(estudiante);
+
+	            }
+	        }
+	        catch (SQLException e)
+	        {
+	            System.out.println(e.getMessage());
+	        }
+
+	        return diccionarioEstudiantes;
+
+	    }
+	    
+	    /**
+	     * Actualiza el valor de las faltas leves
+	     * @param user el usuario
+	     * @param faltaleve el número de faltas leves
+	     * @throws SQLException si no se puede realizar salta la excepción sqlexception
+	     */
+	    
+	    public static void actualizarFaltaLeve(String user, int faltaleve) throws SQLException{
+
+	    	String sql = "UPDATE estudiante SET faltaleve = ? WHERE user = ?";
+			
+			try
+			(
+			   Connection conn = connect();
+			   PreparedStatement pstmt = conn.prepareStatement(sql) //
+			)
+			
+			{
+				pstmt.setInt(1, faltaleve);
+	            pstmt.setString(2, user);
+
+	            // update
+	            pstmt.executeUpdate();
+	            
+			
+			}
+			catch (SQLException e)
+			{
+			System.out.println(e.getMessage());
+			}
+		}
+	    
+	    /**
+	     * Actualiza el valor de las faltas graves
+	     * @param user el usuario
+	     * @param faltagrave el número de faltas graves
+	     * @throws SQLException si no se puede realizar salta la excepción sqlexception
+	     */
+	    
+	    public static void actualizarFaltaGrave(String user, int faltagrave) throws SQLException{
+
+	    	String sql = "UPDATE estudiante SET faltagrave = ? WHERE user = ?";
+			
+			try
+			(
+			   Connection conn = connect();
+			   PreparedStatement pstmt = conn.prepareStatement(sql) //
+			)
+			
+			{
+				pstmt.setInt(1, faltagrave);
+	            pstmt.setString(2, user);
+
+	            // update
+	            pstmt.executeUpdate();
+	            
+			
+			}
+			catch (SQLException e)
+			{
+			System.out.println(e.getMessage());
+			}
+		}
+	    
+	    public static void actualizarNotaMedia(String user, int notamedia) throws SQLException{
+
+	    	String sql = "UPDATE estudiante SET notamedia = ? WHERE user = ?";
+			
+			try
+			(
+			   Connection conn = connect();
+			   PreparedStatement pstmt = conn.prepareStatement(sql) 
+			)
+			
+			{
+				pstmt.setInt(1, notamedia);
+	            pstmt.setString(2, user);
+
+	            pstmt.executeUpdate();
+	            
+			
+			}
+			catch (SQLException e)
+			{
+			System.out.println(e.getMessage());
+			}
+		}
+	    
+	    /**
+	     * elimina el estudiante
+	     * @param user el usuario
+	     */
+	    
+	    public static void delete(String user)
+	    {
+	        String sql = "DELETE FROM estudiante WHERE user = ?";
+
+	        try
+	                (
+	                        Connection conn = connect();
+	                        PreparedStatement pstmt = conn.prepareStatement(sql)
+	                )
+	        {
+
+	            // set the corresponding param
+	            pstmt.setString(1, user);
+
+	            // execute the delete statement
+	            pstmt.executeUpdate();
+
+	        }
+	        catch (SQLException e)
+	        {
+	            System.out.println(e.getMessage());
+	        }
+	    }
+	    
+	    /**
+	     * Sirve para realizar la conexión
+	     * @return
+	     */
+	
+	    private static Connection connect() //tiene que ser estático
+	    {
+	        // SQLite connection string
+	    	String name = "UniversidadDeusto4.db";
+	    	//String url= BDname;
+	    	String url = "jdbc:sqlite:" + name;
+	    	
+	        Connection conn = null;
+	
+	        try
+	        {
+	            conn = DriverManager.getConnection(url);
+	        }
+	        catch (SQLException e)
+	        {
+	            System.out.println(e.getMessage());
+	        }
+	        return conn;
+	    }
+	    
 	    /**
 	     * Sirve para cerrar la conexión
 	     * @throws SQLException si no se puede realizar salta la excepción sqlexception
 	     */
 	    
-	    public void closeLink()throws SQLException{
+	    public static void closeLink()throws SQLException{
 	
 	        try{
 	
-	            if(this.conn != null){
+	            if(conn != null){
 	
-	                this.conn.close();
+	                conn.close();
 	            }
 	        }
 	        catch (SQLException ex){
@@ -287,5 +529,12 @@ public class DBManager {
 	
 	
 	    }    
+	    
+	    public static void setNameBD(){
+	    	
+	    	DBManager.BDname = URL + BDname;
+	    	
+	    }
+	    
 
 }

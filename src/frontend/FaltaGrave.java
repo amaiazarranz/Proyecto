@@ -12,7 +12,7 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.border.EmptyBorder;
 
-import sqlite.SelectData;
+import sqlite.DBManager;
 import usuarios.Estudiante;
 import usuarios.Persona;
 import javax.swing.JLabel;
@@ -112,7 +112,7 @@ public class FaltaGrave extends JFrame {
 					modificar.setFaltagrave(modificar.getFaltagrave()+1);
 					
 					try {
-			            SelectData.actualizarFaltaGrave(user, modificar.getFaltagrave()+1);
+						DBManager.actualizarFaltaGrave(user, modificar.getFaltagrave()+1);
 			            
 			        } catch (SQLException e1) {
 			            e1.printStackTrace();

@@ -14,7 +14,6 @@ import javax.swing.JScrollPane;
 import javax.swing.border.EmptyBorder;
 
 import sqlite.DBManager;
-import sqlite.SelectData;
 import usuarios.Estudiante;
 import usuarios.Persona;
 import javax.swing.JLabel;
@@ -134,7 +133,7 @@ public class Calificar extends JFrame {
 				
 				
 				try {
-					SelectData.actualizarNotaMedia(a.getUser(), media);
+					DBManager.actualizarNotaMedia(a.getUser(), media);
 				} catch (SQLException e1) {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();

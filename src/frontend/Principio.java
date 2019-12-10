@@ -9,7 +9,7 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
-import sqlite.SelectData;
+import sqlite.DBManager;
 import usuarios.Estudiante;
 import usuarios.Trabajador;
 
@@ -32,6 +32,7 @@ import java.awt.event.ActionEvent;
 public class Principio extends JFrame {
 
 	private JPanel contentPane;
+	
 	
 	ArrayList<Estudiante> diccionarioEstudiantes;
     ArrayList <Trabajador> diccionarioTrabajadores;
@@ -59,8 +60,8 @@ public class Principio extends JFrame {
 	
 	public Principio() {
 		
-		 diccionarioEstudiantes= SelectData.selectAllEstudiantes();
-	     diccionarioTrabajadores= SelectData.selectAllTrabajadores();
+		 diccionarioEstudiantes= DBManager.selectAllEstudiantes();
+	     diccionarioTrabajadores= DBManager.selectAllTrabajadores();
 
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 

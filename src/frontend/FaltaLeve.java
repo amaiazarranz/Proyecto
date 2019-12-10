@@ -14,7 +14,6 @@ import javax.swing.JScrollPane;
 import javax.swing.border.EmptyBorder;
 
 import sqlite.DBManager;
-import sqlite.SelectData;
 import usuarios.Estudiante;
 import usuarios.Persona;
 import usuarios.Profesor;
@@ -39,6 +38,7 @@ public class FaltaLeve extends JFrame {
 	private JPanel contentPane;
 	private JTextField textField;
 	private JList list;
+
 
 
 	/**
@@ -130,7 +130,7 @@ public class FaltaLeve extends JFrame {
 					modificar.setFaltaleve(numero1);
 					
 					try {
-			            SelectData.actualizarFaltaLeve(user, numero1);
+						DBManager.actualizarFaltaLeve(user, numero1);
 			            
 			        } catch (SQLException e1) {
 			            e1.printStackTrace();
