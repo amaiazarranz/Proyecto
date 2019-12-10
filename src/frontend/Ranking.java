@@ -4,6 +4,7 @@ import java.awt.BorderLayout;
 
 import java.awt.EventQueue;
 import java.util.ArrayList;
+import java.util.stream.Stream;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -73,6 +74,14 @@ public class Ranking extends JFrame {
 		scrollPane.setBounds(15, 44, 398, 115);
 		contentPane.add(scrollPane);
 		
+		long count= diccionarioEstudiantes.stream().filter(w->w.getNotamedia()>=5.0).count();
+		long total=diccionarioEstudiantes.stream().count();
+		long calculo=count/total*100;
+		
+		JLabel lblNmeroDeAprobados = new JLabel("N\u00FAmero de aprobados: " + count + " de un total de "+ total+ " estudiantes");
+		lblNmeroDeAprobados.setBounds(15, 175, 398, 20);
+		contentPane.add(lblNmeroDeAprobados);
+		
 		//cargarLista(diccionarioEstudiantes);
 		cargarListaMerge(diccionarioEstudiantes);
 		
@@ -118,6 +127,4 @@ public class Ranking extends JFrame {
 		
 		
 	}
-
-
 }
