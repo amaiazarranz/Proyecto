@@ -93,20 +93,30 @@ public class Principio extends JFrame {
 		contentPane.add(btnInicio);
 
 		JButton btnSalir = new JButton("Automatriculación");
-		btnSalir.addActionListener(new ActionListener() {
-			
-			/**
-			 * Aquí se pincha para poder automatricularse
-			 */
-			public void actionPerformed(ActionEvent e) {
+//		SIN EXPRESIONES LAMBDA
+//		btnSalir.addActionListener(new ActionListener() {
+//			
+//			/**
+//			 * Aquí se pincha para poder automatricularse
+//			 */
+//			public void actionPerformed(ActionEvent e) {
+//				
+//				Automatriculacion ventana= new Automatriculacion(diccionarioEstudiantes, diccionarioTrabajadores, Principio.this);
+//				ventana.setVisible(true);
+//				Principio.this.dispose();
+//
+//				
+//			}
+//		});
+//		CON EXPRESIONES LAMBDA
+		btnSalir.addActionListener(e -> 
+		{
 				
 				Automatriculacion ventana= new Automatriculacion(diccionarioEstudiantes, diccionarioTrabajadores, Principio.this);
 				ventana.setVisible(true);
 				Principio.this.dispose();
-
-				
-			}
 		});
+		
 		btnSalir.setBounds(275, 199, 149, 29);
 		contentPane.add(btnSalir);
 	}

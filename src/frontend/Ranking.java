@@ -45,19 +45,28 @@ public class Ranking extends JFrame {
 		contentPane.setLayout(null);
 		
 		JButton btnAtrs = new JButton("Atr\u00E1s");
-		btnAtrs.addActionListener(new ActionListener() {
-			
-			/**
-			 * Acción de volver a la ventana de estudiantes
-			 */
-			
-			public void actionPerformed(ActionEvent e) {
-				
+//		SIN EXPRESIONES LAMBDA
+//		btnAtrs.addActionListener(new ActionListener() {
+//			
+//			/**
+//			 * Acción de volver a la ventana de estudiantes
+//			 */
+//			
+//			public void actionPerformed(ActionEvent e) {
+//				
+//				atras.setVisible(true);
+//				Ranking.this.setVisible(false);
+//				
+//			}
+//		});
+//		CON EXPRESIONES LAMBDA
+		btnAtrs.addActionListener(e-> 
+		{				
 				atras.setVisible(true);
 				Ranking.this.setVisible(false);
 				
-			}
 		});
+		
 		btnAtrs.setBounds(298, 199, 115, 29);
 		contentPane.add(btnAtrs);
 		
