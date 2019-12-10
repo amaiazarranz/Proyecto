@@ -1,16 +1,14 @@
 package frontend;
 
-import sqlite.SelectData;
-
 import usuarios.Estudiante;
 import usuarios.Persona;
 import usuarios.Profesor;
 import usuarios.Secretario;
 import usuarios.Trabajador;
-
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import excepciones.UsuariosNoExiste;
+import sqlite.DBManager;
 
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -30,6 +28,7 @@ public class LoginVisual extends JFrame{
     private JPasswordField textContrasena;
     private String usuario;
     private String password;
+    
     JPanel f;
     ArrayList<Estudiante> diccionarioEstudiantes;
     ArrayList <Trabajador> diccionarioTrabajadores;
@@ -143,17 +142,28 @@ public class LoginVisual extends JFrame{
 		JButton btnCancel = new JButton("Atrás");
 		btnCancel.setBounds(15, 187, 183, 29);
 		
-		btnCancel.addActionListener(new ActionListener() {
-			
-			/**
-			 * Acción para volver a la ventana anterior
-			 */
-			public void actionPerformed(ActionEvent e) {
-				
-				principio.setVisible(true);
-				LoginVisual.this.setVisible(false);
-			}
-		});
+//		Sin expresiones lambda
+//		btnCancel.addActionListener(new ActionListener() {
+//			
+//			/**
+//			 * Acción para volver a la ventana anterior
+//			 */
+//			public void actionPerformed(ActionEvent e) {
+//				
+//				principio.setVisible(true);
+//				LoginVisual.this.setVisible(false);
+//			}
+//		});
+		
+//		Con expresiones lambda
+		btnCancel.addActionListener(
+				e -> 
+				{principio.setVisible(true);
+				LoginVisual.this.setVisible(false); 
+				});
+
+
+		
 		f.add(btnCancel);
 
         setVisible(true);
