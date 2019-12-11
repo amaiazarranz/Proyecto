@@ -75,17 +75,32 @@ public class FaltaGrave extends JFrame {
 		
 		cargarLista(diccionarioEstudiantes);
 		
-		btnAtrs.addActionListener(new ActionListener() {
-			
-			/**
-			 * Acción para volver a la pantalla anterior
-			 */
+//		Clase abstracta
+		
+		class ClickListener implements ActionListener
+		{
+			@Override
 			public void actionPerformed(ActionEvent e) {
-
 				atras.setVisible(true);
 				FaltaGrave.this.setVisible(false);
 			}
-		});
+		}
+		ClickListener a1 = new ClickListener();
+		btnAtrs.addActionListener(a1);
+
+//		IMPLEMENTACION ANTERIOR SIN CLASE ABSTRACTA
+		
+//		btnAtrs.addActionListener(new ActionListener() {
+//			
+//			/**
+//			 * Acción para volver a la pantalla anterior
+//			 */
+//			public void actionPerformed(ActionEvent e) {
+//
+//				atras.setVisible(true);
+//				FaltaGrave.this.setVisible(false);
+//			}
+//		});
 		
 		btnOk.addActionListener(new ActionListener() {
 			
