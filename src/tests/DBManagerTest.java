@@ -1,9 +1,9 @@
 package tests;
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotEquals;
 import static org.junit.Assert.assertNull;
 import static org.junit.Assert.fail;
 
-import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
@@ -12,7 +12,6 @@ import org.junit.Before;
 import org.junit.Test;
 
 import sqlite.DBManager;
-import sqlite.SelectData;
 import usuarios.Estudiante;
 import usuarios.Profesor;
 import usuarios.Trabajador;
@@ -30,20 +29,20 @@ public class DBManagerTest {
 	@Before
 	public void setUp() throws Exception {
 		myDBManager= new DBManager("UniversidadDeusto.db");
-		myDBManager.createLink();
+		DBManager.createLink();
 		
 		
 	}
 
 	@After
 	public void tearDown() throws Exception {
-		myDBManager.closeLink();
+		DBManager.closeLink();
 	}
 
 	@Test
 	public void testFailure() throws SQLException {
 	
-		myDBManager.insertEstudiante("String nombre", "String apellido1", "String apellido2", "String dni", "String user", "String password", 
+		DBManager.insertEstudiante("String nombre", "String apellido1", "String apellido2", "String dni", "String user", "String password", 
 	    		"String email", "String iban", "String tipopersona", 20.0, 10, 0);
 		
 		fail("Tabla no creada");
@@ -52,8 +51,8 @@ public class DBManagerTest {
 	@Test
 	public void testInsert() throws SQLException {
 		
-		myDBManager.createNewTableEstudiante();
-		myDBManager.createNewTableTrabajador();
+		DBManager.createNewTableEstudiante();
+		DBManager.createNewTableTrabajador();
 		
 //		Estudiante e1 = new Estudiante(
 //				"String nombre", "String apellido1", "String apellido2", "String dni", "String user", "String password", 
@@ -66,12 +65,12 @@ public class DBManagerTest {
 //                3000.0
 //	    		);
 		
-		myDBManager.insertTrabajador("String nom", "String apellido1", "String apellido2", "String dni",
+		DBManager.insertTrabajador("String nom", "String apellido1", "String apellido2", "String dni",
 					"String user", "String password", "String email", "String iban", "profesor",
 			            3000.0);
 
 	
-		myDBManager.insertEstudiante("String nombre", "String apellido1", null, "String dni", "String user", "String password", 
+		DBManager.insertEstudiante("String nombre", "String apellido1", null, "String dni", "String user", "String password", 
 					"String email", "String iban", "String tipopersona", 20.0, 10, 0);
 	
 	
@@ -79,14 +78,15 @@ public class DBManagerTest {
 		String nombre= null;
 		String dni= null;
 		Estudiante b = null;
-		ArrayList <Estudiante> diccionarioEstudiantes=SelectData.selectAllEstudiantes();
-//		for (Estudiante a: diccionarioEstudiantes) {
-//			if (e1.getDni().equals("String dni")){
-//				nombre=e1.getNombre();
-//				dni=e1.getDni();
-//				b=a;
-//				break;
-//			}
+		ArrayList <Estudiante> diccionarioEstudiantes=DBManager.selectAllEstudiantes();
+		for (Estudiante e: diccionarioEstudiantes) {
+			if (e.getDni().equals("String dni")){
+				nombre=e.getNombre();
+				dni=e.getDni();
+				b=e;
+				break;
+			}
+		}
 		for (Estudiante a: diccionarioEstudiantes) {
 			
 			if (a.getDni().equals("String dni")) {
@@ -99,14 +99,15 @@ public class DBManagerTest {
 		}
 			
 		assertEquals("String nombre", nombre);	
-		
+		assertNotEquals("", nombre);
 		assertEquals("String dni", dni);	
+		assertNotEquals("", dni);
 		
 		
 		String nombr= null;
 		String ap2=null;
 		Trabajador c = null;
-		ArrayList<Trabajador> diccionarioProfesores=SelectData.selectAllTrabajadores();
+		ArrayList<Trabajador> diccionarioProfesores=DBManager.selectAllTrabajadores();
 		for (Trabajador p: diccionarioProfesores) {
 			if (p.getDni().equals("String dni")){
 				nombr=p.getNombre();
@@ -121,6 +122,7 @@ public class DBManagerTest {
 		
 		assertNull(ap2);
 		assertEquals("String nom", nombr);
+		assertNotEquals("", nombr);
 		
 		
 	}
@@ -129,25 +131,25 @@ public class DBManagerTest {
 	public void testInsert2() throws SQLException {
 		
 		
-		myDBManager.createNewTableTrabajador();
+		DBManager.createNewTableTrabajador();
 		
-		myDBManager.insertTrabajador("Amaia", "Zarranz", "Mendizabal", "73608820M", "amaiazar",
+		DBManager.insertTrabajador("Amaia", "Zarranz", "Mendizabal", "73608820M", "amaiazar",
 					"amaia", "amaia@gmail.com", "", "profesor", 1000);
 		
 		
-		ArrayList <Trabajador> d=SelectData.selectAllTrabajadores();
+		ArrayList <Trabajador> d=DBManager.selectAllTrabajadores();
 		
 		String email=null;
 		Trabajador t=null;
 		for (Trabajador a: d) {
-			//System.out.println(a.getEmail());
+			System.out.println(a.getEmail());
 			email=a.getEmail();
 			t=a;
 		}
 		
 		
-		//assertEquals("amaia@gmail.com", email);
-		//assertEquals("amaia@gmail.com", t.getEmail());
+		assertEquals("amaia@gmail.com", email);
+		assertEquals("amaia@gmail.com", t.getEmail());
 
 		
 	}

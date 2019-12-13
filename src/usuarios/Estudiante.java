@@ -8,7 +8,6 @@ import javax.swing.ImageIcon;
 
 import interfaces.IComparable;
 import interfaces.IMensajes;
-import sqlite.SelectData;
 import utilidades.MergeSortGenerico;
 
 /**
