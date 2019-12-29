@@ -8,11 +8,19 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 
+/**
+ * Esta clase nos permite realizar varios test en paralelo
+ * @author Alumno Amaia y Olatz
+ *
+ */
 @RunWith(value = Parameterized.class)
 public class SecretarioTestParametrizado {
 	
+	/**
+	 * Creamos el parametrizado
+	 * @return lista de las pruebas que se han realizado
+	 */
 	
-	//creamos el parametrizado
 	@Parameterized.Parameters
 	public static List<Object[]> pruebas()
 	{
@@ -33,8 +41,6 @@ public class SecretarioTestParametrizado {
 	    return o;
 	}
 	
-	//Creamos el constructor para lo que arriba acabamos de crear
-	
 	private String nombre; 
 	private String apellido1;
 	private String apellido2;
@@ -45,6 +51,20 @@ public class SecretarioTestParametrizado {
 	private String iban;
 	private String tipopersona;
 	private double salario;
+	
+	/**
+	 * El constructor de secretariotestparametrizado
+	 * @param nombre nombre
+	 * @param apellido1 primer apellido
+	 * @param apellido2 segundo apellido
+	 * @param dni dni
+	 * @param user usuario
+	 * @param password contrasena
+	 * @param email correo
+	 * @param iban iban
+	 * @param tipopersona en este caso secretario
+	 * @param salario salario del secretario
+	 */
 	
 	
 	public SecretarioTestParametrizado (String nombre, String apellido1, String apellido2, String dni, String user, String password,
@@ -61,6 +81,10 @@ public class SecretarioTestParametrizado {
 		this.tipopersona=tipopersona;
 		this.salario=salario;
 	}
+	
+	/**
+	 * El test realizado
+	 */
 	
 	
 	@Test
