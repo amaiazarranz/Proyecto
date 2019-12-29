@@ -15,15 +15,27 @@ import usuarios.Estudiante;
  */
 
 public class EstudianteTest {
-
+	
+	/**
+	 * Se lanza antes de los test
+	 * @throws Exception excepcion
+	 */
 	@Before
 	public void setUp() throws Exception {
 	}
-
+	
+	/**
+	 * Se lanza después de los test
+	 * @throws Exception excepcion
+	 */
+	
 	@After
 	public void tearDown() throws Exception {
 	}
-
+	
+	/**
+	 * Test de los constructores
+	 */
 	@Test
 	public void testConstructor() 
 	{

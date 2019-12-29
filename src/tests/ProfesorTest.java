@@ -14,21 +14,32 @@ import usuarios.Profesor;
  */
 
 public class ProfesorTest {
-
+	
+	/**
+	 * Se lanza antes de los test
+	 * @throws Exception excepcion
+	 */
 	@Before
 	public void setUp() throws Exception {
 	}
-
+	
+	/**
+	 * Se lanza despues de los test
+	 * @throws Exception excepcion
+	 */
 	@After
 	public void tearDown() throws Exception {
 	}
+	
+	/**
+	 * test de los profesores
+	 */
 
 	@Test
-	
 	public void test() {
 		
 		Profesor p1 = new Profesor(
-				"String nombre", "String apellido1", "String apellido2", "String dni",
+			   "String nombre", "String apellido1", "String apellido2", "String dni",
                "String user", "String password", "String email", "String iban", "String tipopersona",
                 3000.0
 	    		);
