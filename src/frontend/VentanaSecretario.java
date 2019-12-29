@@ -89,6 +89,10 @@ public class VentanaSecretario extends JFrame {
 		
 	}
 	
+	/**
+	 * Método en el que se enseña el mensaje de que se ha cerrado sesión
+	 */
+	
 	public static void CerrarSesion1() {
 		
 		JOptionPane.showMessageDialog(null, "Has cerrado sesión");
