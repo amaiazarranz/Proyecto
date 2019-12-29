@@ -1,6 +1,8 @@
 package tests;
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotEquals;
+
+
+//import static org.junit.Assert.assertNotEquals;
 import static org.junit.Assert.assertNull;
 import static org.junit.Assert.fail;
 
@@ -25,20 +27,34 @@ import usuarios.Trabajador;
 public class DBManagerTest {
 	
 	private DBManager myDBManager;
-
+	
+	/**
+	 * Se crea la base de datos y el link
+	 * @throws Exception excepcion
+	 */
 	@Before
 	public void setUp() throws Exception {
-		myDBManager= new DBManager("UniversidadDeusto.db");
+		myDBManager= new DBManager("UniversidadDeusto6.db");
 		DBManager.createLink();
 		
 		
 	}
-
+	
+	/**
+	 * Se cierra el link
+	 * @throws Exception excepcion
+	 */
+	
 	@After
 	public void tearDown() throws Exception {
 		DBManager.closeLink();
 	}
-
+	
+	/**
+	 * Test que queremos que falle porque no se ha creado la tabla
+	 * @throws SQLException excepcion de sql
+	 */
+	
 	@Test
 	public void testFailure() throws SQLException {
 	
@@ -47,6 +63,11 @@ public class DBManagerTest {
 		
 		fail("Tabla no creada");
 	}
+	
+	/**
+	 * test de los insert
+	 * @throws SQLException excepcion de los sql
+	 */
 		
 	@Test
 	public void testInsert() throws SQLException {
@@ -70,7 +91,7 @@ public class DBManagerTest {
 			            3000.0);
 
 	
-		DBManager.insertEstudiante("String nombre", "String apellido1", null, "String dni", "String user", "String password", 
+		DBManager.insertEstudiante("String nombre", "String apellido1", "String apellido2", "String dni", "String user", "String password", 
 					"String email", "String iban", "String tipopersona", 20.0, 10, 0);
 	
 	
@@ -99,9 +120,9 @@ public class DBManagerTest {
 		}
 			
 		assertEquals("String nombre", nombre);	
-		assertNotEquals("", nombre);
+		//assertNotEquals("", nombre);
 		assertEquals("String dni", dni);	
-		assertNotEquals("", dni);
+		//assertNotEquals("", dni);
 		
 		
 		String nombr= null;
@@ -122,11 +143,15 @@ public class DBManagerTest {
 		
 		assertNull(ap2);
 		assertEquals("String nom", nombr);
-		assertNotEquals("", nombr);
+		//assertNotEquals("", nombr);
 		
 		
 	}
 	
+	/**
+	 * segundo test de los insert
+	 * @throws SQLException excepcion de los sql
+	 */
 	@Test
 	public void testInsert2() throws SQLException {
 		
