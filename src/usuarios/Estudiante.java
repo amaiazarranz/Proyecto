@@ -7,7 +7,6 @@ import javax.swing.Icon;
 import javax.swing.ImageIcon;
 
 import interfaces.IComparable;
-import interfaces.IMensajes;
 import utilidades.MergeSortGenerico;
 
 /**
