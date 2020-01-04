@@ -80,7 +80,7 @@ public class VentanaEstudiantes extends JFrame {
 				VentanaEstudiantes.this.setVisible(false);
 			}
 		});
-		btnEnviarCorreo.setBounds(277, 89, 115, 29);
+		btnEnviarCorreo.setBounds(277, 73, 115, 29);
 		contentPane.add(btnEnviarCorreo);
 		
 		JButton btnVerRanking = new JButton("Ver Ranking");
@@ -96,12 +96,25 @@ public class VentanaEstudiantes extends JFrame {
 				
 			}
 		});
-		btnVerRanking.setBounds(277, 134, 115, 29);
+		btnVerRanking.setBounds(277, 118, 115, 29);
 		contentPane.add(btnVerRanking);
 		
 		JLabel lblFoto = new JLabel(estu.getFotoperfil());
 		lblFoto.setBounds(37, 35, 184, 149);
 		contentPane.add(lblFoto);
+		
+		JButton btnVerTabln = new JButton("Ver tabl\u00F3n");
+		btnVerTabln.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				
+				Tablon ventana = new Tablon (estu, VentanaEstudiantes.this);
+				ventana.setVisible(true);
+				VentanaEstudiantes.this.setVisible(false);
+				
+			}
+		});
+		btnVerTabln.setBounds(277, 154, 115, 29);
+		contentPane.add(btnVerTabln);
 	}
 	
 	/**
@@ -113,5 +126,4 @@ public class VentanaEstudiantes extends JFrame {
 		JOptionPane.showMessageDialog(null, "Has cerrado sesión");
 		
 	}
-	 
 }

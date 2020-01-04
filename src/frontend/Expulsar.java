@@ -7,6 +7,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 import javax.swing.DefaultListModel;
 import javax.swing.JButton;
@@ -105,6 +106,7 @@ public class Expulsar extends JFrame {
 							break;
 						}
 					}
+					
 					
 					DBManager.delete(user);
 					

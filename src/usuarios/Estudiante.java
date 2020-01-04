@@ -25,6 +25,8 @@ public class Estudiante extends Persona implements IComparable<Estudiante>
     private double notamedia;
     private int faltaleve;
     private int faltagrave;
+    private String historia;
+    private Icon icono;
 
     /**
      * Se trata de un constructor con parámetors
@@ -42,11 +44,13 @@ public class Estudiante extends Persona implements IComparable<Estudiante>
      * @param faltagrave el número de faltas graves
      */
 
-    public Estudiante(String nombre, String apellido1, String apellido2, String dni, String user, String password, String email, String iban, String tipopersona, double notamedia, int faltaleve, int faltagrave) {
+    public Estudiante(String nombre, String apellido1, String apellido2, String dni, String user, String password,
+    		String email, String iban, String tipopersona, double notamedia, int faltaleve, int faltagrave) {
         super(nombre, apellido1, apellido2, dni, user, password, email, iban, tipopersona);
         this.notamedia = notamedia;
         this.faltaleve = faltaleve;
         this.faltagrave = faltagrave;
+     
     }
 
     /**
@@ -63,20 +67,31 @@ public class Estudiante extends Persona implements IComparable<Estudiante>
      * @param notamedia nota media
      * @param faltaleve número de faltas leves
      * @param faltagrave número de faltas graves
-     * @param fotoperfil foto de perfil
+     * @@param historia lo que va a escribir en el tablón
      */
 
 
 
     public Estudiante(String nombre, String apellido1, String apellido2, String dni, String user, String password,
                       String email, String iban, String tipopersona, double notamedia, int faltaleve, int faltagrave,
-                      Icon fotoperfil) {
-        super(nombre, apellido1, apellido2, dni, user, password, email, iban, tipopersona, fotoperfil);
+                      String historia) {
+        super(nombre, apellido1, apellido2, dni, user, password, email, iban, tipopersona);
         this.notamedia = notamedia;
         this.faltaleve = faltaleve;
         this.faltagrave = faltagrave;
+        this.historia= historia;
     }
-
+    
+    
+    public Estudiante(String nombre, String apellido1, String apellido2, String dni, String user, String password,
+            String email, String iban, String tipopersona, double notamedia, int faltaleve, int faltagrave,
+            Icon icon) {
+    	super(nombre, apellido1, apellido2, dni, user, password, email, iban, tipopersona);
+    	this.notamedia = notamedia;
+    	this.faltaleve = faltaleve;
+    	this.faltagrave = faltagrave;
+    	this.icono=icon;
+    	}
 
 
 
@@ -191,10 +206,26 @@ public class Estudiante extends Persona implements IComparable<Estudiante>
     public void setNotasmedias(ArrayList<Integer> notasmedias) {
         this.notasmedias = notasmedias;
     }
-
-
-
+    
     /**
+     * Este método devuelve las historias
+     * @return historia
+     */
+
+    public String getHistoria() {
+		return historia;
+	}
+    
+    /**
+     * Este método da las historias
+     * @param historia historias
+     */
+
+	public void setHistoria(String historia) {
+		this.historia = historia;
+	}
+
+	/**
      * Este método sirve para pasar a string el contenido de los estudiantes
      */
 
@@ -239,25 +270,5 @@ public class Estudiante extends Persona implements IComparable<Estudiante>
 
 
     }
-//     public void ordenar(Estudiante e2) {
-// // TODO Auto-generated method stub
-//
-// ArrayList <Estudiante> diccionarioEstudiante=SelectData.selectAllEstudiantes();
-//
-// new MergeSortGenerico(false).mergesort(diccionarioEstudiante);
-//
-// for (Estudiante a: diccionarioEstudiante) {
-//
-// if (a.getNotamedia()>=e2.getNotamedia()) {
-//
-// System.out.println(this.getNotamedia());
-// System.out.println(e2.getNotamedia());
-//
-// System.out.println("a");
-// }
-//
-//
-// }
-//
-// }
+
 }
