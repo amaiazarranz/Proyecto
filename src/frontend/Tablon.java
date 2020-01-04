@@ -79,10 +79,12 @@ public class Tablon extends JFrame {
 		});
 		btnEscribir.setBounds(284, 166, 115, 29);
 		contentPane.add(btnEscribir);
-		
-		
-		
+	
 	}
+	
+	/**
+	 * Este método sirve para cargar la lista una vez que se haya escrito el esquema y se haya dado al boton OK
+	 */
 
 	private void cargarLista() {
 		
