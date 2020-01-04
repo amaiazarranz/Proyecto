@@ -58,7 +58,7 @@ public class DBManagerTest {
 	@Test
 	public void testFailure() throws SQLException {
 	
-		DBManager.insertEstudiante("String nombre", "String apellido1", "String apellido2", "String dni", "String user", "String password", 
+		DBManager.insertEstudiante("String dni", "String nombre", "String apellido1", "String apellido2", "String user", "String password", 
 	    		"String email", "String iban", "String tipopersona", 20.0, 10, 0);
 		
 		fail("Tabla no creada");
@@ -73,79 +73,24 @@ public class DBManagerTest {
 	public void testInsert() throws SQLException {
 		
 		DBManager.createNewTableEstudiante();
-		DBManager.createNewTableTrabajador();
-		
-//		Estudiante e1 = new Estudiante(
-//				"String nombre", "String apellido1", "String apellido2", "String dni", "String user", "String password", 
-//	    		"String email", "String iban", "String tipopersona", 20.0, 10, 0
-//	    		);
-//		
-//		Profesor p1 = new Profesor(
-//				"String nom", "String apellido1", "String apellido2", "String dni",
-//               "String user", "String password", "String email", "String iban", "String tipopersona",
-//                3000.0
-//	    		);
-		
-		DBManager.insertTrabajador("String nom", "String apellido1", "String apellido2", "String dni",
-					"String user", "String password", "String email", "String iban", "profesor",
-			            3000.0);
 
 	
-		DBManager.insertEstudiante("String nombre", "String apellido1", "String apellido2", "String dni", "String user", "String password", 
-					"String email", "String iban", "String tipopersona", 20.0, 10, 0);
+		DBManager.insertEstudiante("72608845Y", "Olatz", "Gonzalez", "Santiago", "olatz", "santiago", 
+					"olatz@gmail.com", "111111", "estudiante", 20.0, 10, 0);
 	
 	
+		ArrayList <Estudiante> d=DBManager.selectAllEstudiantesJunit();
 		
-		String nombre= null;
-		String dni= null;
-		Estudiante b = null;
-		ArrayList <Estudiante> diccionarioEstudiantes=DBManager.selectAllEstudiantes();
-		for (Estudiante e: diccionarioEstudiantes) {
-			if (e.getDni().equals("String dni")){
-				nombre=e.getNombre();
-				dni=e.getDni();
-				b=e;
-				break;
-			}
-		}
-		for (Estudiante a: diccionarioEstudiantes) {
-			
-			if (a.getDni().equals("String dni")) {
-				nombre=a.getNombre();
-				dni=a.getDni();
-				b=a;
-				break;
-			}
+		String dni=null;
+		Estudiante estu=null;
 		
-		}
-			
-		assertEquals("String nombre", nombre);	
-		//assertNotEquals("", nombre);
-		assertEquals("String dni", dni);	
-		//assertNotEquals("", dni);
-		
-		
-		String nombr= null;
-		String ap2=null;
-		Trabajador c = null;
-		ArrayList<Trabajador> diccionarioProfesores=DBManager.selectAllTrabajadores();
-		for (Trabajador p: diccionarioProfesores) {
-			if (p.getDni().equals("String dni")){
-				nombr=p.getNombre();
-				ap2=p.getApellido2();
-				assertNull(p.getApellido2());
-				c=p;
-				break;
-				
-			}
-			
+		for (Estudiante a: d) {
+			System.out.println(a);
+			dni=a.getDni();
+			estu=a;
 		}
 		
-		assertNull(ap2);
-		assertEquals("String nom", nombr);
-		//assertNotEquals("", nombr);
-		
-		
+		assertEquals("72608845Y", estu.getDni());
 	}
 	
 	/**
@@ -162,7 +107,7 @@ public class DBManagerTest {
 					"amaia", "amaia@gmail.com", "", "profesor", 1000);
 		
 		
-		ArrayList <Trabajador> d=DBManager.selectAllTrabajadores();
+		ArrayList <Trabajador> d=DBManager.selectAllTrabajadoresJunit();
 		
 		String email=null;
 		Trabajador t=null;

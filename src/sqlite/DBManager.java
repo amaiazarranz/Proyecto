@@ -46,7 +46,7 @@ public class DBManager {
 	        try
 	        {
 	            // Step 1 - Instantiate the manager
-	            //myDBManager= new DBManager("UniversidadDeusto4.db");
+	            myDBManager= new DBManager("UniversidadDeusto4.db");
 
 	            // Step 2 - Create database
 	            DBManager.createLink();
@@ -196,7 +196,7 @@ public class DBManager {
 	
 	        try
 	                (
-	                        Connection conn= connect();
+	                        //Connection conn= connect();
 	                		PreparedStatement pstmt = conn.prepareStatement(sql) 		
 	                )
 	        {
@@ -248,7 +248,7 @@ public class DBManager {
 	
 	        try
 	                (
-	                        Connection conn=connect();
+	                        //Connection conn=connect();
 	                		PreparedStatement pstmt = conn.prepareStatement(sql) //
 	                )
 	        {
@@ -270,6 +270,11 @@ public class DBManager {
 	            System.out.println(e.getMessage());
 	        }
 	    }
+	    
+	    /**
+	     * Es la clase que devuelve el array de estudiantes de la base de datos
+	     * @return diccionarioTrabajadores devuelve todos los trabajadores
+	     */
 	    
 	    public static ArrayList<Trabajador> selectAllTrabajadores()
 	    {
@@ -429,6 +434,13 @@ public class DBManager {
 			}
 		}
 	    
+	    /**
+	     * actualiza la nota media
+	     * @param user usuario
+	     * @param notamedia notamedia
+	     * @throws SQLException sqlexcepcion
+	     */
+	    
 	    public static void actualizarNotaMedia(String user, int notamedia) throws SQLException{
 
 	    	String sql = "UPDATE estudiante SET notamedia = ? WHERE user = ?";
@@ -507,6 +519,129 @@ public class DBManager {
 	        return conn;
 	    }
 	    
+	    /**
+	     * Devuelve la lista de estudiantes de la base de datos creada para junit
+	     * @return la lista de estudiantes
+	     */
+	    
+	    public static ArrayList<Estudiante> selectAllEstudiantesJunit()
+	    {
+
+	        ArrayList <Estudiante> diccionarioEstudiantes= new ArrayList <>();
+	        String sql = "SELECT dni, nombre, apellido1, apellido2, user, password, email, iban, tipopersona, " +
+	                "notamedia, faltaleve, faltagrave  FROM estudiante";
+
+	        try
+	                (
+	                        Connection conn = connectJunit();
+	                        Statement stmt  = conn.createStatement();
+	                        ResultSet rs    = stmt.executeQuery(sql) //nueva clase. Es otro set de results. Es como un arraylist
+	                )
+	        {
+
+	            // loop through the result set
+	            while (rs.next()) //mientras tenga más contenido
+	            {
+
+	                String dni = rs.getString("dni");
+	                String nombre = rs.getString("nombre");
+	                String apellido1 = rs.getString("apellido1");
+	                String apellido2 = rs.getString("apellido2");
+	                String user = rs.getString("user");
+	                String password = rs.getString("password");
+	                String email = rs.getString("email");
+	                String iban = rs.getString("iban");
+	                String tipopersona = rs.getString("tipopersona");
+	                double notamedia = rs.getDouble("notamedia");
+	                int faltaleve=rs.getInt("faltaleve");
+	                int faltagrave=rs.getInt("faltagrave");
+
+	                Estudiante estudiante = new Estudiante(nombre, apellido1, apellido2, dni, user, password, email, iban, tipopersona, notamedia, faltaleve, faltagrave);
+	                diccionarioEstudiantes.add(estudiante);
+
+	            }
+	        }
+	        catch (SQLException e)
+	        {
+	            System.out.println(e.getMessage());
+	        }
+
+	        return diccionarioEstudiantes;
+
+	    }
+	    
+	    /**
+	     * Devuelve la lista de trabajadores de la base de datos creada para junit
+	     * @return la lista de trabajadores
+	     */
+	    
+	    public static ArrayList<Trabajador> selectAllTrabajadoresJunit()
+	    {
+
+	        ArrayList <Trabajador> diccionarioTrabajadores= new ArrayList <>();
+	        String sql = "SELECT dni, nombre, apellido1, apellido2, user, password, email, iban, tipopersona, salario  FROM trabajador";
+
+	        try
+	                (
+	                        Connection conn = connectJunit();
+	                        Statement stmt  = conn.createStatement();
+	                        ResultSet rs    = stmt.executeQuery(sql) //nueva clase. Es otro set de results. Es como un arraylist
+	                )
+	        {
+
+	            // loop through the result set
+	            while (rs.next()) //mientras tenga más contenido
+	            {
+
+	                String dni = rs.getString("dni");
+	                String nombre = rs.getString("nombre");
+	                String apellido1 = rs.getString("apellido1");
+	                String apellido2 = rs.getString("apellido2");
+	                String user = rs.getString("user");
+	                String password = rs.getString("password");
+	                String email = rs.getString("email");
+	                String iban = rs.getString("iban");
+	                String tipopersona = rs.getString("tipopersona");
+	                double salario = rs.getDouble("salario");
+
+	                Trabajador trabajador = new Trabajador(nombre, apellido1, apellido2, dni, user, password, email, iban, tipopersona, salario);
+	                diccionarioTrabajadores.add(trabajador);
+
+	            }
+	        }
+	        catch (SQLException e)
+	        {
+	            System.out.println(e.getMessage());
+	        }
+
+	        return diccionarioTrabajadores;
+
+	    }
+	    
+	    /**
+	     * Realiza la conexion con la base de datos creada para junit
+	     * @return la conexion
+	     */
+	    
+	    private static Connection connectJunit() //tiene que ser estático
+	    {
+	        // SQLite connection string
+	    	String name = "UniversidadDeusto6.db";
+	    	//String url= BDname;
+	    	String url = "jdbc:sqlite:" + name;
+	    	
+	        Connection conn = null;
+	
+	        try
+	        {
+	            conn = DriverManager.getConnection(url);
+	        }
+	        catch (SQLException e)
+	        {
+	            System.out.println(e.getMessage());
+	        }
+	        return conn;
+	    }
 	    /**
 	     * Sirve para cerrar la conexión
 	     * @throws SQLException si no se puede realizar salta la excepción sqlexception
