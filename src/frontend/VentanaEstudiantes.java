@@ -60,6 +60,7 @@ public class VentanaEstudiantes extends JFrame {
 				VentanaEstudiantes.this.setVisible(false);
 				atras.setVisible(true);
 				CerrarSesion1();
+				
 			}
 		});
 		btnCerrarSesin.setBounds(277, 199, 136, 29);
@@ -111,6 +112,9 @@ public class VentanaEstudiantes extends JFrame {
 				ventana.setVisible(true);
 				VentanaEstudiantes.this.setVisible(false);
 				
+				HiloEstudiante hilo= new HiloEstudiante();
+				hilo.run();
+				
 			}
 		});
 		btnVerTabln.setBounds(277, 154, 115, 29);
@@ -126,4 +130,5 @@ public class VentanaEstudiantes extends JFrame {
 		JOptionPane.showMessageDialog(null, "Has cerrado sesión");
 		
 	}
+
 }

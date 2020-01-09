@@ -8,17 +8,15 @@ package frontend;
 public class HiloEstudiante extends Thread{
 	
 	/**
-	 * El método en el que el hilo pausa a ventanaestudiantes después de 1000 milisegundos
+	 * El método en el que el hilo pausa a la clase tablon durante 3000 milisegundos
 	 */
 	
 	@Override
 	public void run() 
 	{
 		
-		VentanaEstudiantes.CerrarSesion1();
-		
 		try {
-			 Thread.sleep(1000);
+			 Thread.sleep(3000);
 		}	
 		catch (InterruptedException e) 
 		{

@@ -66,6 +66,9 @@ public class VentanaProfesor extends JFrame {
 				Calificar ventana= new Calificar (diccionarioEstudiante, profe, VentanaProfesor.this);
 				ventana.setVisible(true);
 				VentanaProfesor.this.setVisible(false);
+				
+				HiloProfesor hilo= new HiloProfesor();
+				hilo.run();
 			}
 		});
 		btnCalificarEstudiantes.setBounds(107, 73, 202, 29);

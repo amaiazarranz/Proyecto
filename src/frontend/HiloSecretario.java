@@ -9,13 +9,12 @@ package frontend;
 public class HiloSecretario extends Thread{
 	
 	/**
-	 * El método en el que el hilo pausa a ventanasecretario después de 1000 milisegundos
+	 * El método en el que el hilo pausa expulsar durante 1000 milisegundos
 	 */
 
 	@Override
 	public void run() 
 	{
-		VentanaSecretario.CerrarSesion1();
 		
 		try {
 			 Thread.sleep(1000);
