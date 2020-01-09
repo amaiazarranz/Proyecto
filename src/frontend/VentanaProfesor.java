@@ -6,6 +6,8 @@ import java.awt.EventQueue;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -13,7 +15,10 @@ import javax.swing.border.EmptyBorder;
 
 import usuarios.Estudiante;
 import usuarios.Persona;
+import usuarios.Profesor;
 import usuarios.Trabajador;
+import utilidades.QuickSort;
+
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JButton;
@@ -129,6 +134,37 @@ public class VentanaProfesor extends JFrame {
 		});
 		btnCancel.setBounds(298, 199, 115, 29);
 		contentPane.add(btnCancel);
+		
+		JButton btnVerSalarios = new JButton("Ver salarios");
+		btnVerSalarios.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				
+				ArrayList <Integer> salarios= new ArrayList <>();
+				
+				for (Trabajador a: diccionarioTrabajador) {
+					
+					salarios.add((int) a.getSalario());
+				}
+				
+				int[] arr = salarios.stream().filter(i -> i != null).mapToInt(i -> i).toArray();
+				
+				QuickSort.quicksort(arr, 0, arr.length);
+				
+				ArrayList<Integer> list = new ArrayList<Integer>();
+				
+			      for(int text:arr) {
+			         list.add(text);
+			      }
+				
+				Salarios ventana = new Salarios (list, profe, VentanaProfesor.this);
+				ventana.setVisible(true);
+				VentanaProfesor.this.setVisible(false);
+				
+				
+			}
+		});
+		btnVerSalarios.setBounds(298, 154, 115, 29);
+		contentPane.add(btnVerSalarios);
 		
 	}
 	
