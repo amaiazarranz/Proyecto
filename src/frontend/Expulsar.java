@@ -7,7 +7,10 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.HashMap;
+import java.util.List;
+import java.util.stream.Collectors;
 
 import javax.swing.DefaultListModel;
 import javax.swing.JButton;
@@ -94,20 +97,30 @@ public class Expulsar extends JFrame {
 			 * Acción de expulsar a un estudiante
 			 */
 			public void actionPerformed(ActionEvent e) {
+
+//				List <Estudiante> hola=diccionarioEstudiantes.stream().sorted(Comparator.comparingDouble(Estudiante::getNotamedia).reversed()).collect(Collectors.toList());
+//				System.out.println(hola);
+//con el reserved de mas a menos te ordena y sino de menos a mas
 				
 				String user = (String) list.getSelectedValue();
 
 				if (user != null) // para que no de el nullpointer
 				{
-					for (Estudiante a : diccionarioEstudiantes) {
-						
-						if (a.getUser().toUpperCase().compareTo(user.toUpperCase()) == 0) {
-							diccionarioEstudiantes.remove(a);
-							break;
-						}
-					}
 					
 					
+					diccionarioEstudiantes.stream().filter(a -> a.getUser().toUpperCase().compareTo(user.toUpperCase()) != 0); //no lo ha borrado de la arraylist, solo de la bd
+					
+//			 	ArrayList <Estudiante> estudianteJon= (ArrayList<Estudiante>) diccionarioEstudiantes.stream().filter(a -> a.getUser().toUpperCase().compareTo(user.toUpperCase()) != 0).collect(Collectors.toList());					
+					
+//					for (Estudiante a : diccionarioEstudiantes) {
+//						
+//						if (a.getUser().toUpperCase().compareTo(user.toUpperCase()) == 0) {
+//							diccionarioEstudiantes.remove(a);
+//							break;
+//						}
+//					}
+					
+				 	
 					DBManager.delete(user);
 					
 					JOptionPane.showMessageDialog(Expulsar.this, "Ya se ha expulsado el alumno");

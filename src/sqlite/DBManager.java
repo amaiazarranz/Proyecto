@@ -84,7 +84,7 @@ public class DBManager {
 	    {
 	        try
 	        {
-	            conn = DriverManager.getConnection(BDname);
+	            conn = DriverManager.getConnection(BDname); //si no fuese static en conn y bdname antes this.
 	        }
 	        catch (SQLException e)
 	        {
@@ -284,7 +284,7 @@ public class DBManager {
 
 	        try
 	                (
-	                        Connection conn = connect();
+	                        Connection conn = connect(); //hay que poner esto porque al principio no hay un link a la bd
 	                        Statement stmt  = conn.createStatement();
 	                        ResultSet rs    = stmt.executeQuery(sql) //nueva clase. Es otro set de results. Es como un arraylist
 	                )
@@ -333,6 +333,9 @@ public class DBManager {
 
 	        try
 	                (
+	                	
+	        		
+	        				//DBManager.createLink();
 	                        Connection conn = connect();
 	                        Statement stmt  = conn.createStatement();
 	                        ResultSet rs    = stmt.executeQuery(sql) //nueva clase. Es otro set de results. Es como un arraylist

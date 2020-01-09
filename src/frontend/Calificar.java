@@ -7,6 +7,9 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.List;
+import java.util.Optional;
+import java.util.stream.Collectors;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -96,7 +99,6 @@ public class Calificar extends JFrame {
 				
 				int nota;
 				String user;
-				Estudiante a = null;
 				nota=Integer.parseInt(textField.getText());
 				if (!comprobar(nota))
 				{
@@ -104,27 +106,35 @@ public class Calificar extends JFrame {
 				}else {
 				
 				user=(String) list.getSelectedValue(); 
-				                           
-				for (Estudiante b : diccionarioEstudiantes) {
-					
-					if (b.getUser().equals(user)) {
-						a=b;
-						break;
-					}
-						
-				}
-				a.getNotasmedias().add(nota);
+				//consigues un arraylist de tipo string con los users q coincidan con el seleccionado en jlist.
+			    //diccionarioEstudiantes.stream().filter(z -> z.getUser().equals(user)).map(Estudiante::getUser);
 				
-				int sumnotas=0;
-				int numnotas=a.getNotasmedias().size();
+				Estudiante student = diccionarioEstudiantes.stream().filter(z -> z.getUser().equals(user)).findFirst().get(); //para pasar de optional a estudiante
+				//siempre que no sea array haces el get
 				
+//				for (Estudiante b : diccionarioEstudiantes) {
+//					
+//					if (b.getUser().equals(user)) {
+//						a=b;
+//						break;
+//					}
+//						
+//				}
+//				a.getNotasmedias().add(nota);
+				student.getNotasmedias().add(nota); 
 				
-				for (int i=0; i<a.getNotasmedias().size();i++ ) {
-					sumnotas+=a.getNotasmedias().get(i);
-					
-				}
+				//int sumnotas=0;
+				int numnotas=student.getNotasmedias().size();
+				
+				int sumnotas = student.getNotasmedias().stream().reduce(0, (subtotal, element) -> subtotal + element);
+				 //empieza a contar desde 0. 
+				
+//				for (int i=0; i<student.getNotasmedias().size();i++ ) {
+//					sumnotas+=student.getNotasmedias().get(i);
+//					
+//				}
 				int media=sumnotas/(numnotas+1);
-				a.setNotamedia(media);
+				student.setNotamedia(media);
 				
 				System.out.println(sumnotas);
 				System.out.println(numnotas+1);
@@ -133,7 +143,7 @@ public class Calificar extends JFrame {
 				
 				
 				try {
-					DBManager.actualizarNotaMedia(a.getUser(), media);
+					DBManager.actualizarNotaMedia(student.getUser(), media);
 				} catch (SQLException e1) {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();
@@ -168,7 +178,7 @@ public class Calificar extends JFrame {
 		// TODO Auto-generated method stub
 		
 		DefaultListModel lista = new DefaultListModel();
-
+		
 		for (Estudiante a : diccionarioEstudiantes) {
 			
 			lista.addElement(a.getUser());

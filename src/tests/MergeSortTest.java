@@ -2,6 +2,7 @@ package tests;
 
 import static org.junit.Assert.*;
 
+
 import java.util.ArrayList;
 
 import org.junit.After;
@@ -75,7 +76,24 @@ public class MergeSortTest {
 		assertEquals("Leire", nombre1);
 		assertEquals("Aitor", nombre2);
 		assertEquals("Maialen", nombre3);
-		assertNotEquals("Aitor", nombre3);
+		assertNotSame("Aitor", nombre3);
 	}
+	
+//	@Test (expected=Exception.class) //con esto da bien el test aunque haya una excepcion. Sirve para eso
+//	public void test2() {
+//		
+//		int hola= 1/0;
+//		
+//		
+//	}
+//	
+//	@Test
+//	public void test3() {
+//		
+//		if (lista.get(0).getNombre().equals("Leire")) {
+//			
+//			fail("Esta bien");
+//		}
+//	}
 
 }

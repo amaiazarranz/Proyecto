@@ -4,6 +4,8 @@ import java.awt.BorderLayout;
 
 import java.awt.EventQueue;
 import java.util.ArrayList;
+import java.util.List;
+import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 import javax.swing.JFrame;
@@ -90,8 +92,7 @@ public class Ranking extends JFrame {
 		JLabel lblNmeroDeAprobados = new JLabel("N\u00FAmero de aprobados: " + count + " de un total de "+ total+ " estudiantes");
 		lblNmeroDeAprobados.setBounds(15, 175, 398, 20);
 		contentPane.add(lblNmeroDeAprobados);
-		
-		//cargarLista(diccionarioEstudiantes);
+	
 		cargarListaMerge(diccionarioEstudiantes);
 		
 	}
@@ -100,40 +101,23 @@ public class Ranking extends JFrame {
 		// TODO Auto-generated method stub
 		DefaultListModel lista = new DefaultListModel();
 		
-		//MergeSort.mergesort(diccionarioEstudiantes, 0, diccionarioEstudiantes.size()-1);
-		MergeSortGenerico.introducir(diccionarioEstudiantes);
-		
-		for (Estudiante a: diccionarioEstudiantes) {
-			
-			lista.addElement(a.getNombre() +" "+ a.getNotamedia());
-			
-		}
-
-		list.setModel(lista);
-		
-	}
-
-	/**
-	 * Método para cargar la lista
-	 * @param diccionarioEstudiantes la lista de los estudiantes
-	 */
-
-
-	private void cargarLista(ArrayList<Estudiante> diccionarioEstudiantes) {
-		// TODO Auto-generated method stub
-		
-		DefaultListModel lista = new DefaultListModel();
-		
 		MergeSort.mergesort(diccionarioEstudiantes, 0, diccionarioEstudiantes.size()-1);
+		//MergeSortGenerico.introducir(diccionarioEstudiantes); //este para los genéricos
 		
-		for (Estudiante a: diccionarioEstudiantes) {
-			
-			lista.addElement(a.getNombre() +" "+ a.getNotamedia());
-			
-		}
+		//si hay una condicion es filter, sino map
+		List <String> hola  = diccionarioEstudiantes.stream().map(a -> a.getNombre() + " " + a.getNotamedia() +"\n").collect(Collectors.toList());
+		lista.addElement(hola);
+		
+		//SIN EXPRESIONES LAMBDA
+//		for (Estudiante a: diccionarioEstudiantes) {
+//			
+//			lista.addElement(a.getNombre() +" "+ a.getNotamedia());
+//			
+//		}
 
 		list.setModel(lista);
 		
-		
 	}
+
+	
 }

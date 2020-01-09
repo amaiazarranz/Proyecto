@@ -57,11 +57,11 @@ public class DBManagerTest {
 	
 	@Test
 	public void testFailure() throws SQLException {
-	
+		
 		DBManager.insertEstudiante("String dni", "String nombre", "String apellido1", "String apellido2", "String user", "String password", 
 	    		"String email", "String iban", "String tipopersona", 20.0, 10, 0);
 		
-		fail("Tabla no creada");
+		fail("Tabla no creada"); //da igual donde esté el fail
 	}
 	
 	/**
@@ -90,6 +90,7 @@ public class DBManagerTest {
 			estu=a;
 		}
 		
+		System.out.println(estu.getDni());
 		assertEquals("72608845Y", estu.getDni());
 	}
 	

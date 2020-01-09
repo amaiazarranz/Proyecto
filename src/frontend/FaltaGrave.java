@@ -116,18 +116,19 @@ public class FaltaGrave extends JFrame {
 
 					Estudiante modificar = null;
 
-					for (Estudiante b : diccionarioEstudiantes) {
-						
-						if (b.getUser().equals(user)) {
-							modificar = b;
-							break;
-						}
-					}
+					Estudiante jon= diccionarioEstudiantes.stream().filter(s -> s.getUser().equals(user)).findFirst().get();
+//					for (Estudiante b : diccionarioEstudiantes) {
+//						
+//						if (b.getUser().equals(user)) {
+//							modificar = b;
+//							break;
+//						}
+//					}
 				
-					modificar.setFaltagrave(modificar.getFaltagrave()+1);
+					jon.setFaltagrave(jon.getFaltagrave()+1);
 					
 					try {
-						DBManager.actualizarFaltaGrave(user, modificar.getFaltagrave()+1);
+						DBManager.actualizarFaltaGrave(user, jon.getFaltagrave()+1);
 			            
 			        } catch (SQLException e1) {
 			            e1.printStackTrace();

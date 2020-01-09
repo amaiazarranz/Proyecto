@@ -2,6 +2,7 @@ package utilidades;
 
 import java.util.ArrayList;
 
+
 import usuarios.Estudiante;
 
 /**
@@ -39,21 +40,28 @@ public class MergeSort {
 	public static void merge(ArrayList<Estudiante> diccionarioEstudiantes ,int izq, int m, int der){
 
 		 int i, j, k;
+		 
 		 Estudiante [] B = new Estudiante[diccionarioEstudiantes.size()]; //array auxiliar
+		 
 		 for (i=izq; i<=der; i++) //copia ambas mitades en el array auxiliar
-		           B[i]=diccionarioEstudiantes.get(i);
+		           
+			 	   B[i]=diccionarioEstudiantes.get(i);
 
-		           i=izq; j=m+1; k=izq;
-		           while (i<=m && j<=der) //copia el siguiente elemento más grande
+		           i=izq; j=m+1; k=0;
+		           
+		           while (i<=m && j<=der) //si hay elementos en los dos arrays
+		          
 		           if (B[i].getNotamedia()>B[j].getNotamedia())
 		                 
-		           diccionarioEstudiantes.set(k++, B[i++]);
+		           diccionarioEstudiantes.set(k++, B[i++]); //k se va sumando
 		           else
 		             
 		           diccionarioEstudiantes.set(k++, B[j++]);
-		           while (i<=m) //copia los elementos que quedan de la
+		          
+		           while (i<=m) //copia los elementos que quedan de la 
 		            diccionarioEstudiantes.set(k++, B[i++]);
 		 
 		}
+
 
 }
