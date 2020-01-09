@@ -29,7 +29,7 @@ public final class Profesor extends Trabajador
 
     public Profesor(String nombre, String apellido1, String apellido2, String dni,
                     String user, String password, String email, String iban, String tipopersona,
-                    double salario) {
+                    int salario) {
         super(nombre, apellido1, apellido2, dni, user, password, email, iban, tipopersona, salario);
     }
     

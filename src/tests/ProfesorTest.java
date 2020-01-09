@@ -41,7 +41,7 @@ public class ProfesorTest {
 		Profesor p1 = new Profesor(
 			   "String nombre", "String apellido1", "String apellido2", "String dni",
                "String user", "String password", "String email", "String iban", "String tipopersona",
-                3000.0
+                3000
 	    		);
 		
 		Profesor p2 = new Profesor();

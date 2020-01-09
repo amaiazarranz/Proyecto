@@ -13,7 +13,7 @@ import java.util.ArrayList;
 
 public class Trabajador extends Persona
 {
-    private double salario;
+    private int salario;
 
     ArrayList<String> diccionarioTrabajdores= new ArrayList <String>();
     
@@ -31,7 +31,7 @@ public class Trabajador extends Persona
      * @param salario salario del trabajador
      */
 
-    public Trabajador(String nombre, String apellido1, String apellido2, String dni, String user, String password, String email, String iban, String tipopersona, double salario) {
+    public Trabajador(String nombre, String apellido1, String apellido2, String dni, String user, String password, String email, String iban, String tipopersona, int salario) {
         super(nombre, apellido1, apellido2, dni, user, password, email, iban, tipopersona);
         this.salario = salario;
     }
@@ -58,7 +58,7 @@ public class Trabajador extends Persona
      * @param salario salario
      */
 
-    public void setSalario(double salario) {
+    public void setSalario(int salario) {
         this.salario = salario;
     }
 }

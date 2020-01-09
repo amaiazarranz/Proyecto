@@ -55,8 +55,9 @@ public class DBManager {
 	            DBManager.createNewTableEstudiante();
 	            DBManager.createNewTableTrabajador();
 	            
-	            DBManager.insertTrabajador("72608821Y", "Olatz", "Gonzalez" , "Santiago" , "program.profesor1", "Profesor1" , "program.profesor1@gmail.com", "ES0000000000000000000000", "profesor", 2000.0);
-	            DBManager.insertTrabajador("72608821R", "Leire", "Gonzalez" , "Santiago" , "program.secretario1", "Secretario1" , "program.secretario1@gmail.com", "ES0000000000000000000003", "secretario", 2000.0);
+	            DBManager.insertTrabajador("72608821Y", "Olatz", "Gonzalez" , "Santiago" , "program.profesor1", "Profesor1" , "program.profesor1@gmail.com", "ES0000000000000000000000", "profesor", 23000);
+	            DBManager.insertTrabajador("72608821R", "Leire", "Gonzalez" , "Santiago" , "program.secretario1", "Secretario1" , "program.secretario1@gmail.com", "ES0000000000000000000003", "secretario", 2000);
+	            DBManager.insertTrabajador("72608824I", "Pello", "Gonzalez" , "Santiago" , "program.secretario2", "Secretario2" , "program.secretario2@gmail.com", "ES0000000000000000000003", "secretario", 13000);
 	            DBManager.insertEstudiante("82476952I", "Jon", "Zabaleta", "Peña", "program.estudiante1", "Estudiante1", "program.estudiante1@gmail.com","ES0000000000000000000001", "estudiante", 9.8, 0,0);
 	            DBManager.insertEstudiante("82476952P", "Aritz", "Eraun", "Peña", "program.estudiante2", "Estudiante2", "program.estudiante2@gmail.com","ES0000000000000000000002", "estudiante", 9.7, 0,0);
 	            DBManager.insertEstudiante("82476952T", "Ane", "Bollo", "Peña", "program.estudiante3", "Estudiante3", "program.estudiante3@gmail.com","ES0000000000000000000008", "estudiante", 9.6, 0,0);
@@ -303,7 +304,7 @@ public class DBManager {
 	                String email = rs.getString("email");
 	                String iban = rs.getString("iban");
 	                String tipopersona = rs.getString("tipopersona");
-	                double salario = rs.getDouble("salario");
+	                Integer salario = rs.getInt("salario");
 
 	                Trabajador trabajador = new Trabajador(nombre, apellido1, apellido2, dni, user, password, email, iban, tipopersona, salario);
 	                diccionarioTrabajadores.add(trabajador);
@@ -605,7 +606,7 @@ public class DBManager {
 	                String email = rs.getString("email");
 	                String iban = rs.getString("iban");
 	                String tipopersona = rs.getString("tipopersona");
-	                double salario = rs.getDouble("salario");
+	                Integer salario = rs.getInt("salario");
 
 	                Trabajador trabajador = new Trabajador(nombre, apellido1, apellido2, dni, user, password, email, iban, tipopersona, salario);
 	                diccionarioTrabajadores.add(trabajador);
