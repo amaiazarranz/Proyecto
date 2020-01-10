@@ -25,6 +25,8 @@ import usuarios.Persona;
 import javax.swing.JLabel;
 import javax.swing.JList;
 import javax.swing.JOptionPane;
+import javax.swing.event.ListSelectionListener;
+import javax.swing.event.ListSelectionEvent;
 
 /**
  * Esta clase sirve para que los secretarios expulsen a los alumnos por mala conducta
@@ -60,6 +62,7 @@ public class Expulsar extends JFrame {
 		JButton btnOk = new JButton("Expulsar");
 		btnOk.setForeground(Color.BLUE);
 		btnOk.setBounds(308, 63, 105, 29);
+		btnOk.setEnabled(false);
 		contentPane.add(btnOk);
 
 		JButton btnCancel = new JButton("Atrás");
@@ -68,6 +71,12 @@ public class Expulsar extends JFrame {
 		contentPane.add(btnCancel);
 		
 		list = new JList();
+		list.addListSelectionListener(new ListSelectionListener() {
+			public void valueChanged(ListSelectionEvent e) {
+				btnOk.setEnabled(true);
+				
+			}
+		});
 		list.setBounds(14, 40, 284, 204);
 
 		JScrollPane scrollPane = new JScrollPane();

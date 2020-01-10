@@ -25,6 +25,10 @@ import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import javax.swing.DefaultListModel;
 import javax.swing.JButton;
+import java.beans.PropertyChangeListener;
+import java.beans.PropertyChangeEvent;
+import javax.swing.event.ListSelectionListener;
+import javax.swing.event.ListSelectionEvent;
 
 /**
  * Esta clase sirve para calificar a los alumnos
@@ -80,10 +84,19 @@ public class Calificar extends JFrame {
 		contentPane.add(btnAtrs);
 		
 		JButton btnOk = new JButton("OK");
+
 		btnOk.setBounds(298, 211, 115, 29);
+		btnOk.setEnabled(false);
 		contentPane.add(btnOk);
 		
+		
 		list = new JList();
+		list.addListSelectionListener(new ListSelectionListener() {
+			public void valueChanged(ListSelectionEvent arg0) {
+				btnOk.setEnabled(true);
+			}
+		});
+
 		list.setBounds(15, 44, 398, 115);
 		//contentPane.add(list); quitar esto para añadir el scroll
 		
@@ -93,6 +106,12 @@ public class Calificar extends JFrame {
 		contentPane.add(scrollPane);
 		
 		cargarLista(diccionarioEstudiantes);
+		
+
+//		if(list.getSelectedValue()!= null){
+//			btnOk.setEnabled(true);
+//		}
+			
 		
 		btnOk.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -156,7 +175,9 @@ public class Calificar extends JFrame {
 				
 				}
 			}
-		
+			
+			
+			
 			public boolean comprobar (int variable) {
 				boolean compr= false;
 				if (variable>=0&& variable<=10)
@@ -166,7 +187,10 @@ public class Calificar extends JFrame {
 				return compr;
 				
 			}
+			
+			
 		});
+		
 	}
 	 
 	/**

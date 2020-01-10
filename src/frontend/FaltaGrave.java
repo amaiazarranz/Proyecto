@@ -21,6 +21,8 @@ import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import javax.swing.DefaultListModel;
 import javax.swing.JButton;
+import javax.swing.event.ListSelectionListener;
+import javax.swing.event.ListSelectionEvent;
 
 /**
  * Esta clase sirve para poner una falta grave a un alumno
@@ -57,6 +59,7 @@ public class FaltaGrave extends JFrame {
 		
 		JButton btnOk = new JButton("OK");
 		btnOk.setBounds(298, 186, 115, 29);
+		btnOk.setEnabled(false);
 		contentPane.add(btnOk);
 		
 		JButton btnAtrs = new JButton("Atr\u00E1s");
@@ -65,6 +68,11 @@ public class FaltaGrave extends JFrame {
 		
 		
 		list = new JList();
+		list.addListSelectionListener(new ListSelectionListener() {
+			public void valueChanged(ListSelectionEvent arg0) {
+				btnOk.setEnabled(true);
+			}
+		});
 		list.setBounds(15, 44, 398, 115);
 		//contentPane.add(list); quitar esto para añadir el scroll
 		
