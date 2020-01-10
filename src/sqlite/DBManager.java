@@ -197,7 +197,7 @@ public class DBManager {
 	
 	        try
 	                (
-	                        //Connection conn= connect();
+	                        Connection conn= connect(); //necesitamos esto porque en la automatriculacion llamamos aqui sin hacer el link
 	                		PreparedStatement pstmt = conn.prepareStatement(sql) 		
 	                )
 	        {
@@ -335,8 +335,6 @@ public class DBManager {
 	        try
 	                (
 	                	
-	        		
-	        				//DBManager.createLink();
 	                        Connection conn = connect();
 	                        Statement stmt  = conn.createStatement();
 	                        ResultSet rs    = stmt.executeQuery(sql) //nueva clase. Es otro set de results. Es como un arraylist

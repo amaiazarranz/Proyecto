@@ -192,10 +192,14 @@ public class Automatriculacion extends JFrame {
 			
 			public void actionPerformed(ActionEvent e) {
 				
-				File archivoseleccionado =seleccionarArchivo();
-				path = archivoseleccionado.getAbsolutePath();
+				
+				
 				
 				try{
+					
+					File archivoseleccionado =seleccionarArchivo();
+					
+					path = archivoseleccionado.getAbsolutePath();
 					
 				   ImageIcon icon = new ImageIcon(path);
 	               icono = new ImageIcon(icon.getImage().getScaledInstance(lblFoto.getWidth(), lblFoto.getHeight(), Image.SCALE_DEFAULT));
@@ -292,6 +296,19 @@ public class Automatriculacion extends JFrame {
 					
 
 					JOptionPane.showMessageDialog(Automatriculacion.this, "Ya se dado alta al usuario");
+					
+					int choice = JOptionPane.showOptionDialog(null, 
+						      "¿Quieres salir?", 
+						      "¿Salir", 
+						      JOptionPane.YES_NO_OPTION, 
+						      JOptionPane.QUESTION_MESSAGE, 
+						      null, null, null);
+
+						  // interpret the user's choice
+						  if (choice == JOptionPane.YES_OPTION)
+						  {
+						    System.exit(0);
+						  }
 
 				} catch (UsuarioRepetido i) {
 
