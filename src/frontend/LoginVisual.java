@@ -183,44 +183,80 @@ public class LoginVisual extends JFrame{
 			throws UsuariosNoExiste {
 
 		boolean existe = false;
-		
-
-		for (Estudiante a : diccionarioEstudiante) {
-			if (a.getUser().equals(usuario)) {
+		long contador1=0;
+		contador1= diccionarioEstudiante.stream().filter(s -> s.getUser().equals(usuario)).count();
+		if (contador1==1) {
+			
+			Estudiante est= diccionarioEstudiante.stream().filter(s -> s.getUser().equals(usuario)).findFirst().get();
+			
+			if (est.getUser().equals(usuario)) {
 				existe = true;
-
-				if (a.getPassword().equals(password)) {
-					estu = (Persona) a;
-					secre = (Persona) a;
-					profe= (Persona) a;
+				if (est.getPassword().equals(password)) {
+					estu = (Persona) est;
+					secre = (Persona) est;
+					profe= (Persona) est;
 					existe = true;
-					break;
+					
 				} else {
 					throw new UsuariosNoExiste("Contraseña incorrecta");
-
+		
 				}
 			}
 		}
 		
+//		for (Estudiante a : diccionarioEstudiante) {
+//			if (a.getUser().equals(usuario)) {
+//				existe = true;
+//
+//				if (a.getPassword().equals(password)) {
+//					estu = (Persona) a;
+//					secre = (Persona) a;
+//					profe= (Persona) a;
+//					existe = true;
+//					break;
+//				} else {
+//					throw new UsuariosNoExiste("Contraseña incorrecta");
+//
+//				}
+//			}
+//		}
+		long contador2=0;
+		contador2= diccionarioTrabajadores.stream().filter(s -> s.getUser().equals(usuario)).count();
+		if (contador2==1) {
+		Trabajador trabj= diccionarioTrabajadores.stream().filter(t -> t.getUser().equals(usuario)).findFirst().get();
 		
-		for (Trabajador a : diccionarioTrabajadores) {
-			if (a.getUser().equals(usuario)) {
+			if (trabj.getUser().equals(usuario)) {
 				existe = true;
-
-				if (a.getPassword().equals(password)) {
-					estu = (Persona) a;
-					secre = (Persona) a;
-					profe= (Persona) a;
+	
+				if (trabj.getPassword().equals(password)) {
+					estu = (Persona) trabj;
+					secre = (Persona) trabj;
+					profe= (Persona) trabj;
 					existe = true;
-					break;
+					
+					
 				} else {
 					throw new UsuariosNoExiste("Contraseña incorrecta");
-
 				}
 			}
 		}
 		
-
+//		for (Trabajador a : diccionarioTrabajadores) {
+//			if (a.getUser().equals(usuario)) {
+//				existe = true;
+//
+//				if (a.getPassword().equals(password)) {
+//					estu = (Persona) a;
+//					secre = (Persona) a;
+//					profe= (Persona) a;
+//					existe = true;
+//					break;
+//				} else {
+//					throw new UsuariosNoExiste("Contraseña incorrecta");
+//				}
+//			}
+//		}
+		
 		if (!existe) {
 
 			throw new UsuariosNoExiste("Usuario no existente");
@@ -228,7 +264,7 @@ public class LoginVisual extends JFrame{
 		
 		return true;
 
-	}
+    }
     
 
 }

@@ -116,18 +116,20 @@ public class FaltaLeve extends JFrame {
 					
 					String numero = textField.getText();
 					int numero1 = Integer.parseInt(numero);
+					
+					Estudiante efalta= diccionarioEstudiantes.stream().filter(s -> s.getUser().equals(user)).findFirst().get();
 
-					Estudiante modificar = null;
-
-					for (Estudiante b : diccionarioEstudiantes) {
-						
-						if (b.getUser().equals(user)) {
-							modificar = b;
-							break;
-						}
-					}
-
-					modificar.setFaltaleve(numero1);
+//					Estudiante modificar = null;
+//					for (Estudiante b : diccionarioEstudiantes) {
+//						
+//						if (b.getUser().equals(user)) {
+//							modificar = b;
+//							break;
+//						}
+//					}
+//					modificar.setFaltaleve(numero1);
+					
+					efalta.setFaltaleve(numero1);
 					
 					try {
 						DBManager.actualizarFaltaLeve(user, numero1);

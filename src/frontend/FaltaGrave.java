@@ -114,9 +114,9 @@ public class FaltaGrave extends JFrame {
 				if (user != null) {
 					
 
-					Estudiante modificar = null;
+//					Estudiante modificar = null;
 
-					Estudiante jon= diccionarioEstudiantes.stream().filter(s -> s.getUser().equals(user)).findFirst().get();
+					Estudiante efalta= diccionarioEstudiantes.stream().filter(s -> s.getUser().equals(user)).findFirst().get();
 //					for (Estudiante b : diccionarioEstudiantes) {
 //						
 //						if (b.getUser().equals(user)) {
@@ -125,10 +125,10 @@ public class FaltaGrave extends JFrame {
 //						}
 //					}
 				
-					jon.setFaltagrave(jon.getFaltagrave()+1);
+					efalta.setFaltagrave(efalta.getFaltagrave()+1);
 					
 					try {
-						DBManager.actualizarFaltaGrave(user, jon.getFaltagrave()+1);
+						DBManager.actualizarFaltaGrave(user, efalta.getFaltagrave()+1);
 			            
 			        } catch (SQLException e1) {
 			            e1.printStackTrace();
