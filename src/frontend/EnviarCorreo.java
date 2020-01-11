@@ -1,15 +1,10 @@
 package frontend;
 
-import java.awt.BorderLayout;
 
-import java.awt.EventQueue;
-import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.io.File;
 
-import javax.swing.Icon;
-import javax.swing.ImageIcon;
+
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -34,13 +29,11 @@ public class EnviarCorreo extends JFrame {
 	CustomTextField cuerpo;
 	JButton boton1;
 	JLabel imagen;
-	private File outputfile;
 	
 	/**
 	 * Aquí se envía un correo
 	 * @param u persona
 	 */
-
 	
 	public EnviarCorreo(Persona u) {
 		

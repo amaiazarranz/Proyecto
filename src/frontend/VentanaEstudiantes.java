@@ -9,7 +9,6 @@ import usuarios.Estudiante;
 import usuarios.Persona;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
-import javax.swing.Icon;
 import javax.swing.JButton;
 
 import java.awt.event.ActionListener;
@@ -26,7 +25,6 @@ public class VentanaEstudiantes extends JFrame {
 
 	private JPanel contentPane;
 	public static String path;
-	private Icon icono;
 	
 	/**
 	 * Aquí se muestra la ventana visual de los estudiantes

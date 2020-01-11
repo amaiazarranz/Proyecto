@@ -287,11 +287,10 @@ public class Automatriculacion extends JFrame {
 								emailUsuario, ibanUsuario, "estudiante", 0.0, 0,0, icono);
 								diccionarioEstudiantes.add(user);
 					}
-
+	
 					
-					
-					DBManager.insertEstudiante(nombreUsuario, apellido1Usuario, apellido2Usuario, dniUsuario, userUsuario, contrasenaUsuario,
-							emailUsuario, ibanUsuario, "estudiante", 0.0, 0,0);
+					DBManager.insertEstudiante(dniUsuario, nombreUsuario, apellido1Usuario, apellido2Usuario, userUsuario, contrasenaUsuario,
+							emailUsuario, ibanUsuario, "estudiante", 0.0, 0,0,0);
 
 					
 

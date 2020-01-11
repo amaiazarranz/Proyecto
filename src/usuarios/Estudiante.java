@@ -21,8 +21,9 @@ public class Estudiante extends Persona implements IComparable<Estudiante>
 {
 
     ArrayList<String> diccionarioEstudiantes= new ArrayList <String>();
-    ArrayList<Integer> notasmedias =new ArrayList <>();
+//    ArrayList<Integer> notasmedias =new ArrayList <>();
     private double notamedia;
+    private int numNotas;
     private int faltaleve;
     private int faltagrave;
     private String historia;
@@ -73,13 +74,13 @@ public class Estudiante extends Persona implements IComparable<Estudiante>
 
 
     public Estudiante(String nombre, String apellido1, String apellido2, String dni, String user, String password,
-                      String email, String iban, String tipopersona, double notamedia, int faltaleve, int faltagrave,
-                      String historia) {
+                      String email, String iban, String tipopersona, double notamedia, int numnotas, int faltaleve,
+                      int faltagrave) {
         super(nombre, apellido1, apellido2, dni, user, password, email, iban, tipopersona);
         this.notamedia = notamedia;
+        this.numNotas = numnotas;
         this.faltaleve = faltaleve;
-        this.faltagrave = faltagrave;
-        this.historia= historia;
+        this.faltagrave= faltagrave;
     }
     
     
@@ -96,16 +97,29 @@ public class Estudiante extends Persona implements IComparable<Estudiante>
 
 
 
-    public Estudiante(String nombre, String apellido1, String apellido2, String dni, String user, String password,
-                      String email, String iban, String tipopersona, ArrayList<String> diccionarioEstudiantes,
-                      ArrayList<Integer> notasmedias, double notamedia, int faltaleve, int faltagrave) {
-        super(nombre, apellido1, apellido2, dni, user, password, email, iban, tipopersona);
-        this.diccionarioEstudiantes = diccionarioEstudiantes;
-        this.notasmedias = notasmedias;
-        this.notamedia = notamedia;
-        this.faltaleve = faltaleve;
-        this.faltagrave = faltagrave;
-    }
+public Estudiante(String nombre, String apellido1, String apellido2, String dni, String user, String password,
+			String email, String iban, String tipopersona, ArrayList<String> diccionarioEstudiantes, double notamedia,
+			int numNotas, int faltaleve, int faltagrave, String historia, Icon icono) {
+		super(nombre, apellido1, apellido2, dni, user, password, email, iban, tipopersona);
+		this.diccionarioEstudiantes = diccionarioEstudiantes;
+		this.notamedia = notamedia;
+		this.numNotas = numNotas;
+		this.faltaleve = faltaleve;
+		this.faltagrave = faltagrave;
+		this.historia = historia;
+		this.icono = icono;
+	}
+
+//    public Estudiante(String nombre, String apellido1, String apellido2, String dni, String user, String password,
+//                      String email, String iban, String tipopersona, ArrayList<String> diccionarioEstudiantes,
+//                      ArrayList<Integer> notasmedias, double notamedia, int faltaleve, int faltagrave) {
+//        super(nombre, apellido1, apellido2, dni, user, password, email, iban, tipopersona);
+//        this.diccionarioEstudiantes = diccionarioEstudiantes;
+//        this.notasmedias = notasmedias;
+//        this.notamedia = notamedia;
+//        this.faltaleve = faltaleve;
+//        this.faltagrave = faltagrave;
+//    }
 
     /**
      * Se trata de un constructor sin parámetros de los estudiantes
@@ -193,22 +207,22 @@ public class Estudiante extends Persona implements IComparable<Estudiante>
      * @return nombre
      */
 
-    public ArrayList<Integer> getNotasmedias() {
-        return notasmedias;
-    }
-
-
-    /**
-     * Este método da el todas las calificaciones
-     * @param notasmedias
-     */
-
-    public void setNotasmedias(ArrayList<Integer> notasmedias) {
-        this.notasmedias = notasmedias;
-    }
+//    public ArrayList<Integer> getNotasmedias() {
+//        return notasmedias;
+//    }
+//
+//
+//    /**
+//     * Este método da el todas las calificaciones
+//     * @param notasmedias
+//     */
+//
+//    public void setNotasmedias(ArrayList<Integer> notasmedias) {
+//        this.notasmedias = notasmedias;
+//    }
     
     /**
-     * Este método devuelve las historias
+     * Este metodo devuelve las historias
      * @return historia
      */
 
@@ -217,12 +231,31 @@ public class Estudiante extends Persona implements IComparable<Estudiante>
 	}
     
     /**
-     * Este método da las historias
+     * Este metodo da las historias
      * @param historia historias
      */
 
 	public void setHistoria(String historia) {
 		this.historia = historia;
+	}
+	
+    /**
+     * Este metodo devuelve el numero de notas que tiene el estudiante
+     * @return numero de notas
+     */
+
+    public int getNumNotas() {
+		return numNotas;
+	}
+    
+    /**
+     * Este metodo da el numero de notas que tiene el estudiante
+     * @param numero de notas
+     */
+
+
+	public void setNumNotas(int numNotas) {
+		this.numNotas = numNotas;
 	}
 
 	/**
@@ -244,7 +277,8 @@ public class Estudiante extends Persona implements IComparable<Estudiante>
                 '}';
     }
 
-    /**
+
+	/**
      * Este método sirve para enviar mensajes
      */
 

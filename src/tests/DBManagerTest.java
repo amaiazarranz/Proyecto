@@ -59,7 +59,7 @@ public class DBManagerTest {
 	public void testFailure() throws SQLException {
 		
 		DBManager.insertEstudiante("String dni", "String nombre", "String apellido1", "String apellido2", "String user", "String password", 
-	    		"String email", "String iban", "String tipopersona", 20.0, 10, 0);
+	    		"String email", "String iban", "String tipopersona", 10.0, 1, 2, 0);
 		
 		fail("Tabla no creada"); //da igual donde esté el fail
 	}
@@ -76,22 +76,29 @@ public class DBManagerTest {
 
 	
 		DBManager.insertEstudiante("72608845Y", "Olatz", "Gonzalez", "Santiago", "olatz", "santiago", 
-					"olatz@gmail.com", "111111", "estudiante", 20.0, 10, 0);
+					"olatz@gmail.com", "111111", "estudiante", 10.0, 2, 1, 0);
 	
 	
 		ArrayList <Estudiante> d=DBManager.selectAllEstudiantesJunit();
 		
-		String dni=null;
-		Estudiante estu=null;
 		
-		for (Estudiante a: d) {
-			System.out.println(a);
-			dni=a.getDni();
-			estu=a;
-		}
 		
-		System.out.println(estu.getDni());
-		assertEquals("72608845Y", estu.getDni());
+		Estudiante student= d.stream().filter(s-> s.getDni().equals("72608845Y")).findFirst().get();
+		
+		assertEquals("72608845Y", student.getDni());
+		
+//		String dni=null;
+//		Estudiante estu=null;
+//		
+//		for (Estudiante a: d) {
+//			System.out.println(a);
+//			dni=a.getDni();
+//			estu=a;
+//		}
+//		
+//		System.out.println(estu.getDni());
+//		assertEquals("72608845Y", estu.getDni());
+//		assertEquals("72608845Y", dni);
 	}
 	
 	/**

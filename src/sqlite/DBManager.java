@@ -58,9 +58,9 @@ public class DBManager {
 	            DBManager.insertTrabajador("72608821Y", "Olatz", "Gonzalez" , "Santiago" , "program.profesor1", "Profesor1" , "program.profesor1@gmail.com", "ES0000000000000000000000", "profesor", 23000);
 	            DBManager.insertTrabajador("72608821R", "Leire", "Gonzalez" , "Santiago" , "program.secretario1", "Secretario1" , "program.secretario1@gmail.com", "ES0000000000000000000003", "secretario", 2000);
 	            DBManager.insertTrabajador("72608824I", "Pello", "Gonzalez" , "Santiago" , "program.secretario2", "Secretario2" , "program.secretario2@gmail.com", "ES0000000000000000000003", "secretario", 13000);
-	            DBManager.insertEstudiante("82476952I", "Jon", "Zabaleta", "Peña", "program.estudiante1", "Estudiante1", "program.estudiante1@gmail.com","ES0000000000000000000001", "estudiante", 9.8, 0,0);
-	            DBManager.insertEstudiante("82476952P", "Aritz", "Eraun", "Peña", "program.estudiante2", "Estudiante2", "program.estudiante2@gmail.com","ES0000000000000000000002", "estudiante", 9.7, 0,0);
-	            DBManager.insertEstudiante("82476952T", "Ane", "Bollo", "Peña", "program.estudiante3", "Estudiante3", "program.estudiante3@gmail.com","ES0000000000000000000008", "estudiante", 9.6, 0,0);
+	            DBManager.insertEstudiante("82476952I", "Jon", "Zabaleta", "Peña", "program.estudiante1", "Estudiante1", "program.estudiante1@gmail.com","ES0000000000000000000001", "estudiante", 9.8, 1, 0,0);
+	            DBManager.insertEstudiante("82476952P", "Aritz", "Eraun", "Peña", "program.estudiante2", "Estudiante2", "program.estudiante2@gmail.com","ES0000000000000000000002", "estudiante", 9.7, 2, 0,0);
+	            DBManager.insertEstudiante("82476952T", "Ane", "Bollo", "Peña", "program.estudiante3", "Estudiante3", "program.estudiante3@gmail.com","ES0000000000000000000008", "estudiante", 9.6, 3, 0,0);
 	            
 	            // Last step - Close connection
 	            DBManager.closeLink();
@@ -113,6 +113,7 @@ public class DBManager {
 	                + "    iban text NOT NULL,\n"
 	                + "    tipopersona text NOT NULL,\n"
 	                + "    notamedia real NOT NULL,\n"
+	                + "    numnotas integer NOT NULL,\n"
 	                + "    faltaleve integer NOT NULL,\n"
 	                + "    faltagrave integer NOT NULL\n"
 	                + ");";
@@ -182,6 +183,7 @@ public class DBManager {
 	     * @param iban el iban del estudiante
 	     * @param tipopersona sirve para saber que es un estudiante
 	     * @param notamedia la nota media del estudiante
+	     * @param numeronotas el numero de notas en las que ha sido evaluado el estudiante
 	     * @param faltaleve las faltas leves que tiene el estudiante
 	     * @param faltagrave las faltas graves que tiene el estudiante
 	     * @throws SQLException si no se puede realizar salta la excepción sqlexception
@@ -189,10 +191,10 @@ public class DBManager {
 	
 	    public static void insertEstudiante(String dni, String nombre, String apellido1, String apellido2,
 	                                 String user, String password, String email, String iban, String tipopersona,
-	                                 double notamedia, int faltaleve, int faltagrave) throws SQLException{
+	                                 double notamedia, int numnotas, int faltaleve, int faltagrave) throws SQLException{
 	
 	        String sql = "INSERT INTO estudiante(dni,nombre, apellido1, apellido2, user, password, email," +
-	                "iban, tipopersona, notamedia, faltaleve, faltagrave) VALUES(?,?,?,?,?,?,?,?,?,?,?,?)";
+	                "iban, tipopersona, notamedia, numnotas, faltaleve, faltagrave) VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?)";
 	    	
 	
 	        try
@@ -211,8 +213,9 @@ public class DBManager {
 	            pstmt.setString(8, iban);
 	            pstmt.setString(9, tipopersona);
 	            pstmt.setDouble(10, notamedia);
-	            pstmt.setInt(11, faltaleve);
-	            pstmt.setInt(12, faltagrave);
+	            pstmt.setInt(11, numnotas);
+	            pstmt.setInt(12, faltaleve);
+	            pstmt.setInt(13, faltagrave);
 	            
 	           
 	
@@ -330,7 +333,7 @@ public class DBManager {
 
 	        ArrayList <Estudiante> diccionarioEstudiantes= new ArrayList <>();
 	        String sql = "SELECT dni, nombre, apellido1, apellido2, user, password, email, iban, tipopersona, " +
-	                "notamedia, faltaleve, faltagrave  FROM estudiante";
+	                "notamedia, numnotas, faltaleve, faltagrave  FROM estudiante";
 
 	        try
 	                (
@@ -355,10 +358,11 @@ public class DBManager {
 	                String iban = rs.getString("iban");
 	                String tipopersona = rs.getString("tipopersona");
 	                double notamedia = rs.getDouble("notamedia");
+	                int numnotas = rs.getInt("numnotas");
 	                int faltaleve=rs.getInt("faltaleve");
 	                int faltagrave=rs.getInt("faltagrave");
 
-	                Estudiante estudiante = new Estudiante(nombre, apellido1, apellido2, dni, user, password, email, iban, tipopersona, notamedia, faltaleve, faltagrave);
+	                Estudiante estudiante = new Estudiante(nombre, apellido1, apellido2, dni, user, password, email, iban, tipopersona, notamedia, numnotas, faltaleve, faltagrave);
 	                diccionarioEstudiantes.add(estudiante);
 
 	            }
@@ -439,13 +443,13 @@ public class DBManager {
 	    /**
 	     * actualiza la nota media
 	     * @param user usuario
-	     * @param notamedia notamedia
+	     * @param newaverage notamedia
 	     * @throws SQLException sqlexcepcion
 	     */
 	    
-	    public static void actualizarNotaMedia(String user, int notamedia) throws SQLException{
+	    public static void actualizarNotaMedia(String user, double newaverage, int numnotas) throws SQLException{
 
-	    	String sql = "UPDATE estudiante SET notamedia = ? WHERE user = ?";
+	    	String sql = "UPDATE estudiante SET notamedia = ? numnotas =? WHERE user = ?";
 			
 			try
 			(
@@ -454,8 +458,9 @@ public class DBManager {
 			)
 			
 			{
-				pstmt.setInt(1, notamedia);
-	            pstmt.setString(2, user);
+				pstmt.setDouble(1, newaverage);
+				pstmt.setInt(2, numnotas);
+	            pstmt.setString(3, user);
 
 	            pstmt.executeUpdate();
 	            
@@ -531,7 +536,7 @@ public class DBManager {
 
 	        ArrayList <Estudiante> diccionarioEstudiantes= new ArrayList <>();
 	        String sql = "SELECT dni, nombre, apellido1, apellido2, user, password, email, iban, tipopersona, " +
-	                "notamedia, faltaleve, faltagrave  FROM estudiante";
+	                "notamedia, numnotas, faltaleve, faltagrave  FROM estudiante";
 
 	        try
 	                (
@@ -555,10 +560,11 @@ public class DBManager {
 	                String iban = rs.getString("iban");
 	                String tipopersona = rs.getString("tipopersona");
 	                double notamedia = rs.getDouble("notamedia");
+	                int numnotas=rs.getInt("numnotas");
 	                int faltaleve=rs.getInt("faltaleve");
 	                int faltagrave=rs.getInt("faltagrave");
 
-	                Estudiante estudiante = new Estudiante(nombre, apellido1, apellido2, dni, user, password, email, iban, tipopersona, notamedia, faltaleve, faltagrave);
+	                Estudiante estudiante = new Estudiante(nombre, apellido1, apellido2, dni, user, password, email, iban, tipopersona, notamedia, numnotas, faltaleve, faltagrave);
 	                diccionarioEstudiantes.add(estudiante);
 
 	            }

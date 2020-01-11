@@ -140,29 +140,37 @@ public class Calificar extends JFrame {
 //						
 //				}
 //				a.getNotasmedias().add(nota);
-				student.getNotasmedias().add(nota); 
+				double averagebefore= student.getNotamedia();
+				int numNotas= student.getNumNotas();
 				
-				//int sumnotas=0;
-				int numnotas=student.getNotasmedias().size();
 				
-				int sumnotas = student.getNotasmedias().stream().reduce(0, (subtotal, element) -> subtotal + element);
+				double newaverage=(((averagebefore*numNotas)+nota)/(numNotas+1));
+				
+				student.setNumNotas(numNotas+1);
+				
+//				student.getNotamedia().add(nota); 
+				
+//				int sumnotas=0;
+//				int numnotas=student.getNotasmedias().size();
+				
+//				int sumnotas = student.getNotasmedias().stream().reduce(0, (subtotal, element) -> subtotal + element);
 				 //empieza a contar desde 0. 
 				
 //				for (int i=0; i<student.getNotasmedias().size();i++ ) {
 //					sumnotas+=student.getNotasmedias().get(i);
 //					
 //				}
-				int media=sumnotas/(numnotas+1);
-				student.setNotamedia(media);
-				
-				System.out.println(sumnotas);
-				System.out.println(numnotas+1);
-				System.out.println(media);
+//				int media=sumnotas/(numnotas+1);
+//				student.setNotamedia(media);
+//				
+//				System.out.println(sumnotas);
+//				System.out.println(numnotas+1);
+//				System.out.println(media);
 				
 				
 				
 				try {
-					DBManager.actualizarNotaMedia(student.getUser(), media);
+					DBManager.actualizarNotaMedia(student.getUser(), newaverage, numNotas+1);
 				} catch (SQLException e1) {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();
