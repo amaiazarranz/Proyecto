@@ -64,7 +64,7 @@ public class QuickSortTest {
 		assertEquals(menor3, 2000);
 		assertEquals(menor4, 2500);
 		assertEquals(menor5, 3000);
-		assertNotEquals(menor1, 3000);
+		assertNotSame(menor1, 3000);
 		
 		
 	}

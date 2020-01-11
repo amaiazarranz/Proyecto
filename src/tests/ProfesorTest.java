@@ -2,6 +2,7 @@ package tests;
 
 import static org.junit.Assert.*;
 
+
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -15,12 +16,23 @@ import usuarios.Profesor;
 
 public class ProfesorTest {
 	
+	Profesor p1;
+	Profesor p2;
+	
 	/**
 	 * Se lanza antes de los test
 	 * @throws Exception excepcion
 	 */
 	@Before
 	public void setUp() throws Exception {
+		
+		p1 = new Profesor(
+				   "String nombre", "String apellido1", "String apellido2", "String dni",
+	               "String user", "String password", "String email", "String iban", "String tipopersona",
+	                3000
+		    		);
+			
+		p2 = new Profesor();
 	}
 	
 	/**
@@ -37,14 +49,6 @@ public class ProfesorTest {
 
 	@Test
 	public void test() {
-		
-		Profesor p1 = new Profesor(
-			   "String nombre", "String apellido1", "String apellido2", "String dni",
-               "String user", "String password", "String email", "String iban", "String tipopersona",
-                3000
-	    		);
-		
-		Profesor p2 = new Profesor();
 	
 		assertEquals(p2.getIban(), null);
 		

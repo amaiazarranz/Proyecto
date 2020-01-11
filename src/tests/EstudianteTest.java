@@ -2,6 +2,7 @@ package tests;
 
 import static org.junit.Assert.*;
 
+
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -16,12 +17,22 @@ import usuarios.Estudiante;
 
 public class EstudianteTest {
 	
+	Estudiante p1;
+	Estudiante p2;
+	
 	/**
 	 * Se lanza antes de los test
 	 * @throws Exception excepcion
 	 */
 	@Before
 	public void setUp() throws Exception {
+		
+		p1 = new Estudiante(
+				"String nombre", "String apellido1", "String apellido2", "String dni", "String user", "String password", 
+	    		"String email", "String iban", "String tipopersona", 20.0, 10, 0
+	    		);
+		
+		p2= new Estudiante();
 	}
 	
 	/**
@@ -39,12 +50,6 @@ public class EstudianteTest {
 	@Test
 	public void testConstructor() 
 	{
-		Estudiante p1 = new Estudiante(
-				"String nombre", "String apellido1", "String apellido2", "String dni", "String user", "String password", 
-	    		"String email", "String iban", "String tipopersona", 20.0, 10, 0
-	    		);
-		
-		Estudiante p2 = new Estudiante();
 		
 		p2.setNombre("String nombre");
 		assertEquals(p1.getNombre(), p2.getNombre());
