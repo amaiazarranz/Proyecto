@@ -10,6 +10,7 @@ import org.junit.Test;
 
 import usuarios.Estudiante;
 import utilidades.MergeSort;
+import utilidades.MergeSortGenerico;
 
 /**
  * En esta clase se hacen las pruebas unitarias del MergeSort
@@ -65,7 +66,8 @@ public class MergeSortGenericoTest {
 	
 	@Test
 	public void testOrdenar() {
-		MergeSort.mergesort(lista, 0, lista.size()-1);
+		MergeSortGenerico.introducir(lista);
+		//MergeSort.mergesort(lista, 0, lista.size()-1);
 		
 		String nombre1=lista.get(0).getNombre();
 		String nombre2=lista.get(1).getNombre();
