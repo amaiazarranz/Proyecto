@@ -38,16 +38,27 @@ public class Tablon extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
+		
 		JButton btnAtrs = new JButton("Atr\u00E1s");
-		btnAtrs.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				
-				atras.setVisible(true);
-				Tablon.this.setVisible(false);
-			}
-		});
+		
 		btnAtrs.setBounds(284, 199, 115, 29);
 		contentPane.add(btnAtrs);
+		
+		class CerrarSesionTablon implements ActionListener {
+
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				
+				Tablon.this.setVisible(false); //se utilizan los elementos de la clase más out
+				atras.setVisible(false);
+				
+				
+			}
+			
+		}
+		
+		CerrarSesionTablon cerrar= new CerrarSesionTablon(); //esto tiene que ir detras de la clase, sino no lo coge
+		btnAtrs.addActionListener(cerrar);
 		
 		JLabel lblRanking = new JLabel("Tus esquemas de hoy en sucio:");
 		lblRanking.setBounds(39, 16, 230, 20);
