@@ -69,11 +69,11 @@ public class VentanaProfesor extends JFrame {
 			public void actionPerformed(ActionEvent arg0) {
 				
 				Calificar ventana= new Calificar (diccionarioEstudiante, profe, VentanaProfesor.this);
-				ventana.setVisible(true);
+				ventana.setVisible(true); //que te aparezca lo cuadrado
 				VentanaProfesor.this.setVisible(false);
 				
-				HiloProfesor hilo= new HiloProfesor();	
-				hilo.run();
+				HiloProfesor hilo= new HiloProfesor(diccionarioEstudiante);	
+				hilo.start();
 				
 				
 				

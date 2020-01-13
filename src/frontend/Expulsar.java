@@ -75,6 +75,9 @@ public class Expulsar extends JFrame {
 			public void valueChanged(ListSelectionEvent e) {
 				btnOk.setEnabled(true);
 				
+				HiloSecretario hilo= new HiloSecretario();
+				hilo.start();
+				
 			}
 		});
 		list.setBounds(14, 40, 284, 204);
@@ -112,10 +115,11 @@ public class Expulsar extends JFrame {
 //con el reserved de mas a menos te ordena y sino de menos a mas
 				
 				String user = (String) list.getSelectedValue();
+				
+				
 
 				if (user != null) // para que no de el nullpointer
 				{
-					
 					
 					diccionarioEstudiantes.stream().filter(a -> a.getUser().toUpperCase().compareTo(user.toUpperCase()) != 0); //no lo ha borrado de la arraylist, solo de la bd
 					
@@ -149,6 +153,8 @@ public class Expulsar extends JFrame {
 	private void cargarLista(ArrayList<Estudiante> diccionarioEstudiantes) {
 		// TODO Auto-generated method stub
 		DefaultListModel lista = new DefaultListModel();
+		
+		String user3= (String) list.getSelectedValue();
 
 		for (Estudiante a : diccionarioEstudiantes) {
 			

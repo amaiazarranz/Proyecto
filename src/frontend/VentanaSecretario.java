@@ -61,9 +61,6 @@ public class VentanaSecretario extends JFrame {
 				ventana.setVisible(true);
 				VentanaSecretario.this.dispose();
 				
-				HiloSecretario hilo= new HiloSecretario();
-				hilo.run();
-				
 			}
 		});
 		btnExpulsar.setBounds(153, 100, 115, 29);

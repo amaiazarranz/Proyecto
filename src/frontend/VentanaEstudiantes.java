@@ -110,9 +110,6 @@ public class VentanaEstudiantes extends JFrame {
 				ventana.setVisible(true);
 				VentanaEstudiantes.this.setVisible(false);
 				
-				HiloEstudiante hilo= new HiloEstudiante();
-				hilo.run();
-				
 			}
 		});
 		btnVerTabln.setBounds(277, 154, 115, 29);

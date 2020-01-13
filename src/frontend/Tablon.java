@@ -50,7 +50,7 @@ public class Tablon extends JFrame {
 			public void actionPerformed(ActionEvent arg0) {
 				
 				Tablon.this.setVisible(false); //se utilizan los elementos de la clase más out
-				atras.setVisible(false);
+				atras.setVisible(true);
 				
 				
 			}
@@ -109,11 +109,10 @@ public class Tablon extends JFrame {
 		Collection<String> values = map.values(); 
         ArrayList<String> listOfValues = new ArrayList<String>(values); 
          
-        System.out.println("ArrayList Of Values :"); 
+       // System.out.println("ArrayList Of Values :"); 
          
         for (String value : listOfValues) 
         { 
-            System.out.println(value);
             lista.addElement(value);
         } 
 
