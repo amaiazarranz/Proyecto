@@ -61,9 +61,6 @@ public class DBManager {
 	            DBManager.insertEstudiante("82476952I", "Jon", "Zabaleta", "Peña", "program.estudiante1", "Estudiante1", "program.estudiante1@gmail.com","ES0000000000000000000001", "estudiante", 9.8, 1, 0,0);
 	            DBManager.insertEstudiante("82476952P", "Aritz", "Eraun", "Peña", "program.estudiante2", "Estudiante2", "program.estudiante2@gmail.com","ES0000000000000000000002", "estudiante", 9.7, 2, 0,0);
 	            DBManager.insertEstudiante("82476952T", "Ane", "Bollo", "Peña", "program.estudiante3", "Estudiante3", "program.estudiante3@gmail.com","ES0000000000000000000008", "estudiante", 9.6, 3, 0,0);
-	            DBManager.insertEstudiante("82476952U", "Ane", "Bollo", "Peña", "program.estudiante4", "Estudiante4", "program.estudiante3@gmail.com","ES0000000000000000000008", "estudiante", 1.4, 3, 0,0);
-	            DBManager.insertEstudiante("82476952O", "Ane", "Bollo", "Peña", "program.estudiante5", "Estudiante5", "program.estudiante3@gmail.com","ES0000000000000000000008", "estudiante", 6.5, 3, 0,0);
-	            DBManager.insertEstudiante("82476952N", "Ane", "Bollo", "Peña", "program.estudiante5", "Estudiante6", "program.estudiante3@gmail.com","ES0000000000000000000008", "estudiante", 8.6, 3, 0,0);
 	            
 	            // Last step - Close connection
 	            DBManager.closeLink();
