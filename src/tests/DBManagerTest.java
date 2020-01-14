@@ -58,53 +58,24 @@ public class DBManagerTest {
 	@Test
 	public void testFailure() throws SQLException {
 		
-		DBManager.insertEstudiante("String dni", "String nombre", "String apellido1", "String apellido2", "String user", "String password", 
-	    		"String email", "String iban", "String tipopersona", 10.0, 1, 2, 0);
+		try {
+			
+			DBManager.insertEstudiante("String dni", "String nombre", "String apellido1", "String apellido2", "String user", "String password", 
+		    		"String email", "String iban", "String tipopersona", 10.0, 1, 2, 0);
+			
+			fail("Tabla no creada"); 
+			
+		}catch (SQLException e) {
+			
+		}
 		
-		fail("Tabla no creada"); //da igual donde esté el fail
-	}
-	
-	/**
-	 * test de los insert
-	 * @throws SQLException excepcion de los sql
-	 */
-		
-	@Test
-	public void testInsert() throws SQLException {
-		
-		DBManager.createNewTableEstudiante();
-
-	
-		DBManager.insertEstudiante("72608845Y", "Olatz", "Gonzalez", "Santiago", "olatz", "santiago", 
-					"olatz@gmail.com", "111111", "estudiante", 10.0, 2, 1, 0);
-	
-	
-		ArrayList <Estudiante> d=DBManager.selectAllEstudiantesJunit();
-		
-		
-		
-		Estudiante student= d.stream().filter(s-> s.getDni().equals("72608845Y")).findFirst().get();
-		
-		assertEquals("72608845Y", student.getDni());
-		
-//		String dni=null;
-//		Estudiante estu=null;
-//		
-//		for (Estudiante a: d) {
-//			System.out.println(a);
-//			dni=a.getDni();
-//			estu=a;
-//		}
-//		
-//		System.out.println(estu.getDni());
-//		assertEquals("72608845Y", estu.getDni());
-//		assertEquals("72608845Y", dni);
 	}
 	
 	/**
 	 * segundo test de los insert
 	 * @throws SQLException excepcion de los sql
 	 */
+	
 	@Test
 	public void testInsert2() throws SQLException {
 		
