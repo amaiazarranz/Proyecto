@@ -103,7 +103,8 @@ public class EnviarCorreo extends JFrame {
 						if(opcion == 0)
 						{
 							Principio f = new Principio();
-							EnviarCorreo.this.dispose();
+							f.setVisible(true);
+							EnviarCorreo.this.setVisible(false);
 						}
 					}
 					else
