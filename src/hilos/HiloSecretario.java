@@ -11,7 +11,7 @@ import javax.swing.JOptionPane;
 public class HiloSecretario extends Thread{
 	
 	/**
-	 * El método en el que el hilo pausa expulsar durante 1000 milisegundos
+	 * El método en el que aparece la resolucion del rectorado y de los profesores
 	 */
 
 	@Override

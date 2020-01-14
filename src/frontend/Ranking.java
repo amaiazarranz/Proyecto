@@ -97,6 +97,11 @@ public class Ranking extends JFrame {
 		
 	}
 	
+	/**
+	 * Sirve para cargar la lista en el jlist
+	 * @param diccionarioEstudiantes el diccionario de estudiantes
+	 */
+	
 	private void cargarListaMerge(ArrayList<Estudiante> diccionarioEstudiantes) {
 		// TODO Auto-generated method stub
 		DefaultListModel lista = new DefaultListModel();
