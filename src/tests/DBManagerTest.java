@@ -50,25 +50,7 @@ public class DBManagerTest {
 		DBManager.closeLink();
 	}
 	
-	/**
-	 * Test que queremos que falle porque no se ha creado la tabla
-	 * @throws SQLException excepcion de sql
-	 */
-	
-	@Test
-	public void testFailure() throws SQLException {
-		
-		try {
-			
-			DBManager.insertEstudiante("String dni", "String nombre", "String apellido1", "String apellido2", "String user", "String password", 
-		    		"String email", "String iban", "String tipopersona", 10.0, 1, 2, 0);
-			
-		}catch (SQLException e) {
-			
-			fail("Tabla no creada"); 
-		}
-	}
-	
+
 	/**
 	 * segundo test de los insert
 	 * @throws SQLException excepcion de los sql
