@@ -6,18 +6,33 @@ import javax.swing.JOptionPane;
 
 import usuarios.Estudiante;
 
+/**
+ * La clase del mergesort generico
+ * @author Alumno Amaia y Olatz
+ *
+ * @param <T> parametro generico t
+ */
 public class MergeSortGenerico <T extends Estudiante>
 {
 	
 	 static List<Estudiante> estudianteList = new ArrayList<Estudiante>();
 	 
     private boolean debug; //turn on/off debug messages
-
+    
+    /**
+     * El constructor
+     * @param i_debug debug
+     */
 
     public MergeSortGenerico(boolean i_debug) {
         debug = i_debug;
     }
 
+    /**
+     * Nos permite acceder al mergesort
+     * @param diccionarioEstudiantes diccionarioEstudiantes
+     * @return devuelve la lista ordenada
+     */
     
     public static List <Estudiante> introducir(ArrayList <Estudiante> diccionarioEstudiantes) {
     	
@@ -29,6 +44,12 @@ public class MergeSortGenerico <T extends Estudiante>
     	 return ordenado;
     }
 
+    
+    /**
+     * El mergesort
+     * @param ilist la lista de estudiantes
+     * @return lista ordenada
+     */
     //call mergesort on param list
     public List<T> mergesort(List<T> ilist)
     {
@@ -65,7 +86,13 @@ public class MergeSortGenerico <T extends Estudiante>
             return merge(mergesort(left), mergesort(right));
         }
     }
-
+    
+    /**
+     * Hace la mezca
+     * @param a la lista de la izquierda
+     * @param b la lista de la derecha
+     * @return lo mezclado
+     */
     //used by mergesort to do merging
     private List<T> merge(List<T> a, List<T> b)
     {

@@ -19,6 +19,10 @@ public class SecretarioTest {
 	
 	Secretario secre;
 	
+	/**
+	 * Se inicia el secretario
+	 * @throws Exception excepcion
+	 */
 	@Before
 	public void setUp () throws Exception{
 		
@@ -27,12 +31,20 @@ public class SecretarioTest {
 		
 	}
 	
+	/**
+	 * En este caso no necesitamos 
+	 * @throws Exception excepcion
+	 */
+	
 	@After
 	public void tearDown() throws Exception{
 		
 		
 	}
 	
+	/**
+	 * El test del constructor del secertario
+	 */
 	@Test 
 	public void test() {
 		

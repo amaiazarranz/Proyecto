@@ -23,7 +23,7 @@ public class HiloProfesor extends Thread{
 	}
 
 	/**
-	 * El método en el que el hilo pausa la clase calificar durante 2000 milisegundos y después de eso aparece un mensaje para esperar 2000 milisegundos más antes de ejecutar nada
+	 * Se calcula la nota media de cada estudiante
 	 */
 	
 	

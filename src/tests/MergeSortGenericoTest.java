@@ -1,6 +1,7 @@
 package tests;
 
 import org.junit.Before;
+
 import org.junit.After;
 import org.junit.Test;
 
@@ -12,10 +13,20 @@ import static org.junit.Assert.*;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * La clase que nos permite comprobar que el metodo mergesortgenerico esta bien
+ * @author Alumno Amaia y Olatz
+ *
+ */
+
 public class MergeSortGenericoTest {
 	
 	ArrayList <Estudiante> lista= new ArrayList <>();	
 	
+	/**
+	 * Se inician los estudiantes
+	 * @throws Exception exception
+	 */
 	@Before
 	public void setUp() throws Exception
 	{
@@ -42,10 +53,18 @@ public class MergeSortGenericoTest {
 		lista.add(e3);
 	}
 	
+	/**
+	 * La clase que nos permite cerrar conexiones si los hubiera
+	 * @throws Exception excepcion
+	 */
 	@After
 	public void tearDown () throws Exception{
 		
 	}
+	
+	/**
+	 * El test del mergesort generico que ordena las notas medias de los estudiantes
+	 */
 	
 	@Test
 	public void test() {
