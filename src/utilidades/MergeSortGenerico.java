@@ -8,6 +8,9 @@ import usuarios.Estudiante;
 
 public class MergeSortGenerico <T extends Estudiante>
 {
+	
+	 static List<Estudiante> estudianteList = new ArrayList<Estudiante>();
+	 
     private boolean debug; //turn on/off debug messages
 
 
@@ -16,11 +19,14 @@ public class MergeSortGenerico <T extends Estudiante>
     }
 
     
-    public static void introducir(ArrayList <Estudiante> diccionarioEstudiantes) {
+    public static List <Estudiante> introducir(ArrayList <Estudiante> diccionarioEstudiantes) {
     	
     	 MergeSortGenerico<Estudiante> ml = new MergeSortGenerico<Estudiante>(false);
-    	 JOptionPane.showMessageDialog(null, "Este es el ranking de estudiantes");
+    	 estudianteList=diccionarioEstudiantes;
     	
+    	 List <Estudiante> ordenado=ml.mergesort(estudianteList);
+    	 
+    	 return ordenado;
     }
 
     //call mergesort on param list

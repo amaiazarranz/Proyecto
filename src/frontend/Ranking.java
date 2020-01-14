@@ -101,11 +101,10 @@ public class Ranking extends JFrame {
 		// TODO Auto-generated method stub
 		DefaultListModel lista = new DefaultListModel();
 		
-		MergeSort.mergesort(diccionarioEstudiantes, 0, diccionarioEstudiantes.size()-1);
-		//MergeSortGenerico.introducir(diccionarioEstudiantes); //este para los genéricos
+		List <Estudiante> ordenado= MergeSortGenerico.introducir(diccionarioEstudiantes); //este para los genéricos
 		
 		//si hay una condicion es filter, sino map
-		List <String> hola  = diccionarioEstudiantes.stream().map(a -> a.getNombre() + " " + a.getNotamedia() +"\n").collect(Collectors.toList());
+		List <String> hola  = ordenado.stream().map(a -> a.getNombre() + " " + a.getNotamedia() +"\n").collect(Collectors.toList());
 		lista.addElement(hola);
 		
 		//SIN EXPRESIONES LAMBDA
