@@ -147,6 +147,7 @@ public class Calificar extends JFrame {
 				double newaverage=(((averagebefore*numNotas)+nota)/(numNotas+1));
 				
 				student.setNumNotas(numNotas+1);
+				student.setNotamedia(newaverage);
 				
 //				student.getNotamedia().add(nota); 
 				
