@@ -288,7 +288,7 @@ public Estudiante(String nombre, String apellido1, String apellido2, String dni,
      */
     public boolean ordenar(Estudiante e2)
     {
-        return this.notamedia < e2.notamedia;
+        return this.notamedia > e2.notamedia;
     }
 
 
