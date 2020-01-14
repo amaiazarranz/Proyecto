@@ -1,7 +1,6 @@
 package tests;
 import static org.junit.Assert.assertEquals;
-
-
+import static org.junit.Assert.assertNotNull;
 //import static org.junit.Assert.assertNotEquals;
 import static org.junit.Assert.assertNull;
 import static org.junit.Assert.fail;
@@ -13,6 +12,7 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
+import junit.framework.Assert;
 import sqlite.DBManager;
 import usuarios.Estudiante;
 import usuarios.Profesor;
@@ -63,12 +63,10 @@ public class DBManagerTest {
 			DBManager.insertEstudiante("String dni", "String nombre", "String apellido1", "String apellido2", "String user", "String password", 
 		    		"String email", "String iban", "String tipopersona", 10.0, 1, 2, 0);
 			
-			fail("Tabla no creada"); 
-			
 		}catch (SQLException e) {
 			
+			fail("Tabla no creada"); 
 		}
-		
 	}
 	
 	/**
@@ -77,7 +75,7 @@ public class DBManagerTest {
 	 */
 	
 	@Test
-	public void testInsert2() throws SQLException {
+	public void testInsertTrabajador() throws SQLException {
 		
 		
 		DBManager.createNewTableTrabajador();
@@ -101,6 +99,22 @@ public class DBManagerTest {
 		assertEquals("amaia@gmail.com", t.getEmail());
 
 		
+	}
+	@Test
+	public void testInsertEstudiante() throws SQLException {
+		
+    DBManager.createNewTableEstudiante();
+    
+    DBManager.insertEstudiante("82476952T", "Ane", "Bollo", "Peña", "program.estudiante3", "Estudiante3", "program.estudiante3@gmail.com","ES0000000000000000000008", "estudiante", 9.6, 3, 0,0);
+    
+    ArrayList <Estudiante> estudiante=DBManager.selectAllEstudiantes();
+  
+    Estudiante e= estudiante.stream().filter(s-> s.getDni().equals("82476952T")).findFirst().get();
+    
+    assertEquals(e.getApellido1(),"Bollo");
+    assertEquals(e.getUser(),"program.estudiante3");
+    assertNotNull(e.getEmail());
+   	
 	}
 
 }
