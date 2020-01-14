@@ -68,7 +68,7 @@ public class Estudiante extends Persona implements IComparable<Estudiante>
      * @param notamedia nota media
      * @param faltaleve número de faltas leves
      * @param faltagrave número de faltas graves
-     * @@param historia lo que va a escribir en el tablón
+     * @param historia lo que va a escribir en el tablón
      */
 
 
